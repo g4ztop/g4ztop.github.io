@@ -1,12 +1,9 @@
 <html>
     <head>
         <title> Mitchell Craft </title>
-        <script language="javascript" type="text/javascript" src="p5-zip/p5.js"></script>
-        <script language="javascript" type="text/javascript" src="currcurrcurrcurr.js">
-        </script>
     </head>
+<script language="javascript" type="text/javascript" src="p5-zip/p5.js"></script>
 <script language="javascript" type="text/javascript" data-javascript-target="canvas">
-
 
 var u = 0;
 var u1 = 49;
@@ -43,6 +40,9 @@ function setup(){
 }
 
 function draw(){
+
+  
+
   //gras//
   var dspeed = .3;
   var uspeed = .3;
@@ -185,16 +185,13 @@ function draw(){
 }
 
 </script>
-<canvas id="canvas"></canvas>
-
-
     <style type="text/css">
         body {
             font-family: sans-serif;
             background-color: #fd0a20;
         }
         
-        a {
+        .base {
             text-decoration:none;
             font-size: 50;
             top:-50;
@@ -218,10 +215,10 @@ function draw(){
 }
         }
 
-        a:link {
+        .base:link {
             color:#fd0a20;
         }
-        a:hover {
+        .base:hover {
             font-style: italic;
             color:#f900a2;
             text-shadow:
@@ -230,164 +227,47 @@ function draw(){
             1200px 1px 0 #f900a2;
              
         }
-        a:visited{
+        .base:visited{
             color:#fd0a20;
         }
-        a:visited:hover{
+        .base:visited:hover{
             color:#f900a2;
         }
+         .work{
+          position:fixed;
+          top:100;
+          left:500;
+          font-size:10;
+         
+        }
+        .link{
+          color:#04223A;
+        }
+        
         canvas{
             position:fixed;
             top:00;
             left:00;
             z-index: -1;
-            
-        }
-        canvas2{
-          position:fixed;
-          top:00;
-          left:500;
-          z-index: -2;
         }
 
-        h4{
-          font-style: italic;
-           color:#fd0a20;
-            font-size:72;
-          text-shadow:
-          -1px -2px 0 #ff5f54,
-            2px -1px 0 #f5f900,
-            -1px 1px 0 #0070f9,
-            1px 1px 0 #000;  
-        }
-        
     </style>
-
     
     <body>
               <h1 class="me">Mitchell Craft</h1>
         
         <div>
-            <h4><a href="https://vimeo.com/mitchellcraft">Vimeo</a></h4>
-            <h4><a href="https://www.instagram.com/mitchellcraft/?hl=en">Instagram</a></h4>            
-           
-            <h4>More Coming Sooon!!</h4>
+            <h4><a class ="base" href="work.html">Work</a></h4>
+            <h4 class= "play"><a class ="base" href="video.html">Play</a></h4>            
+            <h4 class= "about"><a class ="base" href="about_contact.html">About</a></h4>
           
         </div>
-        <div id="canvas2">
-          <script>
-            var x = [],
-  y = [],
-  segNum = 40,
-  segLength = 18;
-  m = -450;
-  k = -400;
-  k = -400;
-  k = -400;
-  j = -350;
-  h = -300;
-  g = -250;
-  f = -200;
-  d = -100;
-  c = -50;
-  b = 0;
-  e = -150;
-
-for (var i = 0; i < segNum; i++) {
-  x[i] = 0;
-  y[i] = 0;
-}
-
-function preload(){
-  orange = loadImage("orange.png");
-}
-function setup(){
-  createCanvas(1000, 1000);
-  strokeWeight(9);
-    stroke(255,0,0);
-
-}
-
-function draw(){
-
-  dragSegment(0, mouseX, mouseY);
-  for( var i=0; i<x.length-5; i++) {
-    dragSegment(i+1, x[i], y[i]);
-  }
-}
-
-function dragSegment(i, xin, yin) {
-  var dx = xin - x[i];
-  var dy = yin - y[i];
-  var angle = atan2(dy, dx);
-  x[i] = xin - cos(angle) * segLength;
-  y[i] = yin - sin(angle) * segLength;
-  segment(x[i], y[i], angle);
-}
-
-function segment(x, y, a) {
-  m = m -.01;
-  k = k - .01;
-  j = j - .01;
-  h = h - 0.01;
-  g = g - .01;
-  f = f - 0.01;
-  e = e - .01;
-  d = d - .01;
-  c = c - .01;
-  b = b - .01;
-  push();
-  translate(x, y);
-  rotate(a);
-  image(orange, m,m);
-  image(orange,k,k);
-  image(orange,j,j);
-  image(orange,h,h);
-  image(orange,g,g);
-  image(orange, f, f);
-  image(orange,e,e);
-  image(orange,d,d);
-  image(orange,c,c);
-  image(orange,b,b);
-
-  pop();
-  if(m<=-500){
-    m=0;
-  }
-  if(k <= -500){
-    k = 0;
-  }
-  if(j<=-500){
-    j = 0;
-  }
-  if(h<=-500){
-    h = 0;
-  }
-  if(g <= -500){
-    g = 0;
-  }
-  if(f <= -500){
-    f = 0;
-  }
-  if(e <= -500){
-    e = 0;
-  }
-  if(b <= -500){
-    b = 0;
-  }
-  if(c <= -500){
-    c = 0;
-  }
-  if (d<= -500){
-    d = 0;
-  }
-}
-
-          </script>
-          <canvas id="canvas2"><
+        <div class=work>
+            <h2><a class="link" href="https://vimeo.com/166994489"target="_blank">Rill</a> - Blablablayeahblahblahg</h2>
         </div>
+
         
         
     </body>
-
+    <canvas id="canvas"></canvas>
 </html>
