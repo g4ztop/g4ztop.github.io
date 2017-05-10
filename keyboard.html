@@ -1,0 +1,343 @@
+<script language="javascript" type="text/javascript" src="p5-zip/p5.js"></script>
+<script language="javascript" type="text/javascript" src="p5-zip/addons/p5.sound.js"></script>
+<script language="javascript" type="text/javascript" data-javascript-target="canvas">
+
+var osc;
+var r = 0;
+var w;
+var h;
+
+
+function preload() {
+	nulll = loadImage("nulll.png");
+	
+	gfru1 = loadImage("gfru/gfru1.png");
+	gfru2 = loadImage("gfru/gfru2.png");
+	gfru3 = loadImage("gfru/gfru3.png");
+	gfru4 = loadImage("gfru/gfru4.png");
+	gfru5 = loadImage("gfru/gfru5.png");
+	gfru6 = loadImage("gfru/gfru6.png");
+	gfru7 = loadImage("gfru/gfru7.png");
+	gfru8 = loadImage("gfru/gfru8.png");
+	gfru9 = loadImage("gfru/gfru9.png");
+	gfru0 = loadImage("gfru/gfru0.png");
+
+	apple1 = loadImage("apple/apple1.png");
+	apple2 = loadImage("apple/apple2.png");
+	apple3 = loadImage("apple/apple3.png");
+	apple4 = loadImage("apple/apple4.png");
+	apple5 = loadImage("apple/apple5.png");
+	apple6 = loadImage("apple/apple6.png");
+	apple7 = loadImage("apple/apple7.png");
+	apple8 = loadImage("apple/apple8.png");
+	apple9 = loadImage("apple/apple9.png");
+	apple10 = loadImage("apple/apple10.png");
+
+	banana1 = loadImage("banana/banana1.png");
+	banana2 = loadImage("banana/banana2.png");
+	banana3 = loadImage("banana/banana3.png");
+	banana4 = loadImage("banana/banana4.png");
+	banana5 = loadImage("banana/banana5.png");
+	banana6 = loadImage("banana/banana6.png");
+	banana7 = loadImage("banana/banana7.png");
+	banana8 = loadImage("banana/banana8.png");
+	banana9 = loadImage("banana/banana9.png");
+	banana10 = loadImage("banana/banana10.png");
+
+	grass = loadImage("grassooo.png");
+	sky = loadImage("sky.png");
+}
+
+function setup() {
+	createCanvas(windowWidth,windowHeight);
+	frameRate(24);
+	
+	b = 0;
+	s = 300;
+	x = 100;
+	y = 100;
+
+	reverb = new p5.Reverb();
+	delay = new p5.Delay();
+	osc = new p5.Oscillator();
+	osc.setType('sine');
+	osc.freq(s);
+	osc.amp(0);
+	osc.start();
+
+
+
+	
+}
+
+function draw(){
+	m = nulll;
+
+background(0,200,255);
+
+	imageMode(CENTER);
+	
+	push();
+	translate(windowWidth/2, windowHeight/2);
+	rotate(r/2);
+	image(sky,0,0,windowWidth*1.4,windowWidth*1.4);
+	pop();
+
+	push();
+	translate(windowWidth/2, windowHeight/2);
+	rotate(r/-2);
+	image(sky,0,0,windowWidth/1.4,windowWidth/1.4);
+	pop();
+
+	push();
+	translate(windowWidth/2, windowHeight/2);
+	rotate(r/2);
+	image(sky,0,0,windowWidth/3,windowWidth/3);
+	pop();
+
+	push();
+	translate(windowWidth/2, windowHeight/2);
+	rotate(r/-2);
+	image(sky,0,0,windowWidth/7,windowWidth/7);
+	pop();
+
+	push();
+	translate(windowWidth/2, windowHeight/2);
+	rotate(r/2);
+	image(sky,0,0,windowWidth/15,windowWidth/15);
+	pop();
+
+
+	push();
+	translate(windowWidth/2, windowHeight/2);
+	rotate(r/2);
+	image(sky,0,0,windowWidth/35,windowWidth/35);
+	pop();
+
+	push();
+	r = r + .01;
+	translate(windowWidth/2,windowHeight/2);
+	rotate(r*-1);
+	image(grass,0,0,windowWidth*2,windowWidth*2);
+	pop();
+
+	push();
+	translate(windowWidth/2,windowHeight/2);
+	rotate(r);
+	image(grass,0,0,windowWidth,windowWidth);
+	pop();
+
+	push();
+	translate(windowWidth/2,windowHeight/2);
+	rotate(r*-1);
+	image(grass,0,0,windowWidth/2,windowWidth/2);
+	pop();
+
+	push();
+	translate(windowWidth/2,windowHeight/2);
+	rotate(r);
+	image(grass,0,0,windowWidth/5,windowWidth/5);
+	pop();
+
+	push();
+	translate(windowWidth/2,windowHeight/2);
+	rotate(r*-1);
+	image(grass,0,0,windowWidth/11,windowWidth/11);
+	pop();
+
+	push();
+	translate(windowWidth/2,windowHeight/2);
+	rotate(r);
+	image(grass,0,0,windowWidth/25,windowWidth/25);
+	pop();
+
+
+	
+	if (keyIsPressed === true){
+		if (key == 'a'){
+			m = banana1;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(95,115));
+		}
+		if (key == 's'){
+			m = banana2;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(120,135));
+		}
+		if (key == 'd'){
+			m = banana3
+			osc.amp(0.7, 0.05);
+			osc.freq(random(140,155));
+		}
+		if (key == 'f'){
+			m = banana4;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(160,185));
+		}
+		if (key == 'g'){
+			m = banana5;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(190,205));
+		}
+		if (key == 'h'){
+			m = banana6;
+			osc.amp(0.7, 0.05 )
+			osc.freq(random(210,215));
+		}
+		if (key == 'j'){
+			m = banana7;
+			osc.amp(0.7,.05);
+			osc.freq(random(220,235));
+		}
+		if (key == 'k'){
+			m = banana8;
+			osc.amp(0.7,0.05);
+			osc.freq(random(240,255));
+		}
+		if (key == 'l'){
+			m = banana9;
+			osc.amp(0.7,0.05);
+			osc.freq(random(260,275));
+		}
+		if (key == ';'){
+			m = banana10;
+			osc.amp(0.7,0.05);
+			osc.freq(random(275,285));
+		}
+		if (key == 'q'){
+			m = apple1;
+			osc.amp(0.7,0.05);
+			osc.freq(random(285,300));
+		}
+		if (key == 'w'){
+			m = apple2;
+			osc.amp(0.7,0.05);
+			osc.freq(random(305,320));
+		}
+		if (key == 'e'){
+			m = apple3;
+			osc.amp(0.7,0.05);
+			osc.freq(random(325,340));
+		}
+		if (key == 'r'){
+			m = apple4;
+			osc.amp(0.7,0.05);
+			osc.freq(random(345,360));
+		}
+		if (key == 't'){
+			m = apple5;
+			osc.amp(0.7,0.05);
+			osc.freq(random(365,380));
+		}
+		if (key == 'y'){
+			m = apple6;
+			osc.amp(0.7,0.05);
+			osc.freq(random(385,400));
+		}
+		if (key == 'u'){
+			m = apple7;
+			osc.amp(0.7,0.05);
+			osc.freq(random(405,420));
+		}
+		if (key == 'i'){
+			m = apple8;
+			osc.amp(0.7,0.05);
+			osc.freq(random(425,440));
+		}
+		if (key == 'o'){
+			m = apple9;
+			osc.amp(0.7,0.05);
+			osc.freq(random(445,460));
+		}
+		if (key == 'p'){
+			m = apple10;
+			osc.amp(0.7,0.05);
+			osc.freq(random(465,480));
+		}
+		if (key == '1'){
+			m = gfru1;
+			osc.amp(0.7,0.05);
+			osc.freq(random(485,500));
+		}
+		if (key == '2'){
+			m = gfru2;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(505,520));
+		}
+		if (key == '3'){
+			m = gfru3;
+			osc.amp(0.7,0.05);
+			osc.freq(random(525,540));
+		}
+		if (key == '4'){
+			m = gfru4;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(545,560));
+		}
+		if (key == '5'){
+			m = gfru5;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(565,580));
+		}
+		if (key == '6'){
+			m = gfru6;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(585,600));
+		}
+		if (key == '7'){
+			m = gfru7;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(605,620));
+		}
+		if (key == '8'){
+			m = gfru8;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(625,640));
+		}
+		if (key == '9'){
+			m = gfru9;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(645,660));
+		}
+		if (key == '0'){
+			m = gfru0;
+			osc.amp(0.7, 0.05);
+			osc.freq(random(680,700));
+		}
+		if (key == 'z'){
+		delay.process(osc, .72, .7, 2300);
+		}else{
+
+		delay.process(osc, 0, .0, 0);
+		}
+		
+
+	}else{
+		osc.amp(0, 0.55);	
+	}
+	x = windowWidth/2;
+	y = windowHeight/2;
+	a = m;
+	image(a,x,y);
+
+	push();
+	s = "ROTTEN FRUIT KEYBOARD === Use your Keyboard === A-L | Q-P | 1-0";
+	textSize(15);
+	fill(255,100,0);
+	text(s, 10, windowHeight-30, windowWidth);
+	pop();
+	
+}
+
+</script>
+
+<style type="text/css">
+    canvas{
+        position:relative;
+      	top: -150px;
+        left: 0px;
+        
+    }
+        </style>
+
+<canvas id="canvas"></canvas>
