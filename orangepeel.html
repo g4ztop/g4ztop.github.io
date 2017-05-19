@@ -1,0 +1,124 @@
+<script src="processing.js"></script>
+<script language="javascript" type="text/javascript" src="p5-zip/addons/p5.sound.js"></script>
+<script language="javascript" type="text/javascript" src="p5-zip/p5.js"></script>
+<script type="text/processing" data-processing-target="processing-canvas">
+float GRAV = 0.2;
+float r = random(255);
+float g = random(100);
+float bc = random (200,255);
+
+ArrayList<Ball> b = new ArrayList<Ball>();
+
+void setup(){
+  size(screen.width,screen.height,P3D);
+ background(0,0,255);
+  
+  
+  
+  
+}
+
+void draw(){
+   
+  int x = mouseX;
+  int y = mouseY;
+  noStroke();
+  for (int i=0; i<b.size(); i++) {
+    b.get(i).display();
+  }
+}
+
+void mousePressed(){
+  b.add(new Ball());
+  //change color
+}
+void mouseDragged(){
+  b.add(new Ball());
+  
+}
+
+class Ballss {
+  //postion
+  PVector pos = new PVector();
+  //velocity 
+  PVector vel = new PVector();
+  float life;
+  float size;
+  int g = 1;
+  int h = 1;
+  float f = 0;
+  float o = 0;
+  Ballss(){
+    life=555;
+    pos.x = mouseX;
+    pos.y = mouseY;
+    pos.z = 0;
+    size = 15;
+    o = o + 1;
+    vel.y = .5;
+    vel.x = 0;
+    vel.z = 1;
+  
+  }
+  void update() {
+    if (vel.y < 10){
+      vel.y += GRAV/10;
+    }
+    pos.z += vel.z;
+    pos.x += vel.x;
+    pos.y += vel.y;
+    life -= 5;
+  }
+  
+  void display(){
+    pushMatrix();
+    
+    fill(255,f,0);
+    
+    f = f + .8;
+    translate(0 + pos.x, 0 + pos.y, 0 + pos.z);
+    rotateY(vel.y/2+pos.y/width);
+    rotateX(vel.x/2);
+    rotateZ(vel.z/2);
+    rect(0,0,100,50);
+    popMatrix();
+  }
+}
+class Ball {
+  Ballss[] bss;
+  
+  Ball(){
+    bss= new Ballss[1];
+    for (int i=0; i<bss.length; i++){
+      bss[i] = new Ballss();
+    }
+  }
+void display() {
+  for (int i=0; i<bss.length; i++){
+    bss[i].update();
+    bss[i].display();
+  }
+}
+}
+</script>
+
+<script language="javascript" type="text/javascript" data-javascript-target="processing-canvas">
+var osc;
+var l = 0;
+var r = 10;
+function setup(){
+	createCanvas(1080,1000);
+	osc = new p5.Oscillator();
+	osc.setType('sine');
+	osc.start();
+} 
+function draw(){
+	osc.freq(40);
+	osc.amp(10);
+}
+
+</script>
+<canvas id="processing-canvas"></canvas>
+
+
+

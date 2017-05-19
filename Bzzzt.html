@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title> Mitchell Craft </title>
+        <body>
+<script language="javascript" type="text/javascript" src="p5-zip/p5.js"></script>
+<script language="javascript" type="text/javascript" src="p5-zip/addons/p5.sound.js"></script>
+<script language="javascript" type="text/javascript" data-javascript-target="canvas">
+
+    
+var osc;
+var s;
+
+function setup(){
+	createCanvas(windowWidth/2,windowHeight/2);
+
+	osc = new p5.Oscillator();
+	osc.setType('square');
+	osc.amp(1);
+	osc.start();
+	
+}
+function draw(){
+	s = touchX/10;
+	z = touchY/10;
+
+
+	osc.freq(s);
+	var y1 = -height;
+	var y2 = height*2;
+	var a = touchX/500;
+	var b=(touchY/200)+(random(.5));
+	var v = -b;
+	var sh = int(random(3));
+	
+	
+	
+	for (var i=0; i<width*4; i+=19){
+		stroke(touchY,0,250);
+		strokeWeight(4);
+		line(i/a,y1,i/b,y2);
+	}
+	for (var i=0; i<width*4; i+=21){
+		stroke(255,touchX/4,0);
+		strokeWeight(3);
+		line(i/b,y1,i/a,y2);
+	}
+}
+function windowResized() {
+  resizeCanvas(windowWidth/2, windowHeight/2);
+}
+</script>
+        </body>
+
+<style type="text/css">
+    body{
+        background-color: #fd0a20;
+    }
+    canvas{
+        position:relative;
+        top: 50px;
+        left: -250px;
+        
+    }
+        </style>
+</script>
+<canvas id="canvas"></canvas>
+     </head>
+</html>
