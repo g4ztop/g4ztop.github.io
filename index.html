@@ -29,7 +29,7 @@ for (var i = 0; i < segNum; i++) {
 }
 
 function preload(){
-  orange = loadImage("orange.png");
+  orange = loadImage("invy.png");
 }
 function setup(){
   createCanvas(windowWidth, windowHeight);
@@ -56,16 +56,16 @@ function dragSegment(i, xin, yin) {
 }
 
 function segment(x, y, a) {
-  m = m -.01;
-  k = k - .01;
-  j = j - .01;
-  h = h - 0.01;
-  g = g - .01;
-  f = f - 0.01;
-  e = e - .01;
-  d = d - .01;
-  c = c - .01;
-  b = b - .01;
+  m = m -.001;
+  k = k - .001;
+  j = j - .001;
+  h = h - 0.001;
+  g = g - .001;
+  f = f - 0.001;
+  e = e - .001;
+  d = d - .001;
+  c = c - .001;
+  b = b - .001;
   push();
   translate(x, y);
   rotate(a);
@@ -120,18 +120,18 @@ function segment(x, y, a) {
     <style type="text/css">
         body {
             font-family: sans-serif;
-            background-color: #fd0a20;
+            background-color: #10110f;
         }
         
         a {
             text-decoration:none;
             font-size: 50;
             top:-50;
-            color:#0070f9;
+            color:#f7f49e;
         }
         h1 {
             
-            color:#0070f9;
+            color:#f7f49e;
             font-size:100;
             top:250;
             text-align: center;
@@ -139,14 +139,14 @@ function segment(x, y, a) {
         }
 
         a:link {
-            color:#0070f9;
+            color:#f7f49e;
         }
         a:hover {
             font-style: italic;
             color:#f900a2;
         }
         a:visited{
-            color:#0070f9;
+            color:#f7f49e;
         }
         a:visited:hover{
             color:#f900a2;
