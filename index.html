@@ -32,7 +32,7 @@ function preload(){
   ivy = loadImage("invy.png");
 }
 function setup(){
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth*2, windowHeight*2);
   strokeWeight(9);
     stroke(255,0,0);
 }
@@ -129,13 +129,13 @@ function segment(x, y, a) {
         
         a {
             text-decoration:none;
-            font-size: 40;
+            font-size: 30;
             top:-500;
-            color:#f7f49e;
+            color:#f2e468;
         }
         h1 {
             
-            color:#f7f49e;
+            color:#f2e468;
             font-size:40;
             top:-500;
             text-align: center;
@@ -144,14 +144,14 @@ function segment(x, y, a) {
         }
 
         a:link {
-            color:#f7f49e;
+            color:#f2e468;
         }
         a:hover {
             font-style: italic;
             color:#f900a2;
         }
         a:visited{
-            color:#f7f49e;
+            color:#f2e468;
         }
         a:visited:hover{
             color:#f900a2;
@@ -177,7 +177,7 @@ function segment(x, y, a) {
         ul{
           list-style-type: none;
           margin:0;
-          padding:200;
+          padding:60;
         }
 
         li{
