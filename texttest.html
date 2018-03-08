@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title> Mitchell Craft </title>
+        <body>
+<script language="javascript" type="text/javascript" src="p5-zip/p5.js"></script>
+<script language="javascript" type="text/javascript" src="p5-zip/addons/p5.dom.js"></script>
+<script language="javascript" type="text/javascript" data-javascript-target="canvas">
+
+	var text;
+	var canvas;
+	var x = -220;
+    var y = 200;
+    var z = 600;
+
+	function setup() {
+	  	text = createP("MANIFESTO");
+        text2 = createP("MANIFESTO");
+        text3 = createP("MANIFESTO");
+	  	text.class("Manifesto");
+        text2.class("Manifesto2");
+        text3.class("Manifesto");
+	}
+
+	function draw() {
+        var length = windowWidth;
+		push()
+		text.position(x, 50);
+		x++
+		if(x >= length){
+			x = -200;
+		}
+		pop()
+        push()
+        text2.position(y, 50);
+        y++
+        if(y >= length){
+            y = -200;
+        }
+        pop()
+        push()
+        text3.position(z, 50);
+        z++
+        if(z >= length){
+            z = -200;
+        }
+        pop()
+	}
+</script>
+        </body>
+
+<style type="text/css">
+    @keyframes wb {
+    	from{color: white;}
+    	to {color: blue;}
+    }
+
+    @keyframes bw {
+        from{color: blue;}
+        to {color: white;}
+    }
+
+    body{
+    	background-color: blue;
+    }
+
+    .Manifesto{ 
+        color: white;
+    	font-family: 'raleway';
+        font-weight: 700;
+        font-size: 20pt;
+        animation-name: wb;
+    	animation-duration: 1s;
+    	animation-direction: alternate;
+    	animation-iteration-count: infinite;
+    }
+
+    .Manifesto2{ 
+        color: blue;
+        font-family: 'raleway';
+        font-weight: 700;
+        font-size: 20pt;
+        animation-name: bw;
+        animation-duration: 1s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+    }
+
+    canvas{
+        position:relative;
+        top: 50px;
+        left: -250px;
+        
+    }
+        </style>
+</script>
+<canvas id="canvas"></canvas>
+     </head>
+</html>
