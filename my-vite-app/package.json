@@ -2,8 +2,11 @@
   "name": "my-vite-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://g4ztop.github.io/",
   "type": "module",
   "scripts": {
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
