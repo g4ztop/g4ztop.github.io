@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mitchell Craft</title>
+<style type="text/css">
+            body {
+        background-color: #fd0a20;
+    }
+    canvas {
+    position: fixed; /* Change to fixed */
+    display: block;
+    top: 0;         /* Reset top position */
+    left: 0;        /* Reset left position */
+    width: 100%;    /* Make canvas full width */
+    height: 100%;   /* Make canvas full height */
+    z-index: -1;    /* Keep this to stay behind content */
+    }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+     </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        
+        <script>
+            new p5((p) => {
+                let osc;
+                let s;
+                let z;
+
+                p.setup = () => {
+                p.createCanvas(p.windowWidth/2, p.windowHeight/2);
+                
+                osc = new p5.Oscillator();
+                osc.setType('square');
+                osc.amp(1);
+                osc.start();
+            }
+
+                p.draw = () => {
+                    s = (p.touchX || p.mouseX)/10;
+                    z = (p.touchY || p.mouseY)/10;
+
+                osc.freq(s);
+                    let y1 = -p.height;
+                    let y2 = p.height*2;
+                    let a = (p.touchX || p.mouseX)/500;
+                    let b = ((p.touchY || p.mouseY)/200)+(p.random(.5));
+                    let v = -b;
+                    let sh = p.int(p.random(3));
+                
+                    for (let i=0; i<p.width*4; i+=19) {
+                        p.stroke((p.touchY || p.mouseY),0,250);
+                        p.strokeWeight(4);
+                        p.line(i/a,y1,i/b,y2);
+                }
+                    for (let i=0; i<p.width*4; i+=21) {
+                        p.stroke(255,(p.touchX || p.mouseX)/4,0);
+                        p.strokeWeight(3);
+                        p.line(i/b,y1,i/a,y2);
+                }
+            }
+
+                p.windowResized = () => {
+                    p.resizeCanvas(p.windowWidth/2, p.windowHeight/2);
+            }
+            });
+        </script>
+    </body>
+</html>

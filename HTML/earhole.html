@@ -1,0 +1,66 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<canvas id="canvas"></canvas>
+
+<script>
+var img;
+var z = 1;
+
+function preload(){
+	img = loadImage("../img/earhole/ears.gif");
+}
+
+function setup(){
+	createCanvas(windowWidth, windowHeight, WEBGL);
+	frameRate(30);
+}
+
+function draw(){
+	z = z + .02;
+	background(255);
+	ambientLight(255);
+	push();
+	texture(img);
+	rotateY(mouseY/400);
+	rotateX(mouseX/400);
+	rotateZ(z);
+	sphere(1000);
+	pop();
+
+	push();
+	translate(mouseX-width/2,mouseY-height/2);
+	rotateX(mouseY/100);
+	rotateY(mouseX/300);
+	rotateZ((mouseY+mouseX)/100);
+	ambientMaterial(10,255,194);
+	cylinder(3,110);
+	push();
+	translate(0,-100);
+	fill(255);
+	sphere(16);
+	translate(0,15);
+	sphere(10);
+	pop();
+	push();
+	translate(0,100);
+	sphere(16);
+	translate(0,-15);
+	sphere(10);
+	pop();
+}
+
+
+
+</script>
+
+<style type="text/css">
+    body{
+        background-color: #fd0a20;
+    }
+    canvas{
+        position:relative;
+        top: -160px;
+        left: -10px;
+        
+    }
+        </style>
+<canvas id="canvas"></canvas>
