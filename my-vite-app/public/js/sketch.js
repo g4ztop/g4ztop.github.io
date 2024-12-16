@@ -22,8 +22,8 @@ new p5((p) => {
 }
 
 p.preload = () => {
-    orange = p.loadImage("src/img/bg/orange.png");
-    ivy = p.loadImage("src/img/bg/invy.png");
+    orange = p.loadImage("/img/bg/orange.png");
+    ivy = p.loadImage("/img/bg/invy.png");
 }
 
   p.setup = () => {

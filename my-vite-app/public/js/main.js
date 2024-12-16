@@ -1,9 +1,9 @@
-import * as THREE from 'three';
+/* import * as THREE from 'three';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'; */
 import { GUI } from './gui.js';
 import { LightingSystem } from './lighting.js';
 import overcast from '../img/splashscreen/overcast.png';
