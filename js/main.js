@@ -6,8 +6,8 @@ import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';  */
 import { GUI } from './gui.js';
 import { LightingSystem } from './lighting.js';
-import vertexShader from '../glsl/gradient-bg/background.vert.glsl';
-import fragmentShader from '../glsl/gradient-bg/background.frag.glsl';
+import vertexShader from '/glsl/gradient-bg/background.vert.glsl';
+import fragmentShader from '/glsl/gradient-bg/background.frag.glsl';
 
 const overcastUrl = new URL('../img/splashscreen/overcast.png', import.meta.url);
 const flowerUrls = [
