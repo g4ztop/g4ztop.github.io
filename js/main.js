@@ -1,11 +1,16 @@
-/* import * as THREE from 'three';
-import Stats from 'three/examples/jsm/libs/stats.module';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'; */
+// Core Three.js
+import * as THREE from 'https://unpkg.com/three@0.153.0/build/three.module.js';
+
+// Addons
+import Stats from 'https://unpkg.com/three@0.153.0/examples/jsm/libs/stats.module.js';
+import { EffectComposer } from 'https://unpkg.com/three@0.153.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://unpkg.com/three@0.153.0/examples/jsm/postprocessing/RenderPass.js';
+import { BokehPass } from 'https://unpkg.com/three@0.153.0/examples/jsm/postprocessing/BokehPass.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.153.0/examples/jsm/loaders/GLTFLoader.js';
 import { GUI } from './gui.js';
 import { LightingSystem } from './lighting.js';
+
+
 
 const vertexShader = `
   varying vec3 vWorldPosition;
