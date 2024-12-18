@@ -1,5 +1,4 @@
-import * as dat from 'dat.gui';
-import { FogExp2, Color } from 'three';
+import * as dat from 'https://unpkg.com/dat.gui@0.7.9/build/dat.gui.module.js';
 
 export class GUI {
     constructor(scene, settings, flowers, bokehPass, respawnFlowers) {
