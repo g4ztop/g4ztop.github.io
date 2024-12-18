@@ -1,14 +1,32 @@
-/* import * as THREE from 'three';
+import * as THREE from 'three';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';  */
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { GUI } from './gui.js';
 import { LightingSystem } from './lighting.js';
-import vertexShader from '/glsl/gradient-bg/background.vert.glsl';
-import fragmentShader from '/glsl/gradient-bg/background.frag.glsl';
 
+const vertexShader = `
+  varying vec3 vWorldPosition;
+  void main() {
+    vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+    vWorldPosition = worldPosition.xyz;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const fragmentShader = `
+  uniform vec3 topColor;
+  uniform vec3 bottomColor;
+  uniform float offset;
+  uniform float exponent;
+  varying vec3 vWorldPosition;
+  void main() {
+    float h = normalize(vWorldPosition + offset).y;
+    gl_FragColor = vec4(mix(bottomColor, topColor, max(pow(max(h, 0.0), exponent), 0.0)), 1.0);
+  }
+`;
 const overcastUrl = new URL('../img/splashscreen/overcast.png', import.meta.url);
 const flowerUrls = [
     '../glb/flower1.glb',
@@ -349,4 +367,5 @@ function setupEventListeners() {
 setupScene();
 setupEventListeners();
 animate();
+
 
