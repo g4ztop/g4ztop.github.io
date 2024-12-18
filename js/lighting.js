@@ -1,5 +1,4 @@
-import * as THREE from 'three';
-import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib.js';
+
 
 export class LightingSystem {
     constructor(scene, settings, gui) {
