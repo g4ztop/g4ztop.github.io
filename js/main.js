@@ -1,9 +1,9 @@
-import * as THREE from '/node_modules/three/build/three.module.js';
-import Stats from '/node_modules/three/examples/jsm/libs/stats.module.js';
-import { EffectComposer } from '/node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
-import { BokehPass } from '/node_modules/three/examples/jsm/postprocessing/BokehPass.js';
-import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'three';
+import { Stats } from 'three/examples/jsm/libs/stats.module';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { GUI } from './gui.js';
 import { LightingSystem } from './lighting.js';
 import overcast from '../img/splashscreen/overcast.png';
@@ -353,5 +353,6 @@ function setupEventListeners() {
 
 setupScene();
 setupEventListeners();
+animate();
 animate();
 animate();
