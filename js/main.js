@@ -1,36 +1,16 @@
-// Core Three.js
-import * as THREE from './three.js';
-
-// Addons
-import Stats from './stats.module.js';
-import { EffectComposer } from './EffectComposer.js';
-import { RenderPass } from './RenderPass.js';
-import { BokehPass } from './BokehPass.js';
-import { GLTFLoader } from './GLTFLoader.js';
+import * as THREE from 'three';
+import Stats from 'three/examples/jsm/libs/stats.module';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { GUI } from './gui.js';
 import { LightingSystem } from './lighting.js';
+import overcast from '../img/splashscreen/overcast.png';
+import vertexShader from '../glsl/gradient-bg/background.vert.glsl?raw';
+import fragmentShader from '../glsl/Gradient-BG/background.frag.glsl?raw';
 
-const vertexShader = `
-  varying vec3 vWorldPosition;
-  void main() {
-    vec4 worldPosition = modelMatrix * vec4(position, 1.0);
-    vWorldPosition = worldPosition.xyz;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`;
-
-const fragmentShader = `
-  uniform vec3 topColor;
-  uniform vec3 bottomColor;
-  uniform float offset;
-  uniform float exponent;
-  varying vec3 vWorldPosition;
-  void main() {
-    float h = normalize(vWorldPosition + offset).y;
-    gl_FragColor = vec4(mix(bottomColor, topColor, max(pow(max(h, 0.0), exponent), 0.0)), 1.0);
-  }
-`;
-const overcastUrl = new URL('../img/splashscreen/overcast.png', import.meta.url);
+// Model URLs
 const flowerUrls = [
     '../glb/flower1.glb',
     '../glb/flower2.glb',
@@ -42,6 +22,7 @@ const flowerUrls = [
 ].map(url => new URL(url, import.meta.url));
 const EnterUrl = new URL('../glb/Enter.glb', import.meta.url);
 
+// Scene and Renderer Setup
 const scene = new THREE.Scene();
 const stats = new Stats();
 stats.showPanel(0);
@@ -59,6 +40,7 @@ const bokehPass = new BokehPass(scene, camera, { focus: 0, aperture: 0, maxblur:
 composer.addPass(renderPass);
 composer.addPass(bokehPass);
 
+// Settings
 const settings = {
     fog: { enabled: true, color: '#000000', density: 0.03 },
     gradient: {
@@ -90,6 +72,7 @@ const settings = {
     stats: { polycount: 0 }
 };
 
+// Flowers and Loader
 const flowers = [];
 let flowerModels = [];
 const assetLoader = new GLTFLoader();
@@ -118,6 +101,7 @@ Promise.all(flowerUrls.map(loadFlowerModel)).then(models => {
     console.error('Error loading flower models:', error);
 });
 
+// GUI and Scene Setup
 const gui = initializeGUI();
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -152,7 +136,7 @@ function setupScene() {
     };
 
     const textureLoader = new THREE.TextureLoader();
-    const envTexture = textureLoader.load(overcastUrl);
+    const envTexture = textureLoader.load(overcast);
     envTexture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = envTexture;
 
