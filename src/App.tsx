@@ -150,11 +150,11 @@ function Home() {
     <div className="min-h-screen bg-black text-white p-4">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
-        <header className="flex justify-between items-center">
+        <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
           <MetallicText text="Mitchell Craft" className="text-4xl font-bold" />
-          <div className="text-right">
+          <div className="text-center lg:text-right">
             <p className="text-lg text-gray-300 mb-2">A short intro about yourself.</p>
-            <div className="flex gap-4 justify-end">
+            <div className="flex gap-4 justify-center lg:justify-end">
               {/* Social links with icons */}
               <a href="#" className="text-gray-400 hover:text-white transition-colors" title="Instagram">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
