@@ -166,7 +166,7 @@ function Home() {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-auto object-cover transition-all duration-300 group-hover:scale-105 rounded-lg"
+                className="w-full h-auto object-cover transition-all duration-300 group-hover:scale-150 rounded-lg"
               />
               
               {/* Hover Overlay */}
