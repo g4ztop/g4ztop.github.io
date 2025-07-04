@@ -148,7 +148,7 @@ const projects = [
 function Home() {
   return (
     <div className="min-h-screen bg-black text-white p-4">
-      {/* Header */}
+      {/* Header - Latest deployment */}
       <div className="max-w-7xl mx-auto mb-8">
         <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
           <MetallicText text="Mitchell Craft" className="text-4xl font-bold" />
