@@ -148,18 +148,20 @@ function Home() {
   return (
     <div className="min-h-screen bg-black text-white p-4">
       {/* Header */}
-      <header className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Your Name</h1>
-        <div className="text-right">
-          <p className="text-lg text-gray-300 mb-2">A short intro about yourself.</p>
-          <div className="flex gap-4 justify-end">
-            {/* Social links can go here */}
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
+      <div className="max-w-7xl mx-auto mb-8">
+        <header className="flex justify-between items-center">
+          <h1 className="text-4xl font-bold">Your Name</h1>
+          <div className="text-right">
+            <p className="text-lg text-gray-300 mb-2">A short intro about yourself.</p>
+            <div className="flex gap-4 justify-end">
+              {/* Social links can go here */}
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
       {/* Projects Grid */}
       <div className="max-w-7xl mx-auto">
