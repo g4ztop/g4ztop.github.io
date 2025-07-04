@@ -31,8 +31,8 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    // Create a simple metallic cube
-    const geometry = new THREE.BoxGeometry(10, 6, 2);
+    // Create a larger metallic cube
+    const geometry = new THREE.BoxGeometry(15, 9, 3);
     const material = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       metalness: 0.9,
@@ -42,24 +42,29 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    // Add lights
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+    // Add brighter lights
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
     directionalLight.position.set(10, 10, 5);
     scene.add(directionalLight);
 
-    const pointLight1 = new THREE.PointLight(0x00ffff, 1, 100);
+    const pointLight1 = new THREE.PointLight(0x00ffff, 3, 100);
     pointLight1.position.set(-10, 5, 10);
     scene.add(pointLight1);
 
-    const pointLight2 = new THREE.PointLight(0xff00ff, 1, 100);
+    const pointLight2 = new THREE.PointLight(0xff00ff, 3, 100);
     pointLight2.position.set(10, -5, -10);
     scene.add(pointLight2);
 
+    // Add a third bright light for more illumination
+    const pointLight3 = new THREE.PointLight(0xffff00, 2, 80);
+    pointLight3.position.set(0, 15, 0);
+    scene.add(pointLight3);
+
     // Position camera
-    camera.position.z = 20;
+    camera.position.z = 25;
 
     // Mouse movement handler
     const handleMouseMove = (event: MouseEvent) => {
@@ -77,9 +82,9 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Rotate cube based on mouse position
-      cube.rotation.x = mousePosition.y * 0.5;
-      cube.rotation.y = mousePosition.x * 0.5;
+      // Rotate cube based on mouse position with reduced sensitivity
+      cube.rotation.x = mousePosition.y * 0.2;
+      cube.rotation.y = mousePosition.x * 0.2;
 
       // Add some subtle floating animation
       cube.position.y = Math.sin(Date.now() * 0.001) * 2;
@@ -91,6 +96,9 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
       
       pointLight2.position.x = Math.cos(time + Math.PI) * 15;
       pointLight2.position.z = Math.sin(time + Math.PI) * 15;
+
+      pointLight3.position.x = Math.sin(time * 0.5) * 10;
+      pointLight3.position.z = Math.cos(time * 0.5) * 10;
 
       renderer.render(scene, camera);
     };
