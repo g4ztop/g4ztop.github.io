@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
+import MetallicText from './components/MetallicText';
 
 // Project data - you can customize these with different image sizes
 const projects = [
@@ -150,7 +151,7 @@ function Home() {
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
         <header className="flex justify-between items-center">
-          <h1 className="text-4xl font-bold">Your Name</h1>
+          <MetallicText text="Your Name" className="text-4xl font-bold" />
           <div className="text-right">
             <p className="text-lg text-gray-300 mb-2">A short intro about yourself.</p>
             <div className="flex gap-4 justify-end">
