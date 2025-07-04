@@ -117,8 +117,8 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     pointLight4.position.set(0, 0, 20);
     scene.add(pointLight4);
 
-    // Position camera
-    camera.position.z = 25;
+    // Position camera closer to the text
+    camera.position.z = 15;
 
     // Mouse movement handler
     const handleMouseMove = (event: MouseEvent) => {
