@@ -9,6 +9,7 @@ interface MetallicTextProps {
 const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isThreeJSReady, setIsThreeJSReady] = useState(false);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -94,7 +95,9 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
       renderer.render(scene, camera);
     };
 
+    // Start animation and mark Three.js as ready
     animate();
+    setIsThreeJSReady(true);
 
     // Cleanup
     return () => {
@@ -103,15 +106,22 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
         container.removeChild(renderer.domElement);
       }
       renderer.dispose();
+      setIsThreeJSReady(false);
     };
   }, [text, mousePosition]);
 
   return (
     <div 
       ref={mountRef} 
-      className={`inline-block ${className}`}
+      className={`inline-block relative ${className}`}
       style={{ width: '300px', height: '100px' }}
-    />
+    >
+      {!isThreeJSReady && (
+        <div className="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">
+          {text}
+        </div>
+      )}
+    </div>
   );
 };
 
