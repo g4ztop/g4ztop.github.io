@@ -29,39 +29,51 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     container.appendChild(renderer.domElement);
 
-    // Create a larger metallic cube
+    // Create a larger metallic cube with better material
     const geometry = new THREE.BoxGeometry(15, 9, 3);
     const material = new THREE.MeshStandardMaterial({
       color: 0xffffff,
-      metalness: 0.9,
-      roughness: 0.1,
+      metalness: 0.8,
+      roughness: 0.2,
+      envMapIntensity: 1.5,
     });
     
     const cube = new THREE.Mesh(geometry, material);
+    cube.castShadow = true;
+    cube.receiveShadow = true;
     scene.add(cube);
 
-    // Add brighter lights
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
+    // Much brighter lighting setup
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-    directionalLight.position.set(10, 10, 5);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+    directionalLight.position.set(15, 15, 10);
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 2048;
+    directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
 
-    const pointLight1 = new THREE.PointLight(0x00ffff, 3, 100);
-    pointLight1.position.set(-10, 5, 10);
+    const pointLight1 = new THREE.PointLight(0x00ffff, 5, 100);
+    pointLight1.position.set(-15, 10, 15);
     scene.add(pointLight1);
 
-    const pointLight2 = new THREE.PointLight(0xff00ff, 3, 100);
-    pointLight2.position.set(10, -5, -10);
+    const pointLight2 = new THREE.PointLight(0xff00ff, 5, 100);
+    pointLight2.position.set(15, -10, -15);
     scene.add(pointLight2);
 
-    // Add a third bright light for more illumination
-    const pointLight3 = new THREE.PointLight(0xffff00, 2, 80);
-    pointLight3.position.set(0, 15, 0);
+    const pointLight3 = new THREE.PointLight(0xffff00, 4, 80);
+    pointLight3.position.set(0, 20, 0);
     scene.add(pointLight3);
+
+    // Add a fourth bright white light for extra illumination
+    const pointLight4 = new THREE.PointLight(0xffffff, 3, 60);
+    pointLight4.position.set(0, 0, 20);
+    scene.add(pointLight4);
 
     // Position camera
     camera.position.z = 25;
@@ -99,6 +111,9 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
 
       pointLight3.position.x = Math.sin(time * 0.5) * 10;
       pointLight3.position.z = Math.cos(time * 0.5) * 10;
+
+      pointLight4.position.x = Math.cos(time * 0.3) * 8;
+      pointLight4.position.y = Math.sin(time * 0.3) * 8;
 
       renderer.render(scene, camera);
     };
