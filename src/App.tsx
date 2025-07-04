@@ -161,7 +161,7 @@ function Home() {
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="group relative overflow-hidden block break-inside-avoid border-dashed border border-white p-[10px] rounded-lg"
+              className="group relative overflow-hidden block break-inside-avoid border border-white p-[10px] rounded-lg"
             >
               <img
                 src={project.image}
