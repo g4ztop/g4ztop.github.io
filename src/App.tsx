@@ -161,12 +161,12 @@ function Home() {
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="group relative overflow-hidden block break-inside-avoid border-dashed border border-white p-[10px] rounded-lg"
+              className="group relative overflow-hidden block break-inside-avoid border-dashed border border-white p-[10px] rounded-lg h-64"
             >
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110 rounded-lg"
+                className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 rounded-lg"
               />
               
               {/* Hover Overlay */}
