@@ -171,21 +171,21 @@ function Home() {
               />
               
               {/* Hover Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-4">
+              <div className="absolute inset-0 flex flex-col justify-end">
                 <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="bg-white text-black rounded-lg shadow-lg overflow-hidden">
+                  <div className="bg-white text-black rounded-t-lg shadow-lg overflow-hidden mx-2 mb-2">
                     {/* Colored bar on top */}
                     <div className="h-1 bg-blue-500"></div>
                     
                     {/* Content */}
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold text-black mb-1">
+                    <div className="p-3">
+                      <h3 className="text-sm font-semibold text-black mb-1">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-gray-600 mb-2">
+                      <p className="text-xs text-gray-600 mb-1">
                         {project.year}
                       </p>
-                      <p className="text-sm text-gray-700 leading-relaxed">
+                      <p className="text-xs text-gray-700 leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
                     </div>
