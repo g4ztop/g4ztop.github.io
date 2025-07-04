@@ -2,26 +2,146 @@ import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-r
 
 // Project data - you can customize these
 const projects = [
-  { id: 1, title: "Project 1", description: "Description for project 1" },
-  { id: 2, title: "Project 2", description: "Description for project 2" },
-  { id: 3, title: "Project 3", description: "Description for project 3" },
-  { id: 4, title: "Project 4", description: "Description for project 4" },
-  { id: 5, title: "Project 5", description: "Description for project 5" },
-  { id: 6, title: "Project 6", description: "Description for project 6" },
-  { id: 7, title: "Project 7", description: "Description for project 7" },
-  { id: 8, title: "Project 8", description: "Description for project 8" },
-  { id: 9, title: "Project 9", description: "Description for project 9" },
-  { id: 10, title: "Project 10", description: "Description for project 10" },
-  { id: 11, title: "Project 11", description: "Description for project 11" },
-  { id: 12, title: "Project 12", description: "Description for project 12" },
-  { id: 13, title: "Project 13", description: "Description for project 13" },
-  { id: 14, title: "Project 14", description: "Description for project 14" },
-  { id: 15, title: "Project 15", description: "Description for project 15" },
-  { id: 16, title: "Project 16", description: "Description for project 16" },
-  { id: 17, title: "Project 17", description: "Description for project 17" },
-  { id: 18, title: "Project 18", description: "Description for project 18" },
-  { id: 19, title: "Project 19", description: "Description for project 19" },
-  { id: 20, title: "Project 20", description: "Description for project 20" },
+  { 
+    id: 1, 
+    title: "Project 1", 
+    description: "Description for project 1",
+    year: "2024",
+    image: "https://picsum.photos/400/300?random=1"
+  },
+  { 
+    id: 2, 
+    title: "Project 2", 
+    description: "Description for project 2",
+    year: "2024",
+    image: "https://picsum.photos/400/300?random=2"
+  },
+  { 
+    id: 3, 
+    title: "Project 3", 
+    description: "Description for project 3",
+    year: "2023",
+    image: "https://picsum.photos/400/300?random=3"
+  },
+  { 
+    id: 4, 
+    title: "Project 4", 
+    description: "Description for project 4",
+    year: "2023",
+    image: "https://picsum.photos/400/300?random=4"
+  },
+  { 
+    id: 5, 
+    title: "Project 5", 
+    description: "Description for project 5",
+    year: "2023",
+    image: "https://picsum.photos/400/300?random=5"
+  },
+  { 
+    id: 6, 
+    title: "Project 6", 
+    description: "Description for project 6",
+    year: "2022",
+    image: "https://picsum.photos/400/300?random=6"
+  },
+  { 
+    id: 7, 
+    title: "Project 7", 
+    description: "Description for project 7",
+    year: "2022",
+    image: "https://picsum.photos/400/300?random=7"
+  },
+  { 
+    id: 8, 
+    title: "Project 8", 
+    description: "Description for project 8",
+    year: "2022",
+    image: "https://picsum.photos/400/300?random=8"
+  },
+  { 
+    id: 9, 
+    title: "Project 9", 
+    description: "Description for project 9",
+    year: "2021",
+    image: "https://picsum.photos/400/300?random=9"
+  },
+  { 
+    id: 10, 
+    title: "Project 10", 
+    description: "Description for project 10",
+    year: "2021",
+    image: "https://picsum.photos/400/300?random=10"
+  },
+  { 
+    id: 11, 
+    title: "Project 11", 
+    description: "Description for project 11",
+    year: "2021",
+    image: "https://picsum.photos/400/300?random=11"
+  },
+  { 
+    id: 12, 
+    title: "Project 12", 
+    description: "Description for project 12",
+    year: "2020",
+    image: "https://picsum.photos/400/300?random=12"
+  },
+  { 
+    id: 13, 
+    title: "Project 13", 
+    description: "Description for project 13",
+    year: "2020",
+    image: "https://picsum.photos/400/300?random=13"
+  },
+  { 
+    id: 14, 
+    title: "Project 14", 
+    description: "Description for project 14",
+    year: "2020",
+    image: "https://picsum.photos/400/300?random=14"
+  },
+  { 
+    id: 15, 
+    title: "Project 15", 
+    description: "Description for project 15",
+    year: "2019",
+    image: "https://picsum.photos/400/300?random=15"
+  },
+  { 
+    id: 16, 
+    title: "Project 16", 
+    description: "Description for project 16",
+    year: "2019",
+    image: "https://picsum.photos/400/300?random=16"
+  },
+  { 
+    id: 17, 
+    title: "Project 17", 
+    description: "Description for project 17",
+    year: "2019",
+    image: "https://picsum.photos/400/300?random=17"
+  },
+  { 
+    id: 18, 
+    title: "Project 18", 
+    description: "Description for project 18",
+    year: "2018",
+    image: "https://picsum.photos/400/300?random=18"
+  },
+  { 
+    id: 19, 
+    title: "Project 19", 
+    description: "Description for project 19",
+    year: "2018",
+    image: "https://picsum.photos/400/300?random=19"
+  },
+  { 
+    id: 20, 
+    title: "Project 20", 
+    description: "Description for project 20",
+    year: "2018",
+    image: "https://picsum.photos/400/300?random=20"
+  },
 ];
 
 function Home() {
@@ -41,14 +161,29 @@ function Home() {
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="block p-4 border border-gray-700 rounded-lg hover:border-gray-500 hover:bg-gray-900 transition-all duration-200 group"
+              className="group relative overflow-hidden rounded-lg aspect-[4/3] block"
             >
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                {project.description}
-              </p>
+              {/* Project Image */}
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-lg font-semibold text-white mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-gray-300 mb-2">
+                    {project.year}
+                  </p>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
@@ -79,8 +214,20 @@ function ProjectPage({ projectId }: { projectId: string }) {
         </Link>
         
         <div className="mt-8">
-          <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-          <p className="text-xl text-gray-300 mb-8">{project.description}</p>
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold mb-2">{project.title}</h1>
+            <p className="text-xl text-gray-400 mb-4">{project.year}</p>
+            <p className="text-xl text-gray-300 mb-8">{project.description}</p>
+          </div>
+          
+          {/* Project Image */}
+          <div className="mb-8">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full rounded-lg shadow-lg"
+            />
+          </div>
           
           {/* Add your project content here */}
           <div className="bg-gray-900 p-6 rounded-lg">
