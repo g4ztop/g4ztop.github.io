@@ -151,7 +151,7 @@ function Home() {
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-8">
         <header className="flex justify-between items-center">
-          <MetallicText text="Your Name" className="text-4xl font-bold" />
+          <MetallicText text="Mitchell Craft" className="text-4xl font-bold" />
           <div className="text-right">
             <p className="text-lg text-gray-300 mb-2">A short intro about yourself.</p>
             <div className="flex gap-4 justify-end">
