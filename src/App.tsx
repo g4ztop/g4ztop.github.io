@@ -172,19 +172,19 @@ function Home() {
               {/* Hover Overlay */}
               <div className="absolute inset-0 flex flex-col justify-end">
                 <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="bg-white text-black overflow-hidden">
-                    {/* Colored bar on top */}
-                    <div className="h-1 bg-blue-500"></div>
+                  <div className="bg-black text-white overflow-hidden">
+                    {/* Dashed white line on top */}
+                    <div className="h-1 border-t-2 border-dashed border-white"></div>
                     
                     {/* Content */}
                     <div className="p-3">
-                      <h3 className="text-sm font-semibold text-black mb-1">
+                      <h3 className="text-sm font-semibold text-white mb-1">
                         {project.title}
                       </h3>
-                      <p className="text-xs text-gray-600 mb-1">
+                      <p className="text-xs text-gray-300 mb-1">
                         {project.year}
                       </p>
-                      <p className="text-xs text-gray-700 leading-relaxed line-clamp-2">
+                      <p className="text-xs text-gray-200 leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
                     </div>
