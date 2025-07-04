@@ -136,9 +136,9 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Rotate text group based on mouse position with reduced sensitivity
-      textGroup.rotation.x = mousePosition.y * 0.2;
-      textGroup.rotation.y = mousePosition.x * 0.2;
+      // Rotate text group based on mouse position with very low sensitivity
+      textGroup.rotation.x = mousePosition.y * 0.1;
+      textGroup.rotation.y = mousePosition.x * 0.1;
 
       // Add some subtle floating animation
       textGroup.position.y = Math.sin(Date.now() * 0.001) * 2;
@@ -179,7 +179,7 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     <div 
       ref={mountRef} 
       className={`inline-block relative ${className}`}
-      style={{ width: '300px', height: '100px' }}
+      style={{ width: '400px', height: '120px' }}
     >
       {!isThreeJSReady && (
         <div className="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">
