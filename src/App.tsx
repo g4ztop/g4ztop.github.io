@@ -148,14 +148,21 @@ function Home() {
   return (
     <div className="min-h-screen bg-black text-white p-4">
       {/* Header */}
-      <header className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-2">Your Name</h1>
-        <p className="text-lg text-gray-300">A short intro about yourself.</p>
+      <header className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold">Your Name</h1>
+        <div className="text-right">
+          <p className="text-lg text-gray-300 mb-2">A short intro about yourself.</p>
+          <div className="flex gap-4 justify-end">
+            {/* Social links can go here */}
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
+          </div>
+        </div>
       </header>
 
       {/* Projects Grid */}
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Projects</h2>
         <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
           {projects.map((project) => (
             <Link
