@@ -156,12 +156,12 @@ function Home() {
       {/* Projects Grid */}
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl font-semibold mb-6 text-center">Projects</h2>
-        <div className="grid grid-flow-col auto-cols-fr gap-4 h-[600px] sm:h-[700px] md:h-[800px] overflow-x-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {projects.map((project) => (
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="group relative overflow-hidden rounded-lg block h-fit max-w-[300px]"
+              className="group relative overflow-hidden rounded-lg block"
             >
               {/* Project Image */}
               <img
