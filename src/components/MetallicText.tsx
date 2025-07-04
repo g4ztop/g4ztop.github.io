@@ -33,19 +33,61 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     container.appendChild(renderer.domElement);
 
-    // Create a larger metallic cube with better material
-    const geometry = new THREE.BoxGeometry(15, 9, 3);
-    const material = new THREE.MeshStandardMaterial({
-      color: 0xffffff,
-      metalness: 0.8,
-      roughness: 0.2,
-      envMapIntensity: 1.5,
+    // Create text geometry using basic shapes
+    const textGroup = new THREE.Group();
+    
+    // Create individual letters using basic geometries
+    const letters = text.split('');
+    const letterSpacing = 2.5;
+    const startX = -(letters.length - 1) * letterSpacing / 2;
+    
+    letters.forEach((letter, index) => {
+      let geometry;
+      
+      // Create different geometries for different letters
+      if (letter === ' ') {
+        geometry = new THREE.BoxGeometry(1, 0.1, 0.1);
+      } else if (letter === 'M') {
+        geometry = new THREE.BoxGeometry(2, 4, 1);
+      } else if (letter === 'i') {
+        geometry = new THREE.BoxGeometry(0.8, 3, 1);
+      } else if (letter === 't') {
+        geometry = new THREE.BoxGeometry(1.2, 3.5, 1);
+      } else if (letter === 'c') {
+        geometry = new THREE.BoxGeometry(1.5, 3, 1);
+      } else if (letter === 'h') {
+        geometry = new THREE.BoxGeometry(1.5, 4, 1);
+      } else if (letter === 'e') {
+        geometry = new THREE.BoxGeometry(1.5, 3, 1);
+      } else if (letter === 'l') {
+        geometry = new THREE.BoxGeometry(0.8, 4, 1);
+      } else if (letter === 'C') {
+        geometry = new THREE.BoxGeometry(2, 4, 1);
+      } else if (letter === 'r') {
+        geometry = new THREE.BoxGeometry(1.2, 3, 1);
+      } else if (letter === 'a') {
+        geometry = new THREE.BoxGeometry(1.5, 3, 1);
+      } else if (letter === 'f') {
+        geometry = new THREE.BoxGeometry(1.2, 4, 1);
+      } else {
+        geometry = new THREE.BoxGeometry(1.5, 3, 1);
+      }
+      
+      const material = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        metalness: 0.8,
+        roughness: 0.2,
+        envMapIntensity: 1.5,
+      });
+      
+      const letterMesh = new THREE.Mesh(geometry, material);
+      letterMesh.position.x = startX + index * letterSpacing;
+      letterMesh.castShadow = true;
+      letterMesh.receiveShadow = true;
+      textGroup.add(letterMesh);
     });
     
-    const cube = new THREE.Mesh(geometry, material);
-    cube.castShadow = true;
-    cube.receiveShadow = true;
-    scene.add(cube);
+    scene.add(textGroup);
 
     // Much brighter lighting setup
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
@@ -94,12 +136,12 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Rotate cube based on mouse position with reduced sensitivity
-      cube.rotation.x = mousePosition.y * 0.2;
-      cube.rotation.y = mousePosition.x * 0.2;
+      // Rotate text group based on mouse position with reduced sensitivity
+      textGroup.rotation.x = mousePosition.y * 0.2;
+      textGroup.rotation.y = mousePosition.x * 0.2;
 
       // Add some subtle floating animation
-      cube.position.y = Math.sin(Date.now() * 0.001) * 2;
+      textGroup.position.y = Math.sin(Date.now() * 0.001) * 2;
 
       // Rotate lights for dynamic lighting
       const time = Date.now() * 0.001;
