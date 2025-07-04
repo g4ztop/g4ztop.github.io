@@ -178,7 +178,7 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
   return (
     <div 
       ref={mountRef} 
-      className={`inline-block relative ${className}`}
+      className={`inline-block relative mx-auto lg:mx-0 ${className}`}
       style={{ width: '400px', height: '120px' }}
     >
       {!isThreeJSReady && (
