@@ -173,7 +173,7 @@ function Home() {
               {/* Hover Overlay */}
               <div className="absolute inset-0 flex flex-col justify-end">
                 <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="bg-white text-black shadow-lg overflow-hidden">
+                  <div className="bg-white text-black overflow-hidden">
                     {/* Colored bar on top */}
                     <div className="h-1 bg-blue-500"></div>
                     
