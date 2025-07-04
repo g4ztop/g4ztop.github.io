@@ -136,8 +136,8 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '' }) => 
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Rotate text group based on mouse position with very low sensitivity
-      textGroup.rotation.x = mousePosition.y * 0.1;
+      // Rotate text group based on mouse position with very low sensitivity (Y-axis inverted)
+      textGroup.rotation.x = -mousePosition.y * 0.1;
       textGroup.rotation.y = mousePosition.x * 0.1;
 
       // Add some subtle floating animation
