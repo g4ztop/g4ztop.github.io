@@ -240,9 +240,9 @@ function Home() {
 
       {/* Project Index */}
       <div className="max-w-7xl mx-auto mt-16 overflow-x-auto">
-        <table className="min-w-full text-sm font-mono bg-gray-200">
+        <table className="min-w-full text-sm font-mono bg-black">
           <thead>
-            <tr className="uppercase text-left text-gray-700 border-b border-gray-400">
+            <tr className="uppercase text-left text-white border-b border-white">
               <th className="py-2 px-4 font-bold">Title</th>
               <th className="py-2 px-4 font-bold text-center">Categories</th>
               <th className="py-2 px-4 font-bold text-right">Year</th>
@@ -252,7 +252,7 @@ function Home() {
             {projects.map((project, idx) => (
               <tr
                 key={project.id}
-                className={`transition-colors ${idx % 2 === 0 ? 'bg-gray-200' : 'bg-gray-300'} hover:bg-black hover:text-white cursor-pointer border-b border-gray-400`}
+                className={`transition-colors bg-black text-white hover:bg-white hover:text-black cursor-pointer border-b border-white`}
                 onClick={() => window.location.href = `/project/${project.id}`}
                 tabIndex={0}
                 style={{ outline: 'none' }}
