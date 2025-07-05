@@ -271,6 +271,11 @@ function Home() {
           </tbody>
         </table>
       </div>
+
+      {/* Copyright */}
+      <div className="w-full flex justify-center mt-12 mb-2">
+        <span className="text-xs text-white font-mono text-center">All Works ©Mitchell Craft, 2025</span>
+      </div>
     </div>
   );
 }
