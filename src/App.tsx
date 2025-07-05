@@ -306,7 +306,7 @@ function ProjectPage({ projectId }: { projectId: string }) {
           className="w-full h-64 md:h-96 object-cover object-center"
         />
         {/* Three.js Logo Overlay */}
-        <div className="absolute top-0 right-0 m-4 z-10">
+        <div className="absolute top-0 left-0 m-4 z-10">
           <MetallicText text="INCWORKS" className="w-[220px] h-[60px]" />
         </div>
       </div>
