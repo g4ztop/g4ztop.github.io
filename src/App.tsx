@@ -239,32 +239,37 @@ function Home() {
       </div>
 
       {/* Project Index */}
-      <div className="max-w-7xl mx-auto mt-16">
-        <h2 className="text-2xl font-bold mb-8 text-center">Project Index</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <Link
-              key={project.id}
-              to={`/project/${project.id}`}
-              className="group border border-white p-4 rounded-lg hover:bg-white hover:text-black transition-all duration-300"
-            >
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-lg group-hover:text-black">
+      <div className="max-w-7xl mx-auto mt-16 overflow-x-auto">
+        <table className="min-w-full text-sm font-mono bg-gray-200">
+          <thead>
+            <tr className="uppercase text-left text-gray-700 border-b border-gray-400">
+              <th className="py-2 px-4 font-bold">Title</th>
+              <th className="py-2 px-4 font-bold text-center">Categories</th>
+              <th className="py-2 px-4 font-bold text-right">Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects.map((project, idx) => (
+              <tr
+                key={project.id}
+                className={`transition-colors ${idx % 2 === 0 ? 'bg-gray-200' : 'bg-gray-300'} hover:bg-black hover:text-white cursor-pointer border-b border-gray-400`}
+                onClick={() => window.location.href = `/project/${project.id}`}
+                tabIndex={0}
+                style={{ outline: 'none' }}
+              >
+                <td className="py-2 px-4 whitespace-nowrap font-bold tracking-wide" style={{textTransform: 'uppercase'}}>
                   {project.title}
-                </h3>
-                <span className="text-sm text-gray-400 group-hover:text-black">
+                </td>
+                <td className="py-2 px-4 text-center whitespace-nowrap">
+                  {project.type ? project.type.toUpperCase() : ''}
+                </td>
+                <td className="py-2 px-4 text-right whitespace-nowrap">
                   {project.year}
-                </span>
-              </div>
-              <p className="text-sm text-gray-300 group-hover:text-black mb-2">
-                {project.type}
-              </p>
-              <p className="text-xs text-gray-400 group-hover:text-black line-clamp-2">
-                {project.description}
-              </p>
-            </Link>
-          ))}
-        </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
