@@ -8,6 +8,7 @@ const projects = [
     title: "Project 1", 
     description: "Description for project 1",
     year: "2024",
+    type: "Web Development",
     image: "https://picsum.photos/400/600?random=1"
   },
   { 
@@ -15,6 +16,7 @@ const projects = [
     title: "Project 2", 
     description: "Description for project 2",
     year: "2024",
+    type: "Mobile App",
     image: "https://picsum.photos/600/400?random=2"
   },
   { 
@@ -22,6 +24,7 @@ const projects = [
     title: "Project 3", 
     description: "Description for project 3",
     year: "2023",
+    type: "UI/UX Design",
     image: "https://picsum.photos/500/500?random=3"
   },
   { 
@@ -29,6 +32,7 @@ const projects = [
     title: "Project 4", 
     description: "Description for project 4",
     year: "2023",
+    type: "Web Development",
     image: "https://picsum.photos/400/300?random=4"
   },
   { 
@@ -36,6 +40,7 @@ const projects = [
     title: "Project 5", 
     description: "Description for project 5",
     year: "2023",
+    type: "Mobile App",
     image: "https://picsum.photos/700/500?random=5"
   },
   { 
@@ -43,6 +48,7 @@ const projects = [
     title: "Project 6", 
     description: "Description for project 6",
     year: "2022",
+    type: "UI/UX Design",
     image: "https://picsum.photos/300/600?random=6"
   },
   { 
@@ -50,6 +56,7 @@ const projects = [
     title: "Project 7", 
     description: "Description for project 7",
     year: "2022",
+    type: "Web Development",
     image: "https://picsum.photos/600/300?random=7"
   },
   { 
@@ -57,6 +64,7 @@ const projects = [
     title: "Project 8", 
     description: "Description for project 8",
     year: "2022",
+    type: "Mobile App",
     image: "https://picsum.photos/450/450?random=8"
   },
   { 
@@ -64,6 +72,7 @@ const projects = [
     title: "Project 9", 
     description: "Description for project 9",
     year: "2021",
+    type: "UI/UX Design",
     image: "https://picsum.photos/400/700?random=9"
   },
   { 
@@ -71,6 +80,7 @@ const projects = [
     title: "Project 10", 
     description: "Description for project 10",
     year: "2021",
+    type: "Web Development",
     image: "https://picsum.photos/800/400?random=10"
   },
   { 
@@ -78,6 +88,7 @@ const projects = [
     title: "Project 11", 
     description: "Description for project 11",
     year: "2021",
+    type: "Mobile App",
     image: "https://picsum.photos/350/500?random=11"
   },
   { 
@@ -85,6 +96,7 @@ const projects = [
     title: "Project 12", 
     description: "Description for project 12",
     year: "2020",
+    type: "UI/UX Design",
     image: "https://picsum.photos/500/350?random=12"
   },
   { 
@@ -92,6 +104,7 @@ const projects = [
     title: "Project 13", 
     description: "Description for project 13",
     year: "2020",
+    type: "Web Development",
     image: "https://picsum.photos/400/800?random=13"
   },
   { 
@@ -99,6 +112,7 @@ const projects = [
     title: "Project 14", 
     description: "Description for project 14",
     year: "2020",
+    type: "Mobile App",
     image: "https://picsum.photos/600/600?random=14"
   },
   { 
@@ -106,6 +120,7 @@ const projects = [
     title: "Project 15", 
     description: "Description for project 15",
     year: "2019",
+    type: "UI/UX Design",
     image: "https://picsum.photos/300/400?random=15"
   },
   { 
@@ -113,6 +128,7 @@ const projects = [
     title: "Project 16", 
     description: "Description for project 16",
     year: "2019",
+    type: "Web Development",
     image: "https://picsum.photos/700/300?random=16"
   },
   { 
@@ -120,6 +136,7 @@ const projects = [
     title: "Project 17", 
     description: "Description for project 17",
     year: "2019",
+    type: "Mobile App",
     image: "https://picsum.photos/450/600?random=17"
   },
   { 
@@ -127,6 +144,7 @@ const projects = [
     title: "Project 18", 
     description: "Description for project 18",
     year: "2018",
+    type: "UI/UX Design",
     image: "https://picsum.photos/500/800?random=18"
   },
   { 
@@ -134,6 +152,7 @@ const projects = [
     title: "Project 19", 
     description: "Description for project 19",
     year: "2018",
+    type: "Web Development",
     image: "https://picsum.photos/400/500?random=19"
   },
   { 
@@ -141,6 +160,7 @@ const projects = [
     title: "Project 20", 
     description: "Description for project 20",
     year: "2018",
+    type: "Web Development",
     image: "https://picsum.photos/600/450?random=20"
   },
 ];
@@ -213,6 +233,35 @@ function Home() {
                   </div>
                 </div>
               </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Project Index */}
+      <div className="max-w-7xl mx-auto mt-16">
+        <h2 className="text-2xl font-bold mb-8 text-center">Project Index</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <Link
+              key={project.id}
+              to={`/project/${project.id}`}
+              className="group border border-white p-4 rounded-lg hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-semibold text-lg group-hover:text-black">
+                  {project.title}
+                </h3>
+                <span className="text-sm text-gray-400 group-hover:text-black">
+                  {project.year}
+                </span>
+              </div>
+              <p className="text-sm text-gray-300 group-hover:text-black mb-2">
+                {project.type}
+              </p>
+              <p className="text-xs text-gray-400 group-hover:text-black line-clamp-2">
+                {project.description}
+              </p>
             </Link>
           ))}
         </div>
