@@ -9,7 +9,9 @@ const projects = [
     description: "Description for project 1",
     year: "2024",
     type: "Web Development",
-    image: "https://picsum.photos/400/600?random=1"
+    image: "https://picsum.photos/400/600?random=1",
+    tools: ["React", "Three.js", "Tailwind CSS"],
+    processes: ["Design", "Development", "Deployment"]
   },
   { 
     id: 2, 
@@ -285,7 +287,7 @@ function ProjectPage({ projectId }: { projectId: string }) {
   
   if (!project) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-black text-white flex items-center justify-center font-mono">
         <div className="text-center">
           <h2 className="text-3xl font-semibold mb-4">Project Not Found</h2>
           <Link to="/" className="text-blue-400 hover:underline">Back to Home</Link>
@@ -295,38 +297,47 @@ function ProjectPage({ projectId }: { projectId: string }) {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-4">
-      <div className="max-w-4xl mx-auto">
-        <Link to="/" className="text-blue-400 hover:underline mb-6 inline-block">
-          ← Back to Projects
-        </Link>
-        
-        <div className="mt-8">
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold mb-2">{project.title}</h1>
-            <p className="text-xl text-gray-400 mb-4">{project.year}</p>
-            <p className="text-xl text-gray-300 mb-8">{project.description}</p>
-          </div>
-          
-          {/* Project Image */}
-          <div className="mb-8">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full rounded-lg shadow-lg"
-            />
-          </div>
-          
-          {/* Add your project content here */}
-          <div className="bg-gray-900 p-6 rounded-lg">
-            <h3 className="text-2xl font-semibold mb-4">Project Details</h3>
-            <p className="text-gray-300">
-              This is where you can add detailed information about your project, 
-              including technologies used, screenshots, links to live demos, 
-              and any other relevant content.
-            </p>
-          </div>
+    <div className="min-h-screen bg-black text-white p-0 font-mono">
+      {/* Banner */}
+      <div className="w-full bg-black relative">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-64 md:h-96 object-cover object-center"
+        />
+        {/* Three.js Logo Overlay */}
+        <div className="absolute top-0 right-0 m-4 z-10">
+          <MetallicText text="INCWORKS" className="w-[220px] h-[60px]" />
         </div>
+      </div>
+      {/* Title */}
+      <div className="max-w-5xl mx-auto px-4 mt-8">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tight">{project.title}</h1>
+      </div>
+      {/* Two Columns */}
+      <div className="max-w-5xl mx-auto px-4 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Left: Description */}
+        <div>
+          <h2 className="text-xl font-semibold mb-2">Description</h2>
+          <p className="text-base text-gray-200 mb-4">{project.description}</p>
+        </div>
+        {/* Right: Tools & Processes */}
+        <div>
+          <h2 className="text-xl font-semibold mb-2">Tools & Processes</h2>
+          <ul className="mb-2">
+            {(project.tools || ["Tool 1", "Tool 2"]).map((tool, i) => (
+              <li key={i} className="text-base text-gray-200 list-disc ml-5">{tool}</li>
+            ))}
+          </ul>
+          <ul>
+            {(project.processes || ["Process 1", "Process 2"]).map((proc, i) => (
+              <li key={i} className="text-base text-gray-400 list-disc ml-5">{proc}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="max-w-5xl mx-auto px-4 mt-8">
+        <Link to="/" className="text-blue-400 hover:underline mb-6 inline-block">← Back to Projects</Link>
       </div>
     </div>
   );
