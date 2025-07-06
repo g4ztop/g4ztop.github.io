@@ -41,12 +41,12 @@ export const PROJECTS: Project[] = [
     image: "/salahe/1.jpg",
     bannerImage: "/salahe/banner2.avif",
     projectImages: [
-      "/salahe/1.jpg",
+      "/salahe/5.jpg",
       "/salahe/2.jpg",
       "/salahe/3.jpg",
-      "/salahe/4.jpg",
-      "/salahe/5.jpg",
-      "/salahe/6.jpg"
+      "/salahe/6.jpg",
+      "/salahe/1.jpg",
+      "/salahe/4.jpg"
     ]
   },
   { 
