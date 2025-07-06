@@ -28,7 +28,7 @@ export const ProjectVideo: React.FC<ProjectVideoProps> = ({ project }) => (
             <video
               className="absolute top-0 left-0 w-full h-full object-cover"
               src={video}
-              controls
+              autoPlay
               loop
               muted
               playsInline
