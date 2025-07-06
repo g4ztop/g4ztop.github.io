@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { PROJECTS, SOCIAL_LINKS } from './data';
 import { 
   Header, 
@@ -10,7 +10,6 @@ import {
   MetallicText 
 } from './components';
 import { DEFAULT_TOOLS, DEFAULT_PROCESSES, DEFAULT_PROJECT_IMAGES, SITE_CONFIG } from './utils';
-import type { Project } from './types';
 
 // Home Page Component
 const Home = () => {
@@ -49,6 +48,19 @@ const ProjectPage = ({ projectId }: { projectId: string }) => {
     PROJECTS.find(p => p.id === parseInt(projectId)), 
     [projectId]
   );
+
+  // Scroll to top when project page loads
+  useEffect(() => {
+    // Immediate scroll to top
+    window.scrollTo(0, 0);
+    
+    // Also scroll after a small delay to ensure content is loaded
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [projectId]);
   
   if (!project) {
     return (
