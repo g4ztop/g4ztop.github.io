@@ -24,9 +24,9 @@ export const ProjectVideo: React.FC<ProjectVideoProps> = ({ project }) => (
     {project.additionalVideos && project.additionalVideos.length > 0 && (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {project.additionalVideos.map((video, index) => (
-          <div key={index} className="relative w-full h-0 pb-[56.25%] bg-gray-900 rounded-md overflow-hidden">
+          <div key={index} className="bg-gray-900 rounded-md overflow-hidden">
             <video
-              className="absolute top-0 left-0 w-full h-full object-contain"
+              className="w-full h-auto"
               src={video}
               autoPlay
               loop
