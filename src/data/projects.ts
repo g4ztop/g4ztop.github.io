@@ -74,6 +74,7 @@ export const PROJECTS: Project[] = [
     year: "2022",
     type: "UI/UX Design",
     image: "https://picsum.photos/300/600?random=6",
+    bannerImage: "/miumiu/banner.jpg",
     videoUrl: "https://www.youtube.com/embed/V8d6T4rRZ1U?si=PY8txMoiJr3X0xFk&controls=0&loop=1&playlist=V8d6T4rRZ1U&autoplay=1&mute=1",
     projectImages: [
       "/miumiu/miumiu-set-1.avif",
