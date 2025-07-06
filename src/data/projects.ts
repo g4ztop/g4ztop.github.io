@@ -33,12 +33,13 @@ export const PROJECTS: Project[] = [
   },
   { 
     id: 3, 
-    title: "Project 3", 
+    title: "Moncler X Salehe Bembury", 
     subtitle: "UI/UX REDESIGN",
     description: "Description for project 3",
     year: "2023",
     type: "UI/UX Design",
-    image: "https://picsum.photos/500/500?random=3"
+    image: "https://picsum.photos/500/500?random=3",
+    bannerImage: "/salahe/banner2.avif"
   },
   { 
     id: 4, 
