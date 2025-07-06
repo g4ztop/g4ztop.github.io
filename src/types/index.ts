@@ -12,6 +12,7 @@ export interface Project {
   projectImages?: string[];
   videoUrl?: string;
   additionalVideos?: string[];
+  standaloneImage?: string;
 }
 
 export interface SocialLink {

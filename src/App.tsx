@@ -133,6 +133,19 @@ const ProjectPage = ({ projectId }: { projectId: string }) => {
         <ProjectVideo project={project} />
       </div>
       
+      {/* Standalone Image */}
+      {project.standaloneImage && (
+        <div className="max-w-5xl mx-auto px-4 mt-16">
+          <div className="bg-gray-900 rounded-md overflow-hidden">
+            <img
+              src={project.standaloneImage}
+              alt={`${project.title} Standalone`}
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      )}
+      
       {/* Project Images Grid */}
       <div className="max-w-5xl mx-auto px-4 mt-16">
         <ProjectGallery project={project} projectImages={projectImages} />

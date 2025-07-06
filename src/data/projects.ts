@@ -84,9 +84,9 @@ export const PROJECTS: Project[] = [
       "/miumiu/miumiu-set-1.avif",
       "/miumiu/miumiu-set-2.avif",
       "/miumiu/miumiu-set-3.avif",
-      "/miumiu/miumiu-set-4.avif",
-      "/miumiu/miumiu_set-5.jpeg"
-    ]
+      "/miumiu/miumiu-set-4.avif"
+    ],
+    standaloneImage: "/miumiu/miumiu_set-5.jpeg"
   },
   { 
     id: 7, 
