@@ -1,11 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import * as THREE from 'three';
-
-interface MetallicTextProps {
-  text: string;
-  className?: string;
-  onClick?: () => void;
-}
+import type { MetallicTextProps } from '../types';
 
 // Letter geometry mapping for better performance
 const LETTER_GEOMETRIES: Record<string, [number, number, number]> = {
