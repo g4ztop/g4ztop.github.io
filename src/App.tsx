@@ -73,7 +73,7 @@ const ProjectPage = ({ projectId }: { projectId: string }) => {
     );
   }
 
-  const projectImages = project.projectImages || DEFAULT_PROJECT_IMAGES;
+  const projectImages = project.projectImages;
 
   return (
     <div className="min-h-screen bg-black text-white p-0 font-mono">
@@ -147,9 +147,11 @@ const ProjectPage = ({ projectId }: { projectId: string }) => {
       )}
       
       {/* Project Images Grid */}
-      <div className="max-w-5xl mx-auto px-4 mt-16">
-        <ProjectGallery project={project} projectImages={projectImages} />
-      </div>
+      {projectImages && projectImages.length > 0 && (
+        <div className="max-w-5xl mx-auto px-4 mt-16">
+          <ProjectGallery project={project} projectImages={projectImages} />
+        </div>
+      )}
       
       <div className="max-w-5xl mx-auto px-4 mt-12 mb-8">
         <Link to="/" className="text-blue-400 hover:underline mb-6 inline-block">

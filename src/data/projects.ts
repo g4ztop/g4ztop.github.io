@@ -62,6 +62,7 @@ export const PROJECTS: Project[] = [
     year: "2023",
     type: "Mobile App",
     image: "/elena_velez/2.gif",
+    bannerImage: "/elena_velez/banner.jpg",
     projectImages: [
       "/elena_velez/1.gif",
       "/elena_velez/2.gif",
@@ -74,18 +75,20 @@ export const PROJECTS: Project[] = [
   },
   { 
     id: 5, 
-    title: "Project 5", 
-    description: "Description for project 5",
+    title: "Megan Thee Stallion", 
+    description: "Music video for Cobra",
     year: "2023",
-    type: "Mobile App",
-    image: "https://picsum.photos/700/500?random=5"
+    type: "3D/VFX",
+    image: "/megan/3f8a0195a529b143e9337ff5be40ee6871-megancobra.2x.rsocial.w600.webp",
+    bannerImage: "/megan/megan-banner.jpeg",
+    videoUrl: "https://www.youtube.com/embed/DOZNRoL0310?si=CW1i1qtX7nGc_PpE&loop=1&playlist=DOZNRoL0310&autoplay=1&mute=1"
   },
   { 
     id: 7, 
-    title: "Project 7", 
-    description: "Description for project 7",
-    year: "2022",
-    type: "Web Development",
+    title: "Cecile B. Evans", 
+    description: "3D animation and VFX for Reality or Not",
+    year: "2023",
+    type: "3D/VFX",
     image: "https://picsum.photos/600/300?random=7"
   },
   { 
