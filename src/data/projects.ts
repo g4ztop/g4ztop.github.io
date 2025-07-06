@@ -15,21 +15,25 @@ export const PROJECTS: Project[] = [
   },
   { 
     id: 2, 
-    title: "ELENA VELEZ", 
-    subtitle: "YR003 - How's MY DRIVING?", 
+    title: "Miu Miu",
+    subtitle: "Fall/Winter 2024",
     description: "Description for project 2",
-    year: "2023",
-    type: "Mobile App",
-    image: "/elena_velez/2.gif",
-    projectImages: [
-      "/elena_velez/1.gif",
-      "/elena_velez/2.gif",
-      "/elena_velez/grid1.jpg",
-      "/elena_velez/grid2.jpg", 
-      "/elena_velez/grid3.jpg",
-      "/elena_velez/grid5.jpg"
+    year: "2022",
+    type: "UI/UX Design",
+    image: "https://picsum.photos/300/600?random=2",
+    bannerImage: "/miumiu/banner.jpg",
+    videoUrl: "https://www.youtube.com/embed/V8d6T4rRZ1U?si=PY8txMoiJr3X0xFk&controls=0&loop=1&playlist=V8d6T4rRZ1U&autoplay=1&mute=1",
+    additionalVideos: [
+      "/miumiu/social_1.mp4",
+      "/miumiu/social_2.mp4"
     ],
-    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ&autoplay=1&mute=1"
+    projectImages: [
+      "/miumiu/miumiu-set-1.avif",
+      "/miumiu/miumiu-set-2.avif",
+      "/miumiu/miumiu-set-3.avif",
+      "/miumiu/miumiu-set-4.avif"
+    ],
+    standaloneImage: "/miumiu/miumiu_set-5.jpeg"
   },
   { 
     id: 3, 
@@ -52,11 +56,21 @@ export const PROJECTS: Project[] = [
   },
   { 
     id: 4, 
-    title: "Project 4", 
+    title: "ELENA VELEZ", 
+    subtitle: "YR003 - How's MY DRIVING?", 
     description: "Description for project 4",
     year: "2023",
-    type: "Web Development",
-    image: "https://picsum.photos/400/300?random=4"
+    type: "Mobile App",
+    image: "/elena_velez/2.gif",
+    projectImages: [
+      "/elena_velez/1.gif",
+      "/elena_velez/2.gif",
+      "/elena_velez/grid1.jpg",
+      "/elena_velez/grid2.jpg", 
+      "/elena_velez/grid3.jpg",
+      "/elena_velez/grid5.jpg"
+    ],
+    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ&autoplay=1&mute=1"
   },
   { 
     id: 5, 
@@ -65,28 +79,6 @@ export const PROJECTS: Project[] = [
     year: "2023",
     type: "Mobile App",
     image: "https://picsum.photos/700/500?random=5"
-  },
-  { 
-    id: 6, 
-    title: "Miu Miu",
-    subtitle: "Fall/Winter 2024",
-    description: "Description for project 6",
-    year: "2022",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/300/600?random=6",
-    bannerImage: "/miumiu/banner.jpg",
-    videoUrl: "https://www.youtube.com/embed/V8d6T4rRZ1U?si=PY8txMoiJr3X0xFk&controls=0&loop=1&playlist=V8d6T4rRZ1U&autoplay=1&mute=1",
-    additionalVideos: [
-      "/miumiu/social_1.mp4",
-      "/miumiu/social_2.mp4"
-    ],
-    projectImages: [
-      "/miumiu/miumiu-set-1.avif",
-      "/miumiu/miumiu-set-2.avif",
-      "/miumiu/miumiu-set-3.avif",
-      "/miumiu/miumiu-set-4.avif"
-    ],
-    standaloneImage: "/miumiu/miumiu_set-5.jpeg"
   },
   { 
     id: 7, 
