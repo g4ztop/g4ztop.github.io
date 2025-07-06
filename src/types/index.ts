@@ -11,6 +11,7 @@ export interface Project {
   processes?: string[];
   projectImages?: string[];
   videoUrl?: string;
+  additionalVideos?: string[];
 }
 
 export interface SocialLink {

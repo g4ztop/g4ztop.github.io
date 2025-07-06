@@ -76,6 +76,10 @@ export const PROJECTS: Project[] = [
     image: "https://picsum.photos/300/600?random=6",
     bannerImage: "/miumiu/banner.jpg",
     videoUrl: "https://www.youtube.com/embed/V8d6T4rRZ1U?si=PY8txMoiJr3X0xFk&controls=0&loop=1&playlist=V8d6T4rRZ1U&autoplay=1&mute=1",
+    additionalVideos: [
+      "/miumiu/social_1.mp4",
+      "/miumiu/social_2.mp4"
+    ],
     projectImages: [
       "/miumiu/miumiu-set-1.avif",
       "/miumiu/miumiu-set-2.avif",
