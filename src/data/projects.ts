@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
       "/elena_velez/grid3.jpg",
       "/elena_velez/grid5.jpg"
     ],
-    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ"
+    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ&autoplay=1&mute=1"
   },
   { 
     id: 3, 
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
     type: "UI/UX Design",
     image: "/salahe/1.jpg",
     bannerImage: "/salahe/banner2.avif",
-    videoUrl: "https://www.youtube.com/embed/HgMMMktXVLw?si=6p4yWV8-FMk_QPeZ&controls=0&loop=1&playlist=HgMMMktXVLw",
+    videoUrl: "https://www.youtube.com/embed/HgMMMktXVLw?si=6p4yWV8-FMk_QPeZ&controls=0&loop=1&playlist=HgMMMktXVLw&autoplay=1&mute=1",
     projectImages: [
       "/salahe/5.jpg",
       "/salahe/2.jpg",
