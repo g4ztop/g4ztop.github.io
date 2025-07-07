@@ -9,7 +9,7 @@ import {
   ProjectVideo, 
   MetallicText 
 } from './components';
-import { DEFAULT_TOOLS, DEFAULT_PROCESSES, DEFAULT_PROJECT_IMAGES, SITE_CONFIG } from './utils';
+import { DEFAULT_TOOLS, DEFAULT_PROCESSES, SITE_CONFIG } from './utils';
 
 // Home Page Component
 const Home = () => {
