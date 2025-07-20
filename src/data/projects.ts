@@ -3,23 +3,23 @@ import type { Project } from '../types';
 export const PROJECTS: Project[] = [
   { 
     id: 1, 
-    title: "Youtube", 
-    subtitle: "Effects & Capabilities", 
-    description: "Description for project 1",
+    title: "Hometopia", 
+    subtitle: "Lead Technical Artist", 
+    description: "Lead Technical Artist for EveryRealm's Sims-like house building game on Steam. Acted as the communication bridge between Art and Engineering teams, creating custom tools, pipelines, and in-game systems that expedited art development.",
     year: "2024 - current",
-    type: "Web Development",
+    type: "Game Development",
     image: "https://picsum.photos/400/600?random=1",
     bannerImage: "https://picsum.photos/1200/400?random=1banner",
-    tools: ["React", "Three.js", "Tailwind CSS"],
-    processes: ["Design", "Development", "Deployment"]
+    tools: ["Python", "C#", "Blender", "Unity", "SpeedTree"],
+    processes: ["Pipeline Development", "Asset Optimization", "Shader Design", "Procedural Systems"]
   },
   { 
     id: 2, 
     title: "Miu Miu",
     subtitle: "Fall/Winter 2024",
-    description: "Description for project 2",
-    year: "2022",
-    type: "UI/UX Design",
+    description: "VFX for Miu Miu's Fall/Winter collection, directed by Cecile B Evans. Worked with INCworks Studio to create 3D assets and animations displayed in set design and accompanying film about a speculative future with mysterious storage centers.",
+    year: "2024",
+    type: "VFX & 3D Animation",
     image: "/miumiu/social_1.gif",
     bannerImage: "/miumiu/banner.jpg",
     videoUrl: "https://www.youtube.com/embed/V8d6T4rRZ1U?si=PY8txMoiJr3X0xFk&controls=0&loop=1&playlist=V8d6T4rRZ1U&autoplay=1&mute=1",
@@ -33,15 +33,17 @@ export const PROJECTS: Project[] = [
       "/miumiu/miumiu-set-3.avif",
       "/miumiu/miumiu-set-4.avif"
     ],
-    standaloneImage: "/miumiu/miumiu_set-5.jpeg"
+    standaloneImage: "/miumiu/miumiu_set-5.jpeg",
+    tools: ["3D Modeling", "Animation", "Procedural Systems", "VFX"],
+    processes: ["Concept Development", "3D Asset Creation", "Animation", "Set Integration"]
   },
   { 
     id: 3, 
     title: "Moncler X Salehe Bembury", 
-    subtitle: "UI/UX REDESIGN",
-    description: "Description for project 3",
+    subtitle: "Lead VFX Artist",
+    description: "Lead VFX Artist for Moncler x Salehe Bembury's Summer 2023 clothing line campaign. Spearheaded team in creating intricate CG forest backgrounds for commercial, 12 print advertisements, and 3 large-scale billboards.",
     year: "2023",
-    type: "UI/UX Design",
+    type: "VFX & CG",
     image: "/salahe/1.jpg",
     bannerImage: "/salahe/banner2.avif",
     videoUrl: "https://www.youtube.com/embed/HgMMMktXVLw?si=6p4yWV8-FMk_QPeZ&controls=0&loop=1&playlist=HgMMMktXVLw&autoplay=1&mute=1",
@@ -52,15 +54,17 @@ export const PROJECTS: Project[] = [
       "/salahe/6.jpg",
       "/salahe/1.jpg",
       "/salahe/4.jpg"
-    ]
+    ],
+    tools: ["SpeedTree", "Blender", "Nuke", "Tracking", "Compositing"],
+    processes: ["Procedural Generation", "3D Modeling", "Animation", "VFX Compositing"]
   },
   { 
     id: 4, 
     title: "ELENA VELEZ", 
     subtitle: "YR003 - How's MY DRIVING?", 
-    description: "Description for project 4",
+    description: "VFX and 3D Environment designs for Elena Velez's 2023 fashion show. Produced AI imagery using Midjourney and Stable Diffusion, then composed scenes and video footage in 3D Space using Blender. Showcased during New York Fashion Week.",
     year: "2023",
-    type: "Mobile App",
+    type: "VFX & 3D Design",
     image: "/elena_velez/2.gif",
     bannerImage: "/elena_velez/banner.jpg",
     projectImages: [
@@ -71,128 +75,206 @@ export const PROJECTS: Project[] = [
       "/elena_velez/grid3.jpg",
       "/elena_velez/grid5.jpg"
     ],
-    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ&autoplay=1&mute=1"
+    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ&autoplay=1&mute=1",
+    tools: ["Midjourney", "Stable Diffusion", "Blender", "AI Generation"],
+    processes: ["AI Image Generation", "3D Environment Design", "Compositing", "Fashion Show Integration"]
   },
   { 
     id: 5, 
     title: "Megan Thee Stallion", 
-    description: "Music video for Cobra",
+    subtitle: "Cobra Music Video",
+    description: "VFX and 3D assets for Megan Thee Stallion's 'Cobra' music video. Worked with INCworks Studio and ThermoNuclear to create stunning visual effects that enhanced the powerful narrative of the song.",
     year: "2023",
     type: "3D/VFX",
     image: "/megan/3f8a0195a529b143e9337ff5be40ee6871-megancobra.2x.rsocial.w600.webp",
     bannerImage: "/megan/megan-banner.jpeg",
-    videoUrl: "https://www.youtube.com/embed/DOZNRoL0310?si=CW1i1qtX7nGc_PpE&loop=1&playlist=DOZNRoL0310&autoplay=1&mute=1"
+    videoUrl: "https://www.youtube.com/embed/DOZNRoL0310?si=CW1i1qtX7nGc_PpE&loop=1&playlist=DOZNRoL0310&autoplay=1&mute=1",
+    tools: ["3D Modeling", "VFX", "Compositing", "Animation"],
+    processes: ["Pre-visualization", "3D Asset Creation", "VFX Integration", "Final Compositing"]
+  },
+  { 
+    id: 6, 
+    title: "Bring Me The Horizon", 
+    subtitle: "AmEN! Music Video",
+    description: "Custom character and animation of Lil Uzi Vert, perspective defying communion wafer consumption sequence and more for Bring Me the Horizon's AmEN! music video. Directed by Weston Allen.",
+    year: "2023",
+    type: "3D Animation & VFX",
+    image: "https://picsum.photos/600/400?random=6",
+    bannerImage: "https://picsum.photos/1200/400?random=6banner",
+    tools: ["Character Modeling", "Rigging", "Animation", "VFX"],
+    processes: ["Character Design", "Modeling & Rigging", "Animation", "VFX Integration"]
   },
   { 
     id: 7, 
     title: "Cecile B. Evans", 
-    description: "3D animation and VFX for Reality or Not",
+    subtitle: "Reality or Not",
+    description: "3D animation and VFX for Cecile B. Evans' 'Reality or Not' project. Created surreal, thought-provoking visual narratives that explore the intersection of technology and human experience.",
     year: "2023",
     type: "3D/VFX",
-    image: "https://picsum.photos/600/300?random=7"
+    image: "/cecile/REALITY-OR-NOT-STILL-11.jpg",
+    bannerImage: "/cecile/REALITY-OR-NOT-15_2-copia.jpg",
+    projectImages: [
+      "/cecile/REALITY-OR-NOT-STILL-11.jpg",
+      "/cecile/REALITY-OR-NOT-STILL-13-copia.jpg",
+      "/cecile/REALITY-OR-NOT-STILL-14-copia.jpg"
+    ],
+    tools: ["3D Animation", "VFX", "Conceptual Art", "Digital Storytelling"],
+    processes: ["Concept Development", "3D Animation", "Visual Effects", "Narrative Integration"]
   },
   { 
     id: 8, 
-    title: "Project 8", 
-    description: "Description for project 8",
-    year: "2022",
-    type: "Mobile App",
-    image: "https://picsum.photos/450/450?random=8"
+    title: "LA Kings", 
+    subtitle: "Volumetric Capture",
+    description: "Props, environments, physics simulations, and set pieces for cinematic animations in Unreal Engine featuring volumetric captures of LA Kings players. Videos presented on Crypto.com arena jumbotron during games.",
+    year: "2023",
+    type: "Volumetric & Unreal Engine",
+    image: "https://picsum.photos/450/600?random=8",
+    bannerImage: "https://picsum.photos/1200/400?random=8banner",
+    tools: ["Unreal Engine", "Blender", "DaVinci Resolve", "Volumetric Capture"],
+    processes: ["Volumetric Capture", "Environment Design", "Physics Simulation", "Cinematic Production"]
   },
   { 
     id: 9, 
-    title: "Project 9", 
-    description: "Description for project 9",
-    year: "2021",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/400/700?random=9"
+    title: "Ultraman Connection", 
+    subtitle: "Virtual Production",
+    description: "Lead Unreal Artist for cutting-edge virtual production. Created visually stunning virtual sets using Unreal Engine 5 capabilities including asset modeling, texture mapping, assembly, lighting, animation, and post-production effects.",
+    year: "2023",
+    type: "Virtual Production",
+    image: "https://picsum.photos/400/700?random=9",
+    bannerImage: "https://picsum.photos/1200/400?random=9banner",
+    tools: ["Unreal Engine 5", "3D Modeling", "Texturing", "Lighting", "Animation"],
+    processes: ["Virtual Set Design", "Asset Creation", "Lighting Setup", "Post-Production"]
   },
   { 
     id: 10, 
-    title: "Project 10", 
-    description: "Description for project 10",
-    year: "2021",
-    type: "Web Development",
-    image: "https://picsum.photos/800/400?random=10"
+    title: "1000 Deaths", 
+    subtitle: "Character Creation",
+    description: "Character creation and shader effects for the video game 1000 Deaths by Pariah Interactive. Character modeled and rigged in Cinema 4D, textured in Substance Painter, made playable in Unreal Engine 4 with shader effects and optimization.",
+    year: "2023",
+    type: "Game Development",
+    image: "https://picsum.photos/800/400?random=10",
+    bannerImage: "https://picsum.photos/1200/400?random=10banner",
+    tools: ["Cinema 4D", "Substance Painter", "Unreal Engine 4", "C++", "HLSL"],
+    processes: ["Character Modeling", "Rigging", "Texturing", "Shader Development", "Game Integration"]
   },
   { 
     id: 11, 
-    title: "Project 11", 
-    description: "Description for project 11",
-    year: "2021",
-    type: "Mobile App",
-    image: "https://picsum.photos/350/500?random=11"
+    title: "Winged Freaks", 
+    subtitle: "Adventureverse Web Series",
+    description: "Lead Unreal Artist for Adventureverse web series. Contributed to 3D design, modeling, animation, character design, and virtual production using state-of-the-art pipeline with Blender, Reallusion, and Unreal Engine.",
+    year: "2023",
+    type: "Virtual Production",
+    image: "https://picsum.photos/350/500?random=11",
+    bannerImage: "https://picsum.photos/1200/400?random=11banner",
+    tools: ["Unreal Engine", "Blender", "Reallusion", "Virtual Production"],
+    processes: ["Character Design", "3D Modeling", "Animation", "Virtual Set Creation"]
   },
   { 
     id: 12, 
-    title: "Project 12", 
-    description: "Description for project 12",
-    year: "2020",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/500/350?random=12"
+    title: "Music Videos", 
+    subtitle: "Various Artists",
+    description: "Professional animator crafting distinct visual aesthetics for numerous music videos. Using advanced animation tools to create highly-detailed and unforgettable visuals that capture the mood and essence of each song.",
+    year: "2023",
+    type: "Music Video Animation",
+    image: "https://picsum.photos/500/350?random=12",
+    bannerImage: "https://picsum.photos/1200/400?random=12banner",
+    tools: ["Unity", "Unreal", "Cinema 4D", "Maya", "Blender", "After Effects", "DaVinci Resolve"],
+    processes: ["Visual Concept", "Animation Design", "Production", "Post-Production"]
   },
   { 
     id: 13, 
-    title: "Project 13", 
-    description: "Description for project 13",
-    year: "2020",
-    type: "Web Development",
-    image: "https://picsum.photos/400/800?random=13"
+    title: "Procedural Works", 
+    subtitle: "Algorithmic Animation",
+    description: "Created powerful procedural tools as dynamic systems capable of generating algorithmically driven animations while streamlining the animation process. Includes Blender Plugin developed with INCworks Studio.",
+    year: "2023",
+    type: "Procedural Animation",
+    image: "https://picsum.photos/400/800?random=13",
+    bannerImage: "https://picsum.photos/1200/400?random=13banner",
+    tools: ["Procedural Systems", "Algorithmic Animation", "Blender Plugin Development", "Python"],
+    processes: ["Tool Development", "Algorithm Design", "Plugin Creation", "Workflow Optimization"]
   },
   { 
     id: 14, 
-    title: "Project 14", 
-    description: "Description for project 14",
-    year: "2020",
-    type: "Mobile App",
-    image: "https://picsum.photos/600/600?random=14"
+    title: "MFA Thesis", 
+    subtitle: "Generative Artworks",
+    description: "MFA in Digital Art from Tulane University (2021). Created dynamic and ever-evolving generative artworks using Unreal Engine 4, leveraging both procedural and AI mechanisms to produce complex and visually stunning pieces.",
+    year: "2021",
+    type: "Generative Art",
+    image: "https://picsum.photos/600/600?random=14",
+    bannerImage: "https://picsum.photos/1200/400?random=14banner",
+    tools: ["Unreal Engine 4", "Procedural Systems", "AI Mechanisms", "Generative Art"],
+    processes: ["Research", "Algorithm Development", "Artistic Creation", "Exhibition"]
   },
   { 
     id: 15, 
-    title: "Project 15", 
-    description: "Description for project 15",
-    year: "2019",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/300/400?random=15"
+    title: "Technical Art", 
+    subtitle: "Pipeline Development",
+    description: "Specialized in creating custom tools, pipelines, and systems that bridge the gap between art and engineering teams. Focused on optimizing workflows and enabling creative possibilities through technical solutions.",
+    year: "2023",
+    type: "Technical Art",
+    image: "https://picsum.photos/300/400?random=15",
+    bannerImage: "https://picsum.photos/1200/400?random=15banner",
+    tools: ["Python", "C#", "Pipeline Development", "Tool Creation", "Optimization"],
+    processes: ["Pipeline Analysis", "Tool Development", "Workflow Optimization", "Team Collaboration"]
   },
   { 
     id: 16, 
-    title: "Project 16", 
-    description: "Description for project 16",
-    year: "2019",
-    type: "Web Development",
-    image: "https://picsum.photos/700/300?random=16"
+    title: "3D Modeling", 
+    subtitle: "Asset Creation",
+    description: "Comprehensive 3D modeling and asset creation for various projects including characters, environments, props, and architectural elements. Specialized in both realistic and stylized approaches.",
+    year: "2023",
+    type: "3D Modeling",
+    image: "https://picsum.photos/700/300?random=16",
+    bannerImage: "https://picsum.photos/1200/400?random=16banner",
+    tools: ["Blender", "Cinema 4D", "Maya", "ZBrush", "Substance Painter"],
+    processes: ["Concept Design", "Modeling", "Texturing", "Optimization"]
   },
   { 
     id: 17, 
-    title: "Project 17", 
-    description: "Description for project 17",
-    year: "2019",
-    type: "Mobile App",
-    image: "https://picsum.photos/450/600?random=17"
+    title: "Animation", 
+    subtitle: "Character & Motion",
+    description: "Character animation and motion design for various media including games, films, and interactive experiences. Focused on creating compelling performances and smooth, natural movement.",
+    year: "2023",
+    type: "Animation",
+    image: "https://picsum.photos/450/600?random=17",
+    bannerImage: "https://picsum.photos/1200/400?random=17banner",
+    tools: ["Character Animation", "Motion Design", "Rigging", "Keyframe Animation"],
+    processes: ["Character Study", "Animation Planning", "Keyframe Creation", "Polish"]
   },
   { 
     id: 18, 
-    title: "Project 18", 
-    description: "Description for project 18",
-    year: "2018",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/500/800?random=18"
+    title: "Visual Effects", 
+    subtitle: "VFX & Compositing",
+    description: "Visual effects and compositing work for film, television, and digital media. Specialized in creating seamless integration between live action and computer-generated elements.",
+    year: "2023",
+    type: "Visual Effects",
+    image: "https://picsum.photos/500/800?random=18",
+    bannerImage: "https://picsum.photos/1200/400?random=18banner",
+    tools: ["Nuke", "After Effects", "Houdini", "Compositing", "VFX"],
+    processes: ["VFX Planning", "Element Creation", "Compositing", "Integration"]
   },
   { 
     id: 19, 
-    title: "Project 19", 
-    description: "Description for project 19",
-    year: "2018",
-    type: "Web Development",
-    image: "https://picsum.photos/400/500?random=19"
+    title: "Virtual Production", 
+    subtitle: "Real-time Rendering",
+    description: "Virtual production and real-time rendering using Unreal Engine and other cutting-edge technologies. Creating immersive environments and interactive experiences for film and live events.",
+    year: "2023",
+    type: "Virtual Production",
+    image: "https://picsum.photos/400/500?random=19",
+    bannerImage: "https://picsum.photos/1200/400?random=19banner",
+    tools: ["Unreal Engine", "Real-time Rendering", "Virtual Sets", "Live Production"],
+    processes: ["Environment Design", "Real-time Setup", "Live Integration", "Performance"]
   },
   { 
     id: 20, 
-    title: "Project 20", 
-    description: "Description for project 20",
-    year: "2018",
-    type: "Web Development",
-    image: "https://picsum.photos/600/450?random=20"
+    title: "Creative Technology", 
+    subtitle: "Innovation & Research",
+    description: "Exploration of emerging technologies and creative applications. Focused on pushing boundaries in digital art, interactive experiences, and technological innovation in creative industries.",
+    year: "2023",
+    type: "Creative Technology",
+    image: "https://picsum.photos/600/450?random=20",
+    bannerImage: "https://picsum.photos/1200/400?random=20banner",
+    tools: ["Emerging Technologies", "Creative Coding", "Interactive Design", "Innovation"],
+    processes: ["Technology Research", "Prototyping", "Creative Development", "Implementation"]
   },
 ]; 
