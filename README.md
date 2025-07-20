@@ -1,69 +1,71 @@
-# React + TypeScript + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website showcasing creative projects and digital work. Built with React, TypeScript, Tailwind CSS, and Three.js.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visit the live portfolio: [https://g4ztop.github.io](https://g4ztop.github.io)
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend**: React 19 + TypeScript
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
+- **3D Graphics**: Three.js
+- **Deployment**: GitHub Pages + GitHub Actions
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+website/
+├── src/
+│   ├── components/          # React components
+│   ├── data/               # Project data and social links
+│   ├── types/              # TypeScript type definitions
+│   ├── utils/              # Utility functions and constants
+│   └── assets/             # Media assets
+├── public/                 # Static assets
+├── .github/workflows/      # GitHub Actions deployment
+└── dist/                   # Build output
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Interactive 3D Logo**: Metallic text effect using Three.js
+- **Project Gallery**: Masonry-style grid layout
+- **Dynamic Project Pages**: Individual pages for each project
+- **Video Integration**: YouTube embeds and local video files
+- **Responsive Design**: Optimized for all device sizes
+- **Performance Optimized**: Fast loading with modern build tools
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
+
+## 📝 Adding Projects
+
+Projects are defined in `src/data/projects.ts`. Each project can include:
+- Title, description, and metadata
+- Banner images and gallery photos
+- Video embeds (YouTube or local files)
+- Tools and processes used
+
+## 🌐 Deployment
+
+The site automatically deploys to GitHub Pages when changes are pushed to the `main` branch via GitHub Actions.
+
+## 📄 License
+
+This project is private and proprietary.
