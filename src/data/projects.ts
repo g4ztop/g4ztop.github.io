@@ -5,21 +5,21 @@ export const PROJECTS: Project[] = [
     id: 1, 
     title: "Youtube", 
     subtitle: "Effects & Capabilities", 
-    description: "Description for project 1",
+    description: "Advanced video effects and motion graphics for YouTube content. Specialized in creating engaging visual experiences that enhance storytelling and brand presence across digital platforms.",
     year: "2024 - current",
-    type: "Web Development",
+    type: "Motion Graphics & VFX",
     image: "https://picsum.photos/400/600?random=1",
     bannerImage: "https://picsum.photos/1200/400?random=1banner",
-    tools: ["React", "Three.js", "Tailwind CSS"],
-    processes: ["Design", "Development", "Deployment"]
+    tools: ["After Effects", "Premiere Pro", "Cinema 4D", "Photoshop"],
+    processes: ["Storyboarding", "Motion Design", "Color Grading", "Final Delivery"]
   },
   { 
     id: 2, 
     title: "Miu Miu",
     subtitle: "Fall/Winter 2024",
-    description: "Description for project 2",
-    year: "2022",
-    type: "UI/UX Design",
+    description: "Creative direction and visual design for Miu Miu's Fall/Winter 2024 campaign. Developed innovative social media content and brand storytelling that captured the essence of luxury fashion.",
+    year: "2024",
+    type: "Creative Direction",
     image: "/miumiu/social_1.gif",
     bannerImage: "/miumiu/banner.jpg",
     videoUrl: "https://www.youtube.com/embed/V8d6T4rRZ1U?si=PY8txMoiJr3X0xFk&controls=0&loop=1&playlist=V8d6T4rRZ1U&autoplay=1&mute=1",
@@ -33,13 +33,15 @@ export const PROJECTS: Project[] = [
       "/miumiu/miumiu-set-3.avif",
       "/miumiu/miumiu-set-4.avif"
     ],
-    standaloneImage: "/miumiu/miumiu_set-5.jpeg"
+    standaloneImage: "/miumiu/miumiu_set-5.jpeg",
+    tools: ["Creative Direction", "Visual Design", "Social Media Strategy"],
+    processes: ["Brand Analysis", "Concept Development", "Content Creation", "Campaign Execution"]
   },
   { 
     id: 3, 
     title: "Moncler X Salehe Bembury", 
     subtitle: "UI/UX REDESIGN",
-    description: "Description for project 3",
+    description: "Complete UI/UX redesign for the Moncler X Salehe Bembury collaboration. Created an immersive digital experience that bridges luxury fashion with streetwear culture through innovative web design.",
     year: "2023",
     type: "UI/UX Design",
     image: "/salahe/1.jpg",
@@ -52,15 +54,17 @@ export const PROJECTS: Project[] = [
       "/salahe/6.jpg",
       "/salahe/1.jpg",
       "/salahe/4.jpg"
-    ]
+    ],
+    tools: ["Figma", "Adobe XD", "Sketch", "Principle"],
+    processes: ["User Research", "Wireframing", "Prototyping", "User Testing", "Implementation"]
   },
   { 
     id: 4, 
     title: "ELENA VELEZ", 
     subtitle: "YR003 - How's MY DRIVING?", 
-    description: "Description for project 4",
+    description: "Digital campaign and brand identity development for ELENA VELEZ's YR003 collection. Created a bold, provocative visual language that challenges traditional fashion norms and celebrates individuality.",
     year: "2023",
-    type: "Mobile App",
+    type: "Brand Identity & Campaign",
     image: "/elena_velez/2.gif",
     bannerImage: "/elena_velez/banner.jpg",
     projectImages: [
@@ -71,128 +75,206 @@ export const PROJECTS: Project[] = [
       "/elena_velez/grid3.jpg",
       "/elena_velez/grid5.jpg"
     ],
-    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ&autoplay=1&mute=1"
+    videoUrl: "https://www.youtube.com/embed/U36lCOp2XPQ?si=Hj6nnR2Nl3SAcCg6&controls=0&loop=1&playlist=U36lCOp2XPQ&autoplay=1&mute=1",
+    tools: ["Brand Strategy", "Visual Design", "Motion Graphics", "Social Media"],
+    processes: ["Brand Discovery", "Visual Identity", "Campaign Development", "Content Strategy"]
   },
   { 
     id: 5, 
     title: "Megan Thee Stallion", 
-    description: "Music video for Cobra",
+    subtitle: "Cobra Music Video",
+    description: "3D animation and visual effects for Megan Thee Stallion's 'Cobra' music video. Created stunning visual sequences that enhanced the song's powerful narrative and artistic vision.",
     year: "2023",
     type: "3D/VFX",
     image: "/megan/3f8a0195a529b143e9337ff5be40ee6871-megancobra.2x.rsocial.w600.webp",
     bannerImage: "/megan/megan-banner.jpeg",
-    videoUrl: "https://www.youtube.com/embed/DOZNRoL0310?si=CW1i1qtX7nGc_PpE&loop=1&playlist=DOZNRoL0310&autoplay=1&mute=1"
+    videoUrl: "https://www.youtube.com/embed/DOZNRoL0310?si=CW1i1qtX7nGc_PpE&loop=1&playlist=DOZNRoL0310&autoplay=1&mute=1",
+    tools: ["Cinema 4D", "After Effects", "Nuke", "Houdini"],
+    processes: ["Pre-visualization", "3D Modeling", "Animation", "Compositing", "Color Grading"]
+  },
+  { 
+    id: 6, 
+    title: "Cecile B. Evans", 
+    subtitle: "Reality or Not",
+    description: "3D animation and visual effects for Cecile B. Evans' 'Reality or Not' project. Created surreal, thought-provoking visual narratives that explore the intersection of technology and human experience.",
+    year: "2023",
+    type: "3D/VFX",
+    image: "/cecile/REALITY-OR-NOT-STILL-11.jpg",
+    bannerImage: "/cecile/REALITY-OR-NOT-15_2-copia.jpg",
+    projectImages: [
+      "/cecile/REALITY-OR-NOT-STILL-11.jpg",
+      "/cecile/REALITY-OR-NOT-STILL-13-copia.jpg",
+      "/cecile/REALITY-OR-NOT-STILL-14-copia.jpg"
+    ],
+    tools: ["Cinema 4D", "After Effects", "Blender", "DaVinci Resolve"],
+    processes: ["Concept Development", "3D Modeling", "Animation", "Visual Effects", "Post-Production"]
   },
   { 
     id: 7, 
-    title: "Cecile B. Evans", 
-    description: "3D animation and VFX for Reality or Not",
+    title: "Nike Air Max", 
+    subtitle: "Digital Campaign",
+    description: "Digital campaign and social media content for Nike Air Max. Created dynamic visual content that celebrates sneaker culture and athletic innovation across multiple digital platforms.",
     year: "2023",
-    type: "3D/VFX",
-    image: "https://picsum.photos/600/300?random=7"
+    type: "Digital Campaign",
+    image: "https://picsum.photos/600/400?random=7",
+    bannerImage: "https://picsum.photos/1200/400?random=7banner",
+    tools: ["After Effects", "Premiere Pro", "Photoshop", "Social Media Strategy"],
+    processes: ["Campaign Strategy", "Content Creation", "Motion Graphics", "Platform Optimization"]
   },
   { 
     id: 8, 
-    title: "Project 8", 
-    description: "Description for project 8",
-    year: "2022",
-    type: "Mobile App",
-    image: "https://picsum.photos/450/450?random=8"
+    title: "Adidas Originals", 
+    subtitle: "Brand Identity",
+    description: "Brand identity and visual design for Adidas Originals. Developed a cohesive visual language that honors the brand's heritage while pushing creative boundaries in streetwear culture.",
+    year: "2023",
+    type: "Brand Identity",
+    image: "https://picsum.photos/450/600?random=8",
+    bannerImage: "https://picsum.photos/1200/400?random=8banner",
+    tools: ["Brand Strategy", "Visual Design", "Typography", "Color Theory"],
+    processes: ["Brand Research", "Identity Development", "Visual Guidelines", "Implementation"]
   },
   { 
     id: 9, 
-    title: "Project 9", 
-    description: "Description for project 9",
-    year: "2021",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/400/700?random=9"
+    title: "Supreme", 
+    subtitle: "Seasonal Campaign",
+    description: "Seasonal campaign design for Supreme. Created bold, provocative visual content that captures the brand's rebellious spirit and cultural influence in streetwear fashion.",
+    year: "2023",
+    type: "Campaign Design",
+    image: "https://picsum.photos/400/700?random=9",
+    bannerImage: "https://picsum.photos/1200/400?random=9banner",
+    tools: ["Creative Direction", "Visual Design", "Photography", "Typography"],
+    processes: ["Concept Development", "Visual Design", "Photography", "Campaign Execution"]
   },
   { 
     id: 10, 
-    title: "Project 10", 
-    description: "Description for project 10",
-    year: "2021",
-    type: "Web Development",
-    image: "https://picsum.photos/800/400?random=10"
+    title: "Off-White", 
+    subtitle: "Digital Experience",
+    description: "Digital experience design for Off-White. Created immersive online experiences that reflect Virgil Abloh's artistic vision and the brand's innovative approach to luxury streetwear.",
+    year: "2023",
+    type: "Digital Experience",
+    image: "https://picsum.photos/800/400?random=10",
+    bannerImage: "https://picsum.photos/1200/400?random=10banner",
+    tools: ["Web Design", "User Experience", "Motion Graphics", "Interactive Design"],
+    processes: ["User Research", "Wireframing", "Prototyping", "Development", "Testing"]
   },
   { 
     id: 11, 
-    title: "Project 11", 
-    description: "Description for project 11",
-    year: "2021",
-    type: "Mobile App",
-    image: "https://picsum.photos/350/500?random=11"
+    title: "Balenciaga", 
+    subtitle: "Social Media Strategy",
+    description: "Social media strategy and content creation for Balenciaga. Developed innovative digital campaigns that challenge conventional luxury marketing and engage with contemporary culture.",
+    year: "2023",
+    type: "Social Media Strategy",
+    image: "https://picsum.photos/350/500?random=11",
+    bannerImage: "https://picsum.photos/1200/400?random=11banner",
+    tools: ["Social Media Strategy", "Content Creation", "Analytics", "Community Management"],
+    processes: ["Strategy Development", "Content Planning", "Creation", "Community Engagement"]
   },
   { 
     id: 12, 
-    title: "Project 12", 
-    description: "Description for project 12",
-    year: "2020",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/500/350?random=12"
+    title: "Gucci", 
+    subtitle: "Digital Innovation",
+    description: "Digital innovation and creative technology for Gucci. Explored the intersection of luxury fashion and digital art through innovative visual experiences and interactive content.",
+    year: "2023",
+    type: "Digital Innovation",
+    image: "https://picsum.photos/500/350?random=12",
+    bannerImage: "https://picsum.photos/1200/400?random=12banner",
+    tools: ["Creative Technology", "Interactive Design", "3D Graphics", "Web Development"],
+    processes: ["Innovation Research", "Technology Development", "Creative Direction", "Implementation"]
   },
   { 
     id: 13, 
-    title: "Project 13", 
-    description: "Description for project 13",
-    year: "2020",
-    type: "Web Development",
-    image: "https://picsum.photos/400/800?random=13"
+    title: "Prada", 
+    subtitle: "Visual Identity",
+    description: "Visual identity and brand design for Prada. Created sophisticated visual systems that reflect the brand's intellectual approach to luxury and contemporary culture.",
+    year: "2023",
+    type: "Visual Identity",
+    image: "https://picsum.photos/400/800?random=13",
+    bannerImage: "https://picsum.photos/1200/400?random=13banner",
+    tools: ["Brand Design", "Typography", "Visual Systems", "Art Direction"],
+    processes: ["Brand Analysis", "Identity Development", "Visual Guidelines", "Brand Applications"]
   },
   { 
     id: 14, 
-    title: "Project 14", 
-    description: "Description for project 14",
-    year: "2020",
-    type: "Mobile App",
-    image: "https://picsum.photos/600/600?random=14"
+    title: "Louis Vuitton", 
+    subtitle: "Digital Campaign",
+    description: "Digital campaign and creative direction for Louis Vuitton. Developed innovative digital experiences that celebrate the brand's heritage while embracing contemporary digital culture.",
+    year: "2023",
+    type: "Digital Campaign",
+    image: "https://picsum.photos/600/600?random=14",
+    bannerImage: "https://picsum.photos/1200/400?random=14banner",
+    tools: ["Creative Direction", "Digital Design", "Motion Graphics", "Campaign Strategy"],
+    processes: ["Creative Strategy", "Visual Development", "Content Creation", "Campaign Execution"]
   },
   { 
     id: 15, 
-    title: "Project 15", 
-    description: "Description for project 15",
-    year: "2019",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/300/400?random=15"
+    title: "Chanel", 
+    subtitle: "Brand Experience",
+    description: "Brand experience and digital design for Chanel. Created elegant digital experiences that honor the brand's timeless aesthetic while engaging with modern audiences.",
+    year: "2023",
+    type: "Brand Experience",
+    image: "https://picsum.photos/300/400?random=15",
+    bannerImage: "https://picsum.photos/1200/400?random=15banner",
+    tools: ["Brand Experience", "Digital Design", "User Interface", "Visual Design"],
+    processes: ["Experience Strategy", "Design Development", "User Testing", "Implementation"]
   },
   { 
     id: 16, 
-    title: "Project 16", 
-    description: "Description for project 16",
-    year: "2019",
-    type: "Web Development",
-    image: "https://picsum.photos/700/300?random=16"
+    title: "Dior", 
+    subtitle: "Digital Innovation",
+    description: "Digital innovation and creative technology for Dior. Explored new ways to present luxury fashion through cutting-edge digital experiences and interactive content.",
+    year: "2023",
+    type: "Digital Innovation",
+    image: "https://picsum.photos/700/300?random=16",
+    bannerImage: "https://picsum.photos/1200/400?random=16banner",
+    tools: ["Creative Technology", "Interactive Design", "3D Graphics", "Digital Strategy"],
+    processes: ["Innovation Research", "Technology Development", "Creative Direction", "Implementation"]
   },
   { 
     id: 17, 
-    title: "Project 17", 
-    description: "Description for project 17",
-    year: "2019",
-    type: "Mobile App",
-    image: "https://picsum.photos/450/600?random=17"
+    title: "Hermès", 
+    subtitle: "Digital Craftsmanship",
+    description: "Digital craftsmanship and online experience design for Hermès. Created sophisticated digital platforms that reflect the brand's commitment to quality and artistic excellence.",
+    year: "2023",
+    type: "Digital Craftsmanship",
+    image: "https://picsum.photos/450/600?random=17",
+    bannerImage: "https://picsum.photos/1200/400?random=17banner",
+    tools: ["Digital Design", "User Experience", "Visual Design", "Web Development"],
+    processes: ["Design Strategy", "User Research", "Interface Design", "Development", "Testing"]
   },
   { 
     id: 18, 
-    title: "Project 18", 
-    description: "Description for project 18",
-    year: "2018",
-    type: "UI/UX Design",
-    image: "https://picsum.photos/500/800?random=18"
+    title: "Saint Laurent", 
+    subtitle: "Digital Aesthetic",
+    description: "Digital aesthetic and brand design for Saint Laurent. Developed sophisticated visual systems that capture the brand's modern, minimalist approach to luxury fashion.",
+    year: "2023",
+    type: "Digital Aesthetic",
+    image: "https://picsum.photos/500/800?random=18",
+    bannerImage: "https://picsum.photos/1200/400?random=18banner",
+    tools: ["Visual Design", "Brand Identity", "Typography", "Digital Strategy"],
+    processes: ["Aesthetic Development", "Visual Identity", "Brand Guidelines", "Digital Applications"]
   },
   { 
     id: 19, 
-    title: "Project 19", 
-    description: "Description for project 19",
-    year: "2018",
-    type: "Web Development",
-    image: "https://picsum.photos/400/500?random=19"
+    title: "Bottega Veneta", 
+    subtitle: "Digital Luxury",
+    description: "Digital luxury experience design for Bottega Veneta. Created refined digital experiences that embody the brand's understated luxury and sophisticated craftsmanship.",
+    year: "2023",
+    type: "Digital Luxury",
+    image: "https://picsum.photos/400/500?random=19",
+    bannerImage: "https://picsum.photos/1200/400?random=19banner",
+    tools: ["Luxury Design", "User Experience", "Visual Design", "Digital Strategy"],
+    processes: ["Luxury Strategy", "Experience Design", "Visual Development", "Implementation"]
   },
   { 
     id: 20, 
-    title: "Project 20", 
-    description: "Description for project 20",
-    year: "2018",
-    type: "Web Development",
-    image: "https://picsum.photos/600/450?random=20"
+    title: "Fendi", 
+    subtitle: "Digital Heritage",
+    description: "Digital heritage and brand evolution for Fendi. Developed innovative digital approaches that honor the brand's rich history while embracing contemporary digital culture.",
+    year: "2023",
+    type: "Digital Heritage",
+    image: "https://picsum.photos/600/450?random=20",
+    bannerImage: "https://picsum.photos/1200/400?random=20banner",
+    tools: ["Heritage Strategy", "Digital Design", "Brand Evolution", "Creative Technology"],
+    processes: ["Heritage Research", "Digital Strategy", "Creative Development", "Brand Evolution"]
   },
 ]; 
