@@ -24,18 +24,32 @@ const LETTER_GEOMETRIES: Record<string, [number, number, number]> = {
   'S': [1.5, 3, 1],
 };
 
+// Throttle function for mouse events
+const throttle = (func: Function, limit: number) => {
+  let inThrottle: boolean;
+  return function(this: any, ...args: any[]) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+};
+
 const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onClick }) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const [isThreeJSReady, setIsThreeJSReady] = useState(false);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const animationFrameRef = useRef<number | null>(null);
+  const textGroupRef = useRef<THREE.Group | null>(null);
+  const lightsRef = useRef<THREE.PointLight[]>([]);
 
   // Memoized mouse position to reduce re-renders
   const mousePosition = useRef({ x: 0, y: 0 });
 
   // Optimized mouse handler with throttling
-  const handleMouseMove = useCallback((event: MouseEvent) => {
+  const handleMouseMove = useCallback(throttle((event: MouseEvent) => {
     const container = mountRef.current;
     if (!container) return;
 
@@ -44,9 +58,9 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onCli
       mousePosition.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       mousePosition.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     }
-  }, []);
+  }, 16), []); // 60fps throttle
 
-  // Memoized letter geometries
+  // Memoized letter geometries with better caching
   const letterGeometries = useMemo(() => {
     const letters = text.split('');
     const letterSpacing = 2.5;
@@ -79,7 +93,8 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onCli
 
     const renderer = new THREE.WebGLRenderer({ 
       alpha: true, 
-      antialias: true 
+      antialias: true,
+      powerPreference: "high-performance"
     });
     rendererRef.current = renderer;
     
@@ -87,10 +102,12 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onCli
     renderer.setClearColor(0x000000, 0);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
     container.appendChild(renderer.domElement);
 
     // Create text group
     const textGroup = new THREE.Group();
+    textGroupRef.current = textGroup;
     
     // Create letters with memoized geometries
     letterGeometries.forEach(({ geometry, position }) => {
@@ -117,8 +134,8 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onCli
     const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
     directionalLight.position.set(15, 15, 10);
     directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 2048;
-    directionalLight.shadow.mapSize.height = 2048;
+    directionalLight.shadow.mapSize.width = 1024; // Reduced for performance
+    directionalLight.shadow.mapSize.height = 1024;
     scene.add(directionalLight);
 
     // Point lights for dynamic lighting
@@ -128,6 +145,7 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onCli
       new THREE.PointLight(0xffff00, 4, 80),
       new THREE.PointLight(0xffffff, 3, 60)
     ];
+    lightsRef.current = lights;
 
     lights.forEach((light, index) => {
       const positions = [
@@ -144,35 +162,42 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onCli
     // Add mouse event listener
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Animation loop
-    const animate = () => {
+    // Animation loop with performance optimization
+    let lastTime = 0;
+    const animate = (currentTime: number) => {
       animationFrameRef.current = requestAnimationFrame(animate);
 
-      // Rotate text group based on mouse position
-      textGroup.rotation.x = -mousePosition.current.y * 0.1;
-      textGroup.rotation.y = mousePosition.current.x * 0.1;
+      // Limit frame rate for better performance
+      if (currentTime - lastTime < 16) return; // ~60fps
+      lastTime = currentTime;
 
-      // Floating animation
-      textGroup.position.y = Math.sin(Date.now() * 0.001) * 2;
+      if (textGroup) {
+        // Rotate text group based on mouse position
+        textGroup.rotation.x = -mousePosition.current.y * 0.1;
+        textGroup.rotation.y = mousePosition.current.x * 0.1;
 
-      // Rotate lights for dynamic lighting
-      const time = Date.now() * 0.001;
-      lights[0].position.x = Math.cos(time) * 15;
-      lights[0].position.z = Math.sin(time) * 15;
-      
-      lights[1].position.x = Math.cos(time + Math.PI) * 15;
-      lights[1].position.z = Math.sin(time + Math.PI) * 15;
+        // Floating animation
+        textGroup.position.y = Math.sin(currentTime * 0.001) * 2;
 
-      lights[2].position.x = Math.sin(time * 0.5) * 10;
-      lights[2].position.z = Math.cos(time * 0.5) * 10;
+        // Rotate lights for dynamic lighting
+        const time = currentTime * 0.001;
+        lights[0].position.x = Math.cos(time) * 15;
+        lights[0].position.z = Math.sin(time) * 15;
+        
+        lights[1].position.x = Math.cos(time + Math.PI) * 15;
+        lights[1].position.z = Math.sin(time + Math.PI) * 15;
 
-      lights[3].position.x = Math.cos(time * 0.3) * 8;
-      lights[3].position.y = Math.sin(time * 0.3) * 8;
+        lights[2].position.x = Math.sin(time * 0.5) * 10;
+        lights[2].position.z = Math.cos(time * 0.5) * 10;
+
+        lights[3].position.x = Math.cos(time * 0.3) * 8;
+        lights[3].position.y = Math.sin(time * 0.3) * 8;
+      }
 
       renderer.render(scene, camera);
     };
 
-    animate();
+    animate(0);
     setIsThreeJSReady(true);
 
     // Cleanup function
@@ -201,8 +226,11 @@ const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onCli
         geometry.dispose();
       });
       
+      // Clear refs
       sceneRef.current = null;
       rendererRef.current = null;
+      textGroupRef.current = null;
+      lightsRef.current = [];
       setIsThreeJSReady(false);
     };
   }, [text, letterGeometries, handleMouseMove]);
