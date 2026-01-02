@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Project } from '../types';
 
 interface ProjectIndexProps {
@@ -6,9 +6,18 @@ interface ProjectIndexProps {
 }
 
 export const ProjectIndex: React.FC<ProjectIndexProps> = ({ projects }) => {
-  const handleRowClick = useCallback((projectId: number) => {
-    window.location.href = `/project/${projectId}`;
-  }, []);
+  const navigate = useNavigate();
+
+  const handleRowClick = (projectId: number) => {
+    navigate(`/project/${projectId}`);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent, projectId: number) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleRowClick(projectId);
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto mt-16 overflow-x-auto">
@@ -24,10 +33,12 @@ export const ProjectIndex: React.FC<ProjectIndexProps> = ({ projects }) => {
           {projects.map((project) => (
             <tr
               key={project.id}
-              className="transition-colors bg-black text-white hover:bg-white hover:text-black cursor-pointer border-b border-white border-dashed"
+              className="transition-colors bg-black text-white hover:bg-white hover:text-black cursor-pointer border-b border-white border-dashed focus-within:bg-white focus-within:text-black"
               onClick={() => handleRowClick(project.id)}
+              onKeyDown={(e) => handleKeyDown(e, project.id)}
               tabIndex={0}
-              style={{ outline: 'none' }}
+              role="button"
+              aria-label={`Navigate to ${project.title} project`}
             >
               <td className="py-2 px-4 whitespace-nowrap font-bold tracking-wide uppercase">
                 {project.title}

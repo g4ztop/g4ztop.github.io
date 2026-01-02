@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
-import { useMemo, Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { PROJECTS, SOCIAL_LINKS } from './data';
 import { 
   Header, 
@@ -23,21 +23,17 @@ const LoadingSpinner = () => (
 
 // Home Page Component
 const Home = () => {
-  const projectsGrid = useMemo(() => (
-    <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
-      {PROJECTS.map((project) => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
-    </div>
-  ), []);
-
   return (
-    <div className="min-h-screen bg-black text-white p-4 font-mono">
+    <div className="min-h-screen bg-black text-white px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 font-mono">
       <Header socialLinks={SOCIAL_LINKS} />
       
       {/* Projects Grid */}
       <div className="max-w-7xl mx-auto">
-        {projectsGrid}
+        <div className="columns-1 sm:columns-2 lg:columns-4 gap-4 space-y-4">
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
 
       <ProjectIndex projects={PROJECTS} />
@@ -55,7 +51,16 @@ const Home = () => {
 // Project Page Wrapper Component
 const ProjectPageWrapper = () => {
   const { id } = useParams<{ id: string }>();
-  return <ProjectPage projectId={id || ""} />;
+  if (!id) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center font-mono">
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold mb-4">Invalid Project ID</h2>
+        </div>
+      </div>
+    );
+  }
+  return <ProjectPage projectId={id} />;
 };
 
 // Main App Component

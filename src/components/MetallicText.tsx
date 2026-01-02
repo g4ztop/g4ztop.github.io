@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import * as THREE from 'three';
 import type { MetallicTextProps } from '../types';
+import { throttle } from '../utils/performance';
 
 // Letter geometry mapping for better performance
 const LETTER_GEOMETRIES: Record<string, [number, number, number]> = {
@@ -22,18 +23,6 @@ const LETTER_GEOMETRIES: Record<string, [number, number, number]> = {
   'O': [1.5, 3, 1],
   'K': [1.2, 4, 1],
   'S': [1.5, 3, 1],
-};
-
-// Throttle function for mouse events
-const throttle = (func: Function, limit: number) => {
-  let inThrottle: boolean;
-  return function(this: any, ...args: any[]) {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  }
 };
 
 const MetallicText: React.FC<MetallicTextProps> = ({ text, className = '', onClick }) => {

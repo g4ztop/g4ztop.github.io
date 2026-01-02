@@ -13,6 +13,7 @@ export interface Project {
   videoUrl?: string;
   additionalVideos?: string[];
   standaloneImage?: string;
+  featured?: boolean;
 }
 
 export interface SocialLink {
@@ -26,4 +27,4 @@ export interface MetallicTextProps {
   text: string;
   className?: string;
   onClick?: () => void;
-} 
+}

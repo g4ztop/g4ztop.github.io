@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMemo, useEffect } from 'react';
 import { PROJECTS } from '../data';
 import { 
@@ -13,6 +13,7 @@ interface ProjectPageProps {
 }
 
 export const ProjectPage: React.FC<ProjectPageProps> = ({ projectId }) => {
+  const navigate = useNavigate();
   const project = useMemo(() => 
     PROJECTS.find(p => p.id === parseInt(projectId)), 
     [projectId]
@@ -20,15 +21,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ projectId }) => {
 
   // Scroll to top when project page loads
   useEffect(() => {
-    // Immediate scroll to top
     window.scrollTo(0, 0);
-    
-    // Also scroll after a small delay to ensure content is loaded
-    const timer = setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100);
-    
-    return () => clearTimeout(timer);
   }, [projectId]);
   
   if (!project) {
@@ -41,8 +34,6 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ projectId }) => {
       </div>
     );
   }
-
-  const projectImages = project.projectImages;
 
   return (
     <div className="min-h-screen bg-black text-white p-0 font-mono">
@@ -58,7 +49,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ projectId }) => {
           <MetallicText 
             text={SITE_CONFIG.logoText} 
             className="w-[220px] h-[60px]" 
-            onClick={() => window.location.href = '/'}
+            onClick={() => navigate('/')}
           />
         </div>
       </div>
@@ -116,9 +107,9 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({ projectId }) => {
       )}
       
       {/* Project Images Grid */}
-      {projectImages && projectImages.length > 0 && (
-        <div className="max-w-5xl mx-auto px-4 mt-16">
-          <ProjectGallery project={project} projectImages={projectImages} />
+      {project.projectImages && project.projectImages.length > 0 && (
+        <div className="max-w-7xl mx-auto px-2 md:px-4 mt-16">
+          <ProjectGallery project={project} projectImages={project.projectImages} />
         </div>
       )}
       

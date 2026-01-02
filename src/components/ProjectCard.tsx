@@ -13,18 +13,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <Link
       to={`/project/${project.id}`}
-      className="group relative overflow-hidden block break-inside-avoid p-[10px] rounded-md"
+      className="group relative overflow-hidden block break-inside-avoid p-0 rounded-[10px] border-[2px] border-white"
     >
       {/* Loading placeholder */}
       {!imageLoaded && !imageError && (
-        <div className="w-full h-64 bg-gray-800 animate-pulse rounded-md flex items-center justify-center">
+        <div className="w-full h-64 bg-gray-800 animate-pulse rounded-lg flex items-center justify-center">
           <div className="text-gray-400 text-sm">Loading...</div>
         </div>
       )}
       
       {/* Error placeholder */}
       {imageError && (
-        <div className="w-full h-64 bg-gray-800 rounded-md flex items-center justify-center">
+        <div className="w-full h-64 bg-gray-800 rounded-lg flex items-center justify-center">
           <div className="text-gray-400 text-sm">Image not available</div>
         </div>
       )}
@@ -32,7 +32,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <img
         src={project.image}
         alt={project.title}
-        className={`w-full h-auto object-cover transition-all duration-300 group-hover:scale-150 rounded-md ${
+        className={`w-full h-auto object-cover transition-all duration-500 group-hover:!scale-150 rounded-lg ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         loading="lazy"
@@ -45,7 +45,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
           <div className="bg-black text-white overflow-hidden -mx-1">
             {/* Dashed white line on top */}
-            <div className="h-1 border-t-2 border-dashed border-white"></div>
+            <div className="h-1 border-t-[3px] border-dashed border-white"></div>
             
             {/* Content */}
             <div className="p-3">
@@ -69,4 +69,4 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       </div>
     </Link>
   );
-}; 
+};

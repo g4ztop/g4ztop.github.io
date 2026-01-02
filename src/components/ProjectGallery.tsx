@@ -6,7 +6,7 @@ interface ProjectGalleryProps {
 }
 
 export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, projectImages }) => {
-  if (project.id === 2) {
+  if (project.id === 5) {
     // Special layout for ELENA VELEZ project
     return (
       <div className="space-y-2">
@@ -27,10 +27,10 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, project
             />
           </div>
         </div>
-        {/* Remaining images in masonry layout */}
-        <div className="columns-1 md:columns-2 gap-2 space-y-2">
+        {/* Remaining images in grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
           {projectImages.slice(2).map((image, index) => (
-            <div key={index + 2} className="relative overflow-hidden block break-inside-avoid p-[5px] rounded-md">
+            <div key={index + 2} className="relative overflow-hidden p-0.5 rounded-md">
               <img
                 src={image}
                 alt={`${project.title} - Image ${index + 3}`}
@@ -43,11 +43,11 @@ export const ProjectGallery: React.FC<ProjectGalleryProps> = ({ project, project
     );
   }
 
-  // Standard masonry layout for other projects
+  // Standard grid layout for other projects
   return (
-    <div className="columns-1 md:columns-2 gap-2 space-y-2">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
       {projectImages.map((image, index) => (
-        <div key={index} className="relative overflow-hidden block break-inside-avoid p-[5px] rounded-md">
+        <div key={index} className="relative overflow-hidden p-0.5 rounded-md">
           <img
             src={image}
             alt={`${project.title} - Image ${index + 1}`}
