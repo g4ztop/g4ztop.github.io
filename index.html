@@ -4,290 +4,361 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mitchell Craft</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    body {
+      background: #020202;
+      font-family: Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    canvas {
+      display: block;
+      position: fixed;
+      inset: 0;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; right: 0;
+      z-index: 10;
+      padding: 22px 30px;
+    }
+    .nav ul { list-style: none; display: flex; gap: 24px; }
+    .nav ul li a {
+      font-size: 14px;
+      color: #fff;
+      letter-spacing: 0.02em;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,0.35);
+      transition: text-decoration-color 0.2s;
+    }
+    .nav ul li a:hover { text-decoration-color: rgba(255,255,255,0.9); }
+
+    /* ── Footer ── */
+    .footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 18px 28px;
+      border-top: 1px solid #111;
+      font-size: 12px;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer a { color: #444; transition: color 0.25s; }
+    .footer a:hover { color: #fff; }
+    .footer-sep { color: #222; }
+
+    /* ── Cursor hint ── */
+    #hint {
+      position: fixed;
+      bottom: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: #333;
+      text-transform: uppercase;
+      pointer-events: none;
+      transition: opacity 1.2s ease;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Desktop Navigation -->
-  <nav class="nav-desktop">
+  <canvas id="c"></canvas>
+
+  <nav class="nav">
     <ul>
-      <li><a href="#" class="nav-active">Work</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
 
-  <!-- Mobile Header -->
-  <div class="mobile-header">
-    <span class="mobile-site-name">Mitchell Craft</span>
-    <button class="burger" id="burger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
+  <p id="hint">click anywhere · drag to disturb</p>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <ul>
-      <li><a href="#">Work</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </div>
-
-  <main>
-
-    <!-- Site Header -->
-    <header class="site-header">
-      <div class="header-name">
-        <h1>Mitchell Craft</h1>
-        <p class="tagline">CG Artist + Animator</p>
-        <p class="tagline-sub">Technical 3D Artist, Animator, VFX Artist based in NYC</p>
-      </div>
-      <div class="header-contact">
-        <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
-        <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
-      </div>
-    </header>
-
-    <!-- Portfolio Grid -->
-    <section class="portfolio">
-      <div class="grid">
-
-        <!-- HOMETOPIA — full width -->
-        <article class="card span-12">
-          <a href="projects/hometopia.html">
-            <div class="card-img" style="background-color:#111;">
-              <img src="images/hometopia.jpg" alt="Hometopia" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>HOMETOPIA</h2>
-              <p class="card-sub">Sims-like house building game on Steam</p>
-              <div class="tags">
-                <span>Game Development</span>
-                <span>Technical Art</span>
-                <span>Tools</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- MIU MIU -->
-        <article class="card span-6">
-          <a href="projects/miumiu.html">
-            <div class="card-img" style="background-color:#0d0d0d;">
-              <img src="images/miumiu.jpg" alt="Miu Miu Fall/Winter 2024" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>MIU MIU FALL/WINTER 2024</h2>
-              <p class="card-sub">Directed by Cecile B Evans</p>
-              <div class="tags">
-                <span>Fashion</span>
-                <span>VFX</span>
-                <span>3D Animation</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- MONCLER -->
-        <article class="card span-6">
-          <a href="projects/moncler.html">
-            <div class="card-img" style="background-color:#0a120a;">
-              <img src="images/moncler.jpg" alt="Moncler x Salehe Bembury" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>MONCLER X SALEHE BEMBURY</h2>
-              <p class="card-sub">Summer 2023 Campaign</p>
-              <div class="tags">
-                <span>Fashion Campaign</span>
-                <span>VFX</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- BRING ME THE HORIZON -->
-        <article class="card span-4">
-          <a href="projects/bmth.html">
-            <div class="card-img" style="background-color:#100a10;">
-              <img src="images/bmth.jpg" alt="Bring Me The Horizon – AmEN!" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>BRING ME THE HORIZON</h2>
-              <p class="card-sub">AmEN! — Directed by Weston Allen</p>
-              <div class="tags">
-                <span>Music</span>
-                <span>VFX</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- MEGAN THEE STALLION -->
-        <article class="card span-4">
-          <a href="projects/megan.html">
-            <div class="card-img" style="background-color:#0e0a08;">
-              <img src="images/megan.jpg" alt="Megan Thee Stallion – Cobra" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>MEGAN THEE STALLION</h2>
-              <p class="card-sub">Cobra — Studio: INCworks</p>
-              <div class="tags">
-                <span>Music Video</span>
-                <span>VFX</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- ELENA VELEZ -->
-        <article class="card span-4">
-          <a href="projects/elena.html">
-            <div class="card-img" style="background-color:#0a0a10;">
-              <img src="images/elena.jpg" alt="Elena Velez – HOW'S MY DRIVING?" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>ELENA VELEZ</h2>
-              <p class="card-sub">YR003 — HOW'S MY DRIVING? NYFW 2023</p>
-              <div class="tags">
-                <span>Fashion</span>
-                <span>AI</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- LA KINGS -->
-        <article class="card span-6">
-          <a href="projects/lakings.html">
-            <div class="card-img" style="background-color:#08080e;">
-              <img src="images/lakings.jpg" alt="LA Kings" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>LA KINGS</h2>
-              <p class="card-sub">Volumetric Capture — Crypto.com Arena</p>
-              <div class="tags">
-                <span>Sports</span>
-                <span>Virtual Production</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- ULTRAMAN CONNECTION -->
-        <article class="card span-6">
-          <a href="projects/ultraman.html">
-            <div class="card-img" style="background-color:#0d0a08;">
-              <img src="images/ultraman.jpg" alt="Ultraman Connection" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>ULTRAMAN CONNECTION</h2>
-              <p class="card-sub">Virtual Production — Unreal Engine 5</p>
-              <div class="tags">
-                <span>Virtual Production</span>
-                <span>Game Engine</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- 1000 DEATHS -->
-        <article class="card span-4">
-          <a href="projects/1000deaths.html">
-            <div class="card-img" style="background-color:#0e0e0e;">
-              <img src="images/1000deaths.jpg" alt="1000 Deaths" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>1000 DEATHS</h2>
-              <p class="card-sub">Character Creation — Pariah Interactive</p>
-              <div class="tags">
-                <span>Game Development</span>
-                <span>Character Art</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- WINGED FREAKS -->
-        <article class="card span-4">
-          <a href="projects/wingedfreaks.html">
-            <div class="card-img" style="background-color:#0a0d10;">
-              <img src="images/wingedfreaks.jpg" alt="Winged Freaks – Adventureverse" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>WINGED FREAKS</h2>
-              <p class="card-sub">Adventureverse — Elevate Pictures</p>
-              <div class="tags">
-                <span>Television</span>
-                <span>Animation</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- MUSIC VIDEOS -->
-        <article class="card span-4">
-          <a href="projects/musicvideos.html">
-            <div class="card-img" style="background-color:#100a0a;">
-              <img src="images/musicvideos.jpg" alt="Music Videos" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>MUSIC VIDEOS</h2>
-              <div class="tags">
-                <span>Animation</span>
-                <span>VFX</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- PROCEDURAL WORKS -->
-        <article class="card span-6">
-          <a href="projects/procedural.html">
-            <div class="card-img" style="background-color:#0a0d0a;">
-              <img src="images/procedural.jpg" alt="Procedural Works" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>PROCEDURAL WORKS</h2>
-              <p class="card-sub">Custom tools and dynamic systems</p>
-              <div class="tags">
-                <span>Technical Tools</span>
-                <span>Blender</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- MFA THESIS -->
-        <article class="card span-6">
-          <a href="projects/mfathesis.html">
-            <div class="card-img" style="background-color:#0d0a0d;">
-              <img src="images/mfa.jpg" alt="MFA Thesis" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>MFA THESIS</h2>
-              <p class="card-sub">2021 — Tulane University</p>
-              <div class="tags">
-                <span>Academic</span>
-                <span>Generative Art</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="footer">
     <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
     <span class="footer-sep">·</span>
     <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="webgl-fx.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ══════════════════════════════════════════════════════════════════════
+     SETUP
+  ══════════════════════════════════════════════════════════════════════ */
+  const canvas = document.getElementById('c');
+  const ctx    = canvas.getContext('2d');
+  let W = 0, H = 0;
+
+  /* ── Pointer (mouse + touch) ── */
+  const ptr = { x: -9999, y: -9999 };
+
+  window.addEventListener('mousemove', e => { ptr.x = e.clientX; ptr.y = e.clientY; });
+  window.addEventListener('mouseleave', () => { ptr.x = -9999; ptr.y = -9999; });
+  window.addEventListener('click',      e => burst(e.clientX, e.clientY));
+
+  window.addEventListener('touchmove', e => {
+    e.preventDefault();
+    ptr.x = e.touches[0].clientX;
+    ptr.y = e.touches[0].clientY;
+  }, { passive: false });
+  window.addEventListener('touchstart', e => burst(e.touches[0].clientX, e.touches[0].clientY));
+  window.addEventListener('touchend',  () => { ptr.x = -9999; ptr.y = -9999; });
+
+  // Fade hint after first interaction
+  let hintFaded = false;
+  function fadeHint() {
+    if (hintFaded) return;
+    hintFaded = true;
+    const el = document.getElementById('hint');
+    if (el) { el.style.opacity = '0'; setTimeout(() => el.remove(), 1300); }
+  }
+  window.addEventListener('click',      fadeHint, { once: true });
+  window.addEventListener('mousemove',  fadeHint, { once: true });
+  window.addEventListener('touchstart', fadeHint, { once: true });
+
+  /* ══════════════════════════════════════════════════════════════════════
+     MATH HELPERS
+  ══════════════════════════════════════════════════════════════════════ */
+
+  /* Layered sine "noise" — organic without a noise library */
+  function sNoise(x, y, t) {
+    return (
+      Math.sin(x * 1.31 + t * 0.72) * Math.cos(y * 1.07 + t * 0.53) +
+      Math.sin(x * 0.74 - y * 0.91 + t * 1.15) * 0.55 +
+      Math.cos(x * 2.05 + y * 1.63 - t * 0.88) * 0.28
+    ) / 1.83;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     PARTICLE
+  ══════════════════════════════════════════════════════════════════════ */
+  let particles = [];
+
+  class Particle {
+    constructor(ox, oy) {
+      this.ox = ox;   // resting x
+      this.oy = oy;   // resting y
+
+      /* Spawn scattered, fly into formation */
+      const a = Math.random() * Math.PI * 2;
+      const r = 80 + Math.random() * 500;
+      this.x  = W * 0.5 + Math.cos(a) * r;
+      this.y  = H * 0.5 + Math.sin(a) * r;
+      this.vx = 0;
+      this.vy = 0;
+
+      /* Per-particle variation */
+      this.phase = Math.random() * Math.PI * 2;
+      this.sz    = 1.1 + Math.random() * 0.7;   // core dot radius
+      this.gz    = this.sz * 3.2 + 1;            // glow radius
+
+      /* Colour palette — whites + icy blues matching site's cool dark tones */
+      const roll = Math.random();
+      let r8, g8, b8;
+      if      (roll < 0.55) { r8=255; g8=255; b8=255; }          // pure white
+      else if (roll < 0.80) { r8=185; g8=208; b8=235; }          // ice blue
+      else                  { r8=130; g8=155; b8=202; }          // cool slate
+
+      const coreA  = (0.72 + Math.random() * 0.28).toFixed(2);
+      this.core    = `rgba(${r8},${g8},${b8},${coreA})`;
+      this.glow    = `rgba(${r8},${g8},${b8},0.09)`;
+    }
+
+    update(t) {
+      /* ── Wave-modulated rest position ── */
+      // Macro wave (slow, large amplitude)
+      const wx = 5.5 * Math.sin(this.ox * 0.0075 + t * 0.48)
+               + 2.2 * Math.sin(this.oy * 0.0095 - t * 0.63 + this.phase);
+      const wy = 5.5 * Math.cos(this.oy * 0.0075 + t * 0.38)
+               + 2.2 * Math.cos(this.ox * 0.0095 + t * 0.55 + this.phase);
+
+      // Micro turbulence (fast noise drift)
+      const nx = sNoise(this.ox * 0.0038, this.oy * 0.0038, t * 0.28 + this.phase) * 2.8;
+      const ny = sNoise(this.ox * 0.0038 + 60, this.oy * 0.0038 + 60, t * 0.22 + this.phase) * 2.8;
+
+      // Breathing — gentle scale pulse around text centroid
+      const breathe = 1 + 0.016 * Math.sin(t * 0.21 + this.phase * 0.05);
+      const cx = W * 0.5, cy = H * 0.46;
+      const tx = cx + (this.ox - cx) * breathe + wx + nx;
+      const ty = cy + (this.oy - cy) * breathe + wy + ny;
+
+      /* ── Spring toward target ── */
+      this.vx += (tx - this.x) * 0.054;
+      this.vy += (ty - this.y) * 0.054;
+
+      /* ── Pointer repulsion ── */
+      const dx = this.x - ptr.x;
+      const dy = this.y - ptr.y;
+      const d2 = dx * dx + dy * dy;
+      const R  = 105;
+      if (d2 < R * R && d2 > 0.1) {
+        const d = Math.sqrt(d2);
+        const f = Math.pow(1 - d / R, 1.75) * 13;
+        this.vx += (dx / d) * f;
+        this.vy += (dy / d) * f;
+      }
+
+      /* ── Damping + integrate ── */
+      this.vx *= 0.795;
+      this.vy *= 0.795;
+      this.x  += this.vx;
+      this.y  += this.vy;
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     BURST on click / tap
+  ══════════════════════════════════════════════════════════════════════ */
+  function burst(bx, by) {
+    const R = 170;
+    for (const p of particles) {
+      const dx = p.x - bx, dy = p.y - by;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < R * R && d2 > 0.1) {
+        const d = Math.sqrt(d2);
+        const f = Math.pow(1 - d / R, 1.4) * 24;
+        p.vx += (dx / d) * f;
+        p.vy += (dy / d) * f;
+      }
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     TEXT → POINT CLOUD
+  ══════════════════════════════════════════════════════════════════════ */
+  function buildParticles() {
+    const off  = document.createElement('canvas');
+    off.width  = W;
+    off.height = H;
+    const c2   = off.getContext('2d');
+
+    /* Font sizes scaled to viewport */
+    const mainSz = Math.min(W / 5.8, H / 3.0, 168);
+    const subSz  = mainSz * 0.255;
+    const cx     = W  / 2;
+    const midY   = H  * 0.46;
+    const gap    = mainSz * 0.78;
+
+    c2.fillStyle    = '#fff';
+    c2.textAlign    = 'center';
+    c2.textBaseline = 'middle';
+
+    /* Line 1 — name */
+    c2.font = `300 ${mainSz}px "Space Grotesk", Helvetica Neue, Helvetica, Arial`;
+    c2.fillText('MITCHELL CRAFT', cx, midY - gap * 0.30);
+
+    /* Line 2 — coming soon, spread with letter-spacing */
+    try { c2.letterSpacing = '0.52em'; } catch(_) {}
+    c2.font = `300 ${subSz}px "Space Grotesk", Helvetica Neue, Helvetica, Arial`;
+    c2.fillText('COMING SOON', cx, midY + gap * 0.65);
+    try { c2.letterSpacing = '0px'; } catch(_) {}
+
+    /* Sample pixel grid → particle origins */
+    const step = W < 700 ? 5 : 5;   // same step, keep density on mobile
+    const data  = c2.getImageData(0, 0, W, H).data;
+    const pts   = [];
+
+    for (let py = 0; py < H; py += step) {
+      for (let px = 0; px < W; px += step) {
+        if (data[(py * W + px) * 4 + 3] > 100) pts.push([px, py]);
+      }
+    }
+
+    /* Add a sparse ambient field — faint drifting points outside text */
+    const ambientCount = Math.floor(pts.length * 0.08);
+    const ambientPts   = [];
+    for (let i = 0; i < ambientCount; i++) {
+      ambientPts.push([Math.random() * W, Math.random() * H]);
+    }
+
+    particles = pts.map(([x, y]) => new Particle(x, y));
+
+    /* Ambient particles: ghost class with lower opacity */
+    for (const [x, y] of ambientPts) {
+      const p   = new Particle(x, y);
+      p.sz      = 0.7 + Math.random() * 0.5;
+      p.gz      = p.sz * 2;
+      p.core    = `rgba(255,255,255,${(0.08 + Math.random() * 0.12).toFixed(2)})`;
+      p.glow    = 'rgba(180,200,230,0.04)';
+      particles.push(p);
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     RENDER LOOP
+  ══════════════════════════════════════════════════════════════════════ */
+  let t = 0;
+
+  function animate() {
+    /* Fade prev frame → motion-blur trail */
+    ctx.fillStyle = 'rgba(2,2,2,0.20)';
+    ctx.fillRect(0, 0, W, H);
+
+    /* Update all particles */
+    for (const p of particles) p.update(t);
+
+    /* Glow pass (drawn under core) */
+    for (const p of particles) {
+      ctx.fillStyle = p.glow;
+      const g = p.gz;
+      ctx.fillRect((p.x - g * 0.5) | 0, (p.y - g * 0.5) | 0, g | 0, g | 0);
+    }
+
+    /* Core pass */
+    for (const p of particles) {
+      ctx.fillStyle = p.core;
+      const s = p.sz;
+      ctx.fillRect((p.x - s * 0.5) | 0, (p.y - s * 0.5) | 0, s | 0, s | 0);
+    }
+
+    t += 0.016;
+    requestAnimationFrame(animate);
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     INIT + RESIZE
+  ══════════════════════════════════════════════════════════════════════ */
+  function init() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    ctx.fillStyle = '#020202';
+    ctx.fillRect(0, 0, W, H);
+    buildParticles();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(init, 220);
+  });
+
+  /* Start after Space Grotesk is ready */
+  function start() { init(); requestAnimationFrame(animate); }
+
+  if (document.fonts && document.fonts.load) {
+    document.fonts.load('300 80px "Space Grotesk"')
+      .then(start).catch(start);
+  } else {
+    // Fallback: brief delay so browser can parse linked font
+    setTimeout(start, 300);
+  }
+
+}());
+</script>
 </body>
 </html>
