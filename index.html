@@ -10,33 +10,17 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; overflow: hidden; }
-    body {
-      background: #020202;
-      font-family: Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { background: #020202; font-family: Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
 
-    canvas {
-      display: block;
-      position: fixed;
-      inset: 0;
-    }
+    canvas { display: block; position: fixed; inset: 0; }
 
     /* ── Nav ── */
-    .nav {
-      position: fixed;
-      top: 0; right: 0;
-      z-index: 10;
-      padding: 22px 30px;
-    }
+    .nav { position: fixed; top: 0; right: 0; z-index: 10; padding: 22px 30px; }
     .nav ul { list-style: none; display: flex; gap: 24px; }
     .nav ul li a {
-      font-size: 14px;
-      color: #fff;
-      letter-spacing: 0.02em;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      font-size: 14px; color: #fff; letter-spacing: 0.02em;
+      text-decoration: underline; text-underline-offset: 3px;
       text-decoration-color: rgba(255,255,255,0.35);
       transition: text-decoration-color 0.2s;
     }
@@ -44,34 +28,101 @@
 
     /* ── Footer ── */
     .footer {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 10;
-      padding: 18px 28px;
-      border-top: 1px solid #111;
-      font-size: 12px;
-      color: #444;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 10;
+      padding: 18px 28px; border-top: 1px solid #111;
+      font-size: 12px; color: #444;
+      display: flex; align-items: center; gap: 10px;
     }
     .footer a { color: #444; transition: color 0.25s; }
     .footer a:hover { color: #fff; }
     .footer-sep { color: #222; }
 
-    /* ── Cursor hint ── */
+    /* ── Settings toggle ── */
+    #settings-toggle {
+      position: fixed; top: 20px; left: 20px; z-index: 30;
+      background: none; border: 1px solid #222; color: #555;
+      font-size: 9px; font-family: inherit;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 6px 11px; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    #settings-toggle:hover { color: #ccc; border-color: #444; }
+    #settings-toggle.active { color: #fff; border-color: #555; background: rgba(255,255,255,0.04); }
+
+    /* ── Settings panel ── */
+    #settings-panel {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: 272px; z-index: 20;
+      background: rgba(3,3,3,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-right: 1px solid #161616;
+      overflow-y: auto; overflow-x: hidden;
+      padding: 58px 0 80px;
+      transform: translateX(-100%);
+      transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #settings-panel.open { transform: translateX(0); }
+
+    .s-section { padding: 20px 22px 4px; }
+    .s-section + .s-section { border-top: 1px solid #111; }
+
+    .s-section-title {
+      font-size: 9px; font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      color: #444; margin-bottom: 14px;
+    }
+
+    .s-row {
+      display: grid;
+      grid-template-columns: 88px 1fr 36px;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .s-label {
+      font-size: 11px; color: #555; letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .s-val {
+      font-size: 10px; color: #777; text-align: right;
+      letter-spacing: 0.03em; font-variant-numeric: tabular-nums;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 1px;
+      background: #282828; border-radius: 1px;
+      outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: #666; border: none; cursor: pointer;
+      transition: background 0.15s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { background: #aaa; }
+    input[type="range"]::-moz-range-thumb {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: #666; border: none; cursor: pointer;
+    }
+
+    .s-btn {
+      display: block; width: calc(100% - 44px); margin: 14px 22px 6px;
+      background: none; border: 1px solid #1e1e1e; color: #444;
+      font-family: inherit; font-size: 9px; letter-spacing: 0.16em;
+      text-transform: uppercase; padding: 7px 0; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .s-btn:hover { color: #bbb; border-color: #444; }
+
+    /* ── Hint ── */
     #hint {
-      position: fixed;
-      bottom: 62px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: #333;
-      text-transform: uppercase;
-      pointer-events: none;
-      transition: opacity 1.2s ease;
+      position: fixed; bottom: 62px; left: 50%; transform: translateX(-50%);
+      z-index: 10; font-size: 10px; letter-spacing: 0.18em; color: #2a2a2a;
+      text-transform: uppercase; pointer-events: none; transition: opacity 1.2s ease;
     }
   </style>
 </head>
@@ -80,10 +131,148 @@
   <canvas id="c"></canvas>
 
   <nav class="nav">
-    <ul>
-      <li><a href="about.html">About</a></li>
-    </ul>
+    <ul><li><a href="about.html">About</a></li></ul>
   </nav>
+
+  <button id="settings-toggle">Settings</button>
+
+  <div id="settings-panel">
+
+    <div class="s-section">
+      <div class="s-section-title">Bloom</div>
+      <div class="s-row">
+        <span class="s-label">Intensity</span>
+        <input type="range" id="s-bloom-int" min="0" max="2.5" step="0.05" value="0.7">
+        <span class="s-val" id="v-bloom-int">0.70</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Radius</span>
+        <input type="range" id="s-bloom-rad" min="0" max="40" step="1" value="12">
+        <span class="s-val" id="v-bloom-rad">12</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Spread</span>
+        <input type="range" id="s-bloom-sz" min="1" max="10" step="0.5" value="4">
+        <span class="s-val" id="v-bloom-sz">4.0</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Wave</div>
+      <div class="s-row">
+        <span class="s-label">Amplitude</span>
+        <input type="range" id="s-wave-amp" min="0" max="30" step="0.5" value="5.5">
+        <span class="s-val" id="v-wave-amp">5.5</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Speed</span>
+        <input type="range" id="s-wave-spd" min="0" max="3" step="0.02" value="0.48">
+        <span class="s-val" id="v-wave-spd">0.48</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Frequency</span>
+        <input type="range" id="s-wave-frq" min="0.001" max="0.03" step="0.001" value="0.0075">
+        <span class="s-val" id="v-wave-frq">0.008</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Turbulence</span>
+        <input type="range" id="s-turb-amp" min="0" max="15" step="0.2" value="2.8">
+        <span class="s-val" id="v-turb-amp">2.8</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Turb Speed</span>
+        <input type="range" id="s-turb-spd" min="0" max="1.5" step="0.01" value="0.28">
+        <span class="s-val" id="v-turb-spd">0.28</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Breathing</div>
+      <div class="s-row">
+        <span class="s-label">Amount</span>
+        <input type="range" id="s-brth-amt" min="0" max="0.15" step="0.001" value="0.016">
+        <span class="s-val" id="v-brth-amt">0.016</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Speed</span>
+        <input type="range" id="s-brth-spd" min="0" max="2" step="0.01" value="0.21">
+        <span class="s-val" id="v-brth-spd">0.21</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Motion</div>
+      <div class="s-row">
+        <span class="s-label">Spring</span>
+        <input type="range" id="s-spring" min="0.005" max="0.2" step="0.002" value="0.054">
+        <span class="s-val" id="v-spring">0.054</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Damping</span>
+        <input type="range" id="s-damp" min="0.5" max="0.99" step="0.005" value="0.795">
+        <span class="s-val" id="v-damp">0.795</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Trail Fade</span>
+        <input type="range" id="s-trail" min="0.02" max="0.6" step="0.01" value="0.20">
+        <span class="s-val" id="v-trail">0.20</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Repulsion</div>
+      <div class="s-row">
+        <span class="s-label">Radius</span>
+        <input type="range" id="s-rep-rad" min="10" max="300" step="5" value="105">
+        <span class="s-val" id="v-rep-rad">105</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Strength</span>
+        <input type="range" id="s-rep-str" min="0" max="60" step="0.5" value="13">
+        <span class="s-val" id="v-rep-str">13</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Falloff</span>
+        <input type="range" id="s-rep-pow" min="0.5" max="4" step="0.1" value="1.75">
+        <span class="s-val" id="v-rep-pow">1.75</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Burst</div>
+      <div class="s-row">
+        <span class="s-label">Radius</span>
+        <input type="range" id="s-bst-rad" min="20" max="400" step="10" value="170">
+        <span class="s-val" id="v-bst-rad">170</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Strength</span>
+        <input type="range" id="s-bst-str" min="0" max="80" step="1" value="24">
+        <span class="s-val" id="v-bst-str">24</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Particles</div>
+      <div class="s-row">
+        <span class="s-label">Core Size</span>
+        <input type="range" id="s-core-sz" min="0.2" max="5" step="0.1" value="1.1">
+        <span class="s-val" id="v-core-sz">1.1</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Glow Mult</span>
+        <input type="range" id="s-glow-m" min="1" max="10" step="0.1" value="3.2">
+        <span class="s-val" id="v-glow-m">3.2</span>
+      </div>
+      <div class="s-row">
+        <span class="s-label">Density</span>
+        <input type="range" id="s-density" min="2" max="12" step="1" value="5">
+        <span class="s-val" id="v-density">5</span>
+      </div>
+      <button class="s-btn" id="s-rebuild">↺ Rebuild</button>
+    </div>
+
+  </div>
 
   <p id="hint">click anywhere · drag to disturb</p>
 
@@ -97,45 +286,76 @@
 (function () {
   'use strict';
 
-  /* ══════════════════════════════════════════════════════════════════════
-     SETUP
-  ══════════════════════════════════════════════════════════════════════ */
+  /* ══════════════════════════════════════════════════════════════
+     SETTINGS — all tunables live here, sliders write to this obj
+  ══════════════════════════════════════════════════════════════ */
+  const S = {
+    // Bloom
+    bloomInt:    0.70,
+    bloomRad:    12,
+    bloomSz:     4.0,
+    // Wave
+    waveAmp:     5.5,
+    waveSpd:     0.48,
+    waveFrq:     0.0075,
+    turbAmp:     2.8,
+    turbSpd:     0.28,
+    // Breathing
+    brthAmt:     0.016,
+    brthSpd:     0.21,
+    // Motion
+    spring:      0.054,
+    damp:        0.795,
+    trail:       0.20,
+    // Repulsion
+    repRad:      105,
+    repStr:      13,
+    repPow:      1.75,
+    // Burst
+    bstRad:      170,
+    bstStr:      24,
+    // Particles
+    coreSz:      1.1,
+    glowMult:    3.2,
+    density:     5,
+  };
+
+  /* ══════════════════════════════════════════════════════════════
+     CANVAS + BLOOM OFFSCREEN
+  ══════════════════════════════════════════════════════════════ */
   const canvas = document.getElementById('c');
   const ctx    = canvas.getContext('2d');
   let W = 0, H = 0;
 
-  /* ── Pointer (mouse + touch) ── */
-  const ptr = { x: -9999, y: -9999 };
+  let bloomCanvas = document.createElement('canvas');
+  let bloomCtx    = bloomCanvas.getContext('2d');
 
-  window.addEventListener('mousemove', e => { ptr.x = e.clientX; ptr.y = e.clientY; });
+  /* ══════════════════════════════════════════════════════════════
+     POINTER
+  ══════════════════════════════════════════════════════════════ */
+  const ptr = { x: -9999, y: -9999 };
+  window.addEventListener('mousemove',  e => { ptr.x = e.clientX; ptr.y = e.clientY; });
   window.addEventListener('mouseleave', () => { ptr.x = -9999; ptr.y = -9999; });
   window.addEventListener('click',      e => burst(e.clientX, e.clientY));
-
-  window.addEventListener('touchmove', e => {
+  window.addEventListener('touchmove',  e => {
     e.preventDefault();
-    ptr.x = e.touches[0].clientX;
-    ptr.y = e.touches[0].clientY;
+    ptr.x = e.touches[0].clientX; ptr.y = e.touches[0].clientY;
   }, { passive: false });
   window.addEventListener('touchstart', e => burst(e.touches[0].clientX, e.touches[0].clientY));
-  window.addEventListener('touchend',  () => { ptr.x = -9999; ptr.y = -9999; });
+  window.addEventListener('touchend',   () => { ptr.x = -9999; ptr.y = -9999; });
 
-  // Fade hint after first interaction
-  let hintFaded = false;
+  // Fade hint
+  let hintGone = false;
   function fadeHint() {
-    if (hintFaded) return;
-    hintFaded = true;
+    if (hintGone) return; hintGone = true;
     const el = document.getElementById('hint');
     if (el) { el.style.opacity = '0'; setTimeout(() => el.remove(), 1300); }
   }
-  window.addEventListener('click',      fadeHint, { once: true });
-  window.addEventListener('mousemove',  fadeHint, { once: true });
-  window.addEventListener('touchstart', fadeHint, { once: true });
+  ['click','mousemove','touchstart'].forEach(ev => window.addEventListener(ev, fadeHint, { once: true }));
 
-  /* ══════════════════════════════════════════════════════════════════════
-     MATH HELPERS
-  ══════════════════════════════════════════════════════════════════════ */
-
-  /* Layered sine "noise" — organic without a noise library */
+  /* ══════════════════════════════════════════════════════════════
+     MATH
+  ══════════════════════════════════════════════════════════════ */
   function sNoise(x, y, t) {
     return (
       Math.sin(x * 1.31 + t * 0.72) * Math.cos(y * 1.07 + t * 0.53) +
@@ -144,185 +364,169 @@
     ) / 1.83;
   }
 
-  /* ══════════════════════════════════════════════════════════════════════
+  /* ══════════════════════════════════════════════════════════════
      PARTICLE
-  ══════════════════════════════════════════════════════════════════════ */
+  ══════════════════════════════════════════════════════════════ */
   let particles = [];
 
   class Particle {
     constructor(ox, oy) {
-      this.ox = ox;   // resting x
-      this.oy = oy;   // resting y
-
-      /* Spawn scattered, fly into formation */
+      this.ox = ox; this.oy = oy;
+      // Spawn scattered
       const a = Math.random() * Math.PI * 2;
       const r = 80 + Math.random() * 500;
-      this.x  = W * 0.5 + Math.cos(a) * r;
-      this.y  = H * 0.5 + Math.sin(a) * r;
-      this.vx = 0;
-      this.vy = 0;
-
-      /* Per-particle variation */
+      this.x = W * 0.5 + Math.cos(a) * r;
+      this.y = H * 0.5 + Math.sin(a) * r;
+      this.vx = 0; this.vy = 0;
       this.phase = Math.random() * Math.PI * 2;
-      this.sz    = 1.1 + Math.random() * 0.7;   // core dot radius
-      this.gz    = this.sz * 3.2 + 1;            // glow radius
-
-      /* Colour palette — whites + icy blues matching site's cool dark tones */
+      // Stable size factor (relative variation preserved across S.coreSz changes)
+      this.szBase = 1.0 + Math.random() * 0.65;
+      // Colour
       const roll = Math.random();
       let r8, g8, b8;
-      if      (roll < 0.55) { r8=255; g8=255; b8=255; }          // pure white
-      else if (roll < 0.80) { r8=185; g8=208; b8=235; }          // ice blue
-      else                  { r8=130; g8=155; b8=202; }          // cool slate
-
-      const coreA  = (0.72 + Math.random() * 0.28).toFixed(2);
-      this.core    = `rgba(${r8},${g8},${b8},${coreA})`;
-      this.glow    = `rgba(${r8},${g8},${b8},0.09)`;
+      if      (roll < 0.55) { r8=255; g8=255; b8=255; }
+      else if (roll < 0.82) { r8=185; g8=208; b8=235; }
+      else                  { r8=130; g8=155; b8=202; }
+      this.coreA  = (0.72 + Math.random() * 0.28).toFixed(2);
+      this.cr = r8; this.cg = g8; this.cb = b8;
+      this.core  = `rgba(${r8},${g8},${b8},${this.coreA})`;
+      this.glow  = `rgba(${r8},${g8},${b8},0.08)`;
+      this.bloom = `rgba(${r8},${g8},${b8},0.90)`;
     }
 
     update(t) {
-      /* ── Wave-modulated rest position ── */
-      // Macro wave (slow, large amplitude)
-      const wx = 5.5 * Math.sin(this.ox * 0.0075 + t * 0.48)
-               + 2.2 * Math.sin(this.oy * 0.0095 - t * 0.63 + this.phase);
-      const wy = 5.5 * Math.cos(this.oy * 0.0075 + t * 0.38)
-               + 2.2 * Math.cos(this.ox * 0.0095 + t * 0.55 + this.phase);
+      const wx = S.waveAmp * Math.sin(this.ox * S.waveFrq + t * S.waveSpd)
+               + S.waveAmp * 0.4 * Math.sin(this.oy * S.waveFrq * 1.3 - t * S.waveSpd * 1.3 + this.phase);
+      const wy = S.waveAmp * Math.cos(this.oy * S.waveFrq + t * S.waveSpd * 0.83)
+               + S.waveAmp * 0.4 * Math.cos(this.ox * S.waveFrq * 1.3 + t * S.waveSpd * 1.15 + this.phase);
 
-      // Micro turbulence (fast noise drift)
-      const nx = sNoise(this.ox * 0.0038, this.oy * 0.0038, t * 0.28 + this.phase) * 2.8;
-      const ny = sNoise(this.ox * 0.0038 + 60, this.oy * 0.0038 + 60, t * 0.22 + this.phase) * 2.8;
+      const nx = sNoise(this.ox * 0.0038, this.oy * 0.0038, t * S.turbSpd + this.phase) * S.turbAmp;
+      const ny = sNoise(this.ox * 0.0038 + 60, this.oy * 0.0038 + 60, t * S.turbSpd * 0.78 + this.phase) * S.turbAmp;
 
-      // Breathing — gentle scale pulse around text centroid
-      const breathe = 1 + 0.016 * Math.sin(t * 0.21 + this.phase * 0.05);
+      const breathe = 1 + S.brthAmt * Math.sin(t * S.brthSpd + this.phase * 0.05);
       const cx = W * 0.5, cy = H * 0.46;
       const tx = cx + (this.ox - cx) * breathe + wx + nx;
       const ty = cy + (this.oy - cy) * breathe + wy + ny;
 
-      /* ── Spring toward target ── */
-      this.vx += (tx - this.x) * 0.054;
-      this.vy += (ty - this.y) * 0.054;
+      this.vx += (tx - this.x) * S.spring;
+      this.vy += (ty - this.y) * S.spring;
 
-      /* ── Pointer repulsion ── */
-      const dx = this.x - ptr.x;
-      const dy = this.y - ptr.y;
+      // Repulsion
+      const dx = this.x - ptr.x, dy = this.y - ptr.y;
       const d2 = dx * dx + dy * dy;
-      const R  = 105;
-      if (d2 < R * R && d2 > 0.1) {
+      if (d2 < S.repRad * S.repRad && d2 > 0.1) {
         const d = Math.sqrt(d2);
-        const f = Math.pow(1 - d / R, 1.75) * 13;
+        const f = Math.pow(1 - d / S.repRad, S.repPow) * S.repStr;
         this.vx += (dx / d) * f;
         this.vy += (dy / d) * f;
       }
 
-      /* ── Damping + integrate ── */
-      this.vx *= 0.795;
-      this.vy *= 0.795;
+      this.vx *= S.damp;
+      this.vy *= S.damp;
       this.x  += this.vx;
       this.y  += this.vy;
     }
   }
 
-  /* ══════════════════════════════════════════════════════════════════════
-     BURST on click / tap
-  ══════════════════════════════════════════════════════════════════════ */
+  /* ══════════════════════════════════════════════════════════════
+     BURST
+  ══════════════════════════════════════════════════════════════ */
   function burst(bx, by) {
-    const R = 170;
+    // Don't burst if clicking settings panel or toggle
+    if (document.getElementById('settings-panel').contains(document.elementFromPoint(bx, by))) return;
+    if (document.getElementById('settings-toggle').contains(document.elementFromPoint(bx, by))) return;
+    const R = S.bstRad;
     for (const p of particles) {
       const dx = p.x - bx, dy = p.y - by;
       const d2 = dx * dx + dy * dy;
       if (d2 < R * R && d2 > 0.1) {
         const d = Math.sqrt(d2);
-        const f = Math.pow(1 - d / R, 1.4) * 24;
+        const f = Math.pow(1 - d / R, 1.4) * S.bstStr;
         p.vx += (dx / d) * f;
         p.vy += (dy / d) * f;
       }
     }
   }
 
-  /* ══════════════════════════════════════════════════════════════════════
-     TEXT → POINT CLOUD
-  ══════════════════════════════════════════════════════════════════════ */
+  /* ══════════════════════════════════════════════════════════════
+     BUILD PARTICLES FROM TEXT
+  ══════════════════════════════════════════════════════════════ */
   function buildParticles() {
-    const off  = document.createElement('canvas');
-    off.width  = W;
-    off.height = H;
-    const c2   = off.getContext('2d');
+    const off = document.createElement('canvas');
+    off.width = W; off.height = H;
+    const c2 = off.getContext('2d');
 
-    /* Font sizes scaled to viewport */
     const mainSz = Math.min(W / 5.8, H / 3.0, 168);
-    const subSz  = mainSz * 0.255;
-    const cx     = W  / 2;
-    const midY   = H  * 0.46;
-    const gap    = mainSz * 0.78;
-
-    c2.fillStyle    = '#fff';
-    c2.textAlign    = 'center';
+    c2.fillStyle = '#fff';
+    c2.textAlign = 'center';
     c2.textBaseline = 'middle';
-
-    /* Line 1 — name */
     c2.font = `300 ${mainSz}px "Space Grotesk", Helvetica Neue, Helvetica, Arial`;
-    c2.fillText('MITCHELL CRAFT', cx, midY - gap * 0.30);
+    c2.fillText('COMING SOON', W / 2, H * 0.46);
 
-    /* Line 2 — coming soon, spread with letter-spacing */
-    try { c2.letterSpacing = '0.52em'; } catch(_) {}
-    c2.font = `300 ${subSz}px "Space Grotesk", Helvetica Neue, Helvetica, Arial`;
-    c2.fillText('COMING SOON', cx, midY + gap * 0.65);
-    try { c2.letterSpacing = '0px'; } catch(_) {}
-
-    /* Sample pixel grid → particle origins */
-    const step = W < 700 ? 5 : 5;   // same step, keep density on mobile
-    const data  = c2.getImageData(0, 0, W, H).data;
-    const pts   = [];
-
-    for (let py = 0; py < H; py += step) {
-      for (let px = 0; px < W; px += step) {
+    const step = S.density;
+    const data = c2.getImageData(0, 0, W, H).data;
+    const pts  = [];
+    for (let py = 0; py < H; py += step)
+      for (let px = 0; px < W; px += step)
         if (data[(py * W + px) * 4 + 3] > 100) pts.push([px, py]);
+
+    // Ambient ghost particles
+    const ambCount = Math.floor(pts.length * 0.07);
+    for (let i = 0; i < ambCount; i++) pts.push([Math.random() * W, Math.random() * H]);
+
+    particles = pts.map(([x, y], i) => {
+      const p = new Particle(x, y);
+      if (i >= pts.length - ambCount) {
+        // Ghost: faint, no glow contribution
+        p.core  = `rgba(255,255,255,${(0.05 + Math.random() * 0.09).toFixed(2)})`;
+        p.glow  = 'rgba(180,200,230,0.03)';
+        p.bloom = 'rgba(200,220,255,0.12)';
+        p.szBase = 0.5 + Math.random() * 0.4;
       }
-    }
-
-    /* Add a sparse ambient field — faint drifting points outside text */
-    const ambientCount = Math.floor(pts.length * 0.08);
-    const ambientPts   = [];
-    for (let i = 0; i < ambientCount; i++) {
-      ambientPts.push([Math.random() * W, Math.random() * H]);
-    }
-
-    particles = pts.map(([x, y]) => new Particle(x, y));
-
-    /* Ambient particles: ghost class with lower opacity */
-    for (const [x, y] of ambientPts) {
-      const p   = new Particle(x, y);
-      p.sz      = 0.7 + Math.random() * 0.5;
-      p.gz      = p.sz * 2;
-      p.core    = `rgba(255,255,255,${(0.08 + Math.random() * 0.12).toFixed(2)})`;
-      p.glow    = 'rgba(180,200,230,0.04)';
-      particles.push(p);
-    }
+      return p;
+    });
   }
 
-  /* ══════════════════════════════════════════════════════════════════════
+  /* ══════════════════════════════════════════════════════════════
      RENDER LOOP
-  ══════════════════════════════════════════════════════════════════════ */
+  ══════════════════════════════════════════════════════════════ */
   let t = 0;
 
   function animate() {
-    /* Fade prev frame → motion-blur trail */
-    ctx.fillStyle = 'rgba(2,2,2,0.20)';
+    // 1. Fade to black — motion trail
+    ctx.fillStyle = `rgba(2,2,2,${S.trail})`;
     ctx.fillRect(0, 0, W, H);
 
-    /* Update all particles */
+    // 2. Update all particles
     for (const p of particles) p.update(t);
 
-    /* Glow pass (drawn under core) */
+    // 3. Bloom pass — draw to offscreen, blur & additively composite
+    if (S.bloomInt > 0 && S.bloomRad > 0) {
+      bloomCtx.clearRect(0, 0, W, H);
+      for (const p of particles) {
+        const g = p.szBase * S.coreSz * S.bloomSz;
+        bloomCtx.fillStyle = p.bloom;
+        bloomCtx.fillRect((p.x - g * 0.5) | 0, (p.y - g * 0.5) | 0, g | 0, g | 0);
+      }
+      ctx.save();
+      ctx.filter = `blur(${S.bloomRad}px)`;
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalAlpha = S.bloomInt;
+      ctx.drawImage(bloomCanvas, 0, 0);
+      ctx.restore();
+    }
+
+    // 4. Glow pass (soft halo, no blur)
     for (const p of particles) {
+      const g = p.szBase * S.coreSz * S.glowMult;
       ctx.fillStyle = p.glow;
-      const g = p.gz;
       ctx.fillRect((p.x - g * 0.5) | 0, (p.y - g * 0.5) | 0, g | 0, g | 0);
     }
 
-    /* Core pass */
+    // 5. Core pass (sharp dot)
     for (const p of particles) {
+      const s = p.szBase * S.coreSz;
       ctx.fillStyle = p.core;
-      const s = p.sz;
       ctx.fillRect((p.x - s * 0.5) | 0, (p.y - s * 0.5) | 0, s | 0, s | 0);
     }
 
@@ -330,31 +534,77 @@
     requestAnimationFrame(animate);
   }
 
-  /* ══════════════════════════════════════════════════════════════════════
+  /* ══════════════════════════════════════════════════════════════
      INIT + RESIZE
-  ══════════════════════════════════════════════════════════════════════ */
+  ══════════════════════════════════════════════════════════════ */
   function init() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    W = canvas.width = bloomCanvas.width  = window.innerWidth;
+    H = canvas.height = bloomCanvas.height = window.innerHeight;
     ctx.fillStyle = '#020202';
     ctx.fillRect(0, 0, W, H);
     buildParticles();
   }
 
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(init, 220);
+  let rstTimer;
+  window.addEventListener('resize', () => { clearTimeout(rstTimer); rstTimer = setTimeout(init, 220); });
+
+  /* ══════════════════════════════════════════════════════════════
+     SETTINGS UI
+  ══════════════════════════════════════════════════════════════ */
+  const panel  = document.getElementById('settings-panel');
+  const toggle = document.getElementById('settings-toggle');
+  toggle.addEventListener('click', () => {
+    panel.classList.toggle('open');
+    toggle.classList.toggle('active');
   });
 
-  /* Start after Space Grotesk is ready */
+  // Map slider id → [S key, decimals]
+  const sliderMap = {
+    's-bloom-int': ['bloomInt',  2],
+    's-bloom-rad': ['bloomRad',  0],
+    's-bloom-sz':  ['bloomSz',   1],
+    's-wave-amp':  ['waveAmp',   1],
+    's-wave-spd':  ['waveSpd',   2],
+    's-wave-frq':  ['waveFrq',   3],
+    's-turb-amp':  ['turbAmp',   1],
+    's-turb-spd':  ['turbSpd',   2],
+    's-brth-amt':  ['brthAmt',   3],
+    's-brth-spd':  ['brthSpd',   2],
+    's-spring':    ['spring',    3],
+    's-damp':      ['damp',      3],
+    's-trail':     ['trail',     2],
+    's-rep-rad':   ['repRad',    0],
+    's-rep-str':   ['repStr',    1],
+    's-rep-pow':   ['repPow',    2],
+    's-bst-rad':   ['bstRad',    0],
+    's-bst-str':   ['bstStr',    0],
+    's-core-sz':   ['coreSz',    1],
+    's-glow-m':    ['glowMult',  1],
+    's-density':   ['density',   0],
+  };
+
+  Object.entries(sliderMap).forEach(([id, [key, dec]]) => {
+    const input = document.getElementById(id);
+    const valEl = document.getElementById('v-' + id.slice(2));
+    if (!input || !valEl) return;
+    input.addEventListener('input', () => {
+      const v = parseFloat(input.value);
+      S[key] = v;
+      valEl.textContent = v.toFixed(dec);
+    });
+  });
+
+  // Rebuild button (density changes require rebuilding the particle array)
+  document.getElementById('s-rebuild').addEventListener('click', init);
+
+  /* ══════════════════════════════════════════════════════════════
+     START
+  ══════════════════════════════════════════════════════════════ */
   function start() { init(); requestAnimationFrame(animate); }
 
   if (document.fonts && document.fonts.load) {
-    document.fonts.load('300 80px "Space Grotesk"')
-      .then(start).catch(start);
+    document.fonts.load('300 80px "Space Grotesk"').then(start).catch(start);
   } else {
-    // Fallback: brief delay so browser can parse linked font
     setTimeout(start, 300);
   }
 
