@@ -560,7 +560,10 @@
 
   function init() {
     document.querySelectorAll('.card-img').forEach(setupCard);
-    buildPanel();
+    // Only show debug panel on localhost
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      buildPanel();
+    }
   }
 
   if (document.readyState === 'loading') {
