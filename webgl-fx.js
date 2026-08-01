@@ -596,8 +596,9 @@
 
   function init() {
     document.querySelectorAll('.card-img').forEach(setupCard);
-    // Only show debug panel on localhost
-    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    // Debug panel is opt-in on localhost: append ?fx=1 to tweak the shader
+    const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (isLocal && new URLSearchParams(location.search).has('fx')) {
       buildPanel();
     }
   }
