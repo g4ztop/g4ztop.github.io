@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Lazy-load images ───────────────────────────────────────────
-  const images = document.querySelectorAll('.card-img img');
+  const images = document.querySelectorAll('.card-img img, .proj-hero img, .proj-gallery img');
 
   const imgObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

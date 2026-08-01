@@ -163,59 +163,87 @@
 
   /* ─── Per-card setup ────────────────────────────────────────────────────── */
 
+  // Browsers cap live WebGL contexts (~8-16 per page); with a large grid we
+  // must create a card's context only while it is near the viewport and
+  // release it once it scrolls away.
   function setupCard(cardImgEl) {
     const img = cardImgEl.querySelector('img');
     if (!img) return;
 
-    const canvas = document.createElement('canvas');
-    Object.assign(canvas.style, {
-      position:      'absolute',
-      inset:         '0',
-      width:         '100%',
-      height:        '100%',
-      pointerEvents: 'none',
-      zIndex:        '2',
-      mixBlendMode:  'screen',
-    });
-    cardImgEl.appendChild(canvas);
+    const card = cardImgEl.closest('.card');
+    let st = null;         // live WebGL state, present only while near viewport
+    let hovered = false;
 
-    const gl = canvas.getContext('webgl');
-    if (!gl) { canvas.remove(); return; }
+    function init() {
+      if (st) return;
 
-    const prog    = makeProgram(gl);
-    const posLoc  = gl.getAttribLocation(prog,  'a_pos');
-    const texLoc  = gl.getUniformLocation(prog,  'u_tex');
-    const resLoc  = gl.getUniformLocation(prog,  'u_res');
-    const bloomLoc= gl.getUniformLocation(prog,  'u_bloom');
-    const rimLoc  = gl.getUniformLocation(prog,  'u_rim');
-    const timeLoc = gl.getUniformLocation(prog,  'u_time');
-    const rimWidthLoc   = gl.getUniformLocation(prog, 'u_rimWidth');
-    const waveSpeedLoc  = gl.getUniformLocation(prog, 'u_waveSpeed');
-    const waveStrLoc    = gl.getUniformLocation(prog, 'u_waveStrength');
-    const colorSatLoc   = gl.getUniformLocation(prog, 'u_colorSat');
-    const colorWaveLoc  = gl.getUniformLocation(prog, 'u_colorWave');
+      const canvas = document.createElement('canvas');
+      Object.assign(canvas.style, {
+        position:      'absolute',
+        inset:         '0',
+        width:         '100%',
+        height:        '100%',
+        pointerEvents: 'none',
+        zIndex:        '2',
+        mixBlendMode:  'screen',
+      });
+      cardImgEl.appendChild(canvas);
 
-    const vbo = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-    gl.bufferData(gl.ARRAY_BUFFER,
-      new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+      const gl = canvas.getContext('webgl');
+      if (!gl) { canvas.remove(); return; }
 
-    const tex = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      const prog    = makeProgram(gl);
+      st = {
+        canvas, gl, prog,
+        posLoc:  gl.getAttribLocation(prog,  'a_pos'),
+        texLoc:  gl.getUniformLocation(prog, 'u_tex'),
+        resLoc:  gl.getUniformLocation(prog, 'u_res'),
+        bloomLoc:gl.getUniformLocation(prog, 'u_bloom'),
+        rimLoc:  gl.getUniformLocation(prog, 'u_rim'),
+        timeLoc: gl.getUniformLocation(prog, 'u_time'),
+        rimWidthLoc:  gl.getUniformLocation(prog, 'u_rimWidth'),
+        waveSpeedLoc: gl.getUniformLocation(prog, 'u_waveSpeed'),
+        waveStrLoc:   gl.getUniformLocation(prog, 'u_waveStrength'),
+        colorSatLoc:  gl.getUniformLocation(prog, 'u_colorSat'),
+        colorWaveLoc: gl.getUniformLocation(prog, 'u_colorWave'),
+        vbo: gl.createBuffer(),
+        tex: gl.createTexture(),
+        bloomVal: 0, rimVal: 0,
+        tBloom: 0,   tRim: 0,
+        timeVal: 0,  rafId: null, ready: false,
+      };
 
-    let bloomVal = 0, rimVal = 0;
-    let tBloom   = 0, tRim   = 0;
-    let timeVal  = 0;
-    let hovered  = false;
-    let rafId    = null;
-    let ready    = false;
+      gl.bindBuffer(gl.ARRAY_BUFFER, st.vbo);
+      gl.bufferData(gl.ARRAY_BUFFER,
+        new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+
+      gl.bindTexture(gl.TEXTURE_2D, st.tex);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+      if (hovered) {
+        st.tBloom = settings.bloomIntensity;
+        st.tRim   = settings.rimIntensity;
+      }
+
+      if (img.complete && img.naturalWidth > 0) loadTex();
+    }
+
+    function destroy() {
+      if (!st) return;
+      if (st.rafId) cancelAnimationFrame(st.rafId);
+      const lose = st.gl.getExtension('WEBGL_lose_context');
+      if (lose) lose.loseContext();
+      st.canvas.remove();
+      st = null;
+    }
 
     function render() {
+      if (!st) return;
+      const { gl, canvas } = st;
       const w = cardImgEl.offsetWidth;
       const h = cardImgEl.offsetHeight;
       if (!w || !h) return;
@@ -226,74 +254,82 @@
       gl.viewport(0, 0, w, h);
       gl.clearColor(0, 0, 0, 1);
       gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.useProgram(prog);
-      gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-      gl.enableVertexAttribArray(posLoc);
-      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
-      gl.uniform1i(texLoc,   0);
-      gl.uniform2f(resLoc,   w, h);
-      gl.uniform1f(bloomLoc, bloomVal);
-      gl.uniform1f(rimLoc,   rimVal);
-      gl.uniform1f(timeLoc,  timeVal);
-      gl.uniform1f(rimWidthLoc,  settings.rimWidth);
-      gl.uniform1f(waveSpeedLoc, settings.waveSpeed);
-      gl.uniform1f(waveStrLoc,   settings.waveStrength);
-      gl.uniform1f(colorSatLoc,  settings.colorSaturation);
-      gl.uniform1f(colorWaveLoc, settings.colorWaveAmount);
+      gl.useProgram(st.prog);
+      gl.bindBuffer(gl.ARRAY_BUFFER, st.vbo);
+      gl.enableVertexAttribArray(st.posLoc);
+      gl.vertexAttribPointer(st.posLoc, 2, gl.FLOAT, false, 0, 0);
+      gl.uniform1i(st.texLoc,   0);
+      gl.uniform2f(st.resLoc,   w, h);
+      gl.uniform1f(st.bloomLoc, st.bloomVal);
+      gl.uniform1f(st.rimLoc,   st.rimVal);
+      gl.uniform1f(st.timeLoc,  st.timeVal);
+      gl.uniform1f(st.rimWidthLoc,  settings.rimWidth);
+      gl.uniform1f(st.waveSpeedLoc, settings.waveSpeed);
+      gl.uniform1f(st.waveStrLoc,   settings.waveStrength);
+      gl.uniform1f(st.colorSatLoc,  settings.colorSaturation);
+      gl.uniform1f(st.colorWaveLoc, settings.colorWaveAmount);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
 
     function tick() {
+      if (!st) return;
       const spd = settings.transitionSpeed;
-      bloomVal += (tBloom - bloomVal) * spd;
-      rimVal   += (tRim   - rimVal)   * spd;
-      if (rimVal > 0.001) timeVal += 0.016;
-      if (ready) render();
-      const settled = Math.abs(bloomVal - tBloom) < 0.001 &&
-                      Math.abs(rimVal   - tRim)   < 0.001;
+      st.bloomVal += (st.tBloom - st.bloomVal) * spd;
+      st.rimVal   += (st.tRim   - st.rimVal)   * spd;
+      if (st.rimVal > 0.001) st.timeVal += 0.016;
+      if (st.ready) render();
+      const settled = Math.abs(st.bloomVal - st.tBloom) < 0.001 &&
+                      Math.abs(st.rimVal   - st.tRim)   < 0.001;
       const done = settled && !hovered;
-      rafId = done ? null : requestAnimationFrame(tick);
+      st.rafId = done ? null : requestAnimationFrame(tick);
     }
 
     function kick() {
-      if (!rafId) rafId = requestAnimationFrame(tick);
+      if (st && !st.rafId) st.rafId = requestAnimationFrame(tick);
     }
 
     function loadTex() {
-      gl.bindTexture(gl.TEXTURE_2D, tex);
+      if (!st) return;
+      const { gl } = st;
+      gl.bindTexture(gl.TEXTURE_2D, st.tex);
       try {
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
-        ready = true;
+        st.ready = true;
         render();
       } catch (e) {
         console.warn('webgl-fx: could not load texture for', img.src, e);
       }
     }
 
-    if (img.complete && img.naturalWidth > 0) {
-      loadTex();
-    } else {
-      img.addEventListener('load', loadTex);
-    }
-
-    const card = cardImgEl.closest('.card');
+    img.addEventListener('load', loadTex);
 
     function activate() {
       hovered = true;
-      tBloom = settings.bloomIntensity;
-      tRim   = settings.rimIntensity;
+      if (!st) init();
+      if (!st) return;
+      st.tBloom = settings.bloomIntensity;
+      st.tRim   = settings.rimIntensity;
       kick();
     }
     function deactivate() {
       hovered = false;
-      tBloom  = 0;
-      tRim    = 0;
+      if (!st) return;
+      st.tBloom = 0;
+      st.tRim   = 0;
       kick();
     }
 
     // Desktop: hover
     card.addEventListener('mouseenter', activate);
     card.addEventListener('mouseleave', deactivate);
+
+    // Create/destroy the WebGL context as the card nears/leaves the viewport
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) init();
+        else                  destroy();
+      });
+    }, { rootMargin: '150px 0px 150px 0px', threshold: 0 }).observe(cardImgEl);
 
     // Mobile only: activate when card scrolls into center of viewport
     if (isTouchDevice) {
@@ -309,7 +345,7 @@
       observer.observe(cardImgEl);
     }
 
-    new ResizeObserver(() => { if (ready) render(); }).observe(cardImgEl);
+    new ResizeObserver(() => { if (st && st.ready) render(); }).observe(cardImgEl);
   }
 
   /* ─── Debug Control Panel ──────────────────────────────────────────────── */

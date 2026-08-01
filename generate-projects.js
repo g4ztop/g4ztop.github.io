@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 // ─── Project data ────────────────────────────────────────────────────────────
+// mediaDir points at media/<dir>. Structured dirs have images/ (+ images/thumbs/)
+// and video/ subfolders; legacy dirs are flat. Hero = bg-* image if present,
+// else first video, else first image.
 const projects = [
   {
     slug: 'hometopia',
@@ -11,7 +14,19 @@ const projects = [
     client: 'Hometopia Inc.',
     tags: ['Game Development', 'Technical Art', 'Tools'],
     description: `Lead Technical Artist on Hometopia, a Sims-like house building game available on Steam. Responsibilities spanned technical art pipeline development, custom tooling, and procedural systems designed to support a growing team of artists. Work included shader authoring, LOD and performance optimization, and developing Blender and Houdini tools to accelerate asset production.`,
-    images: ['hometopia', 'hometopia-2', 'hometopia-3', 'hometopia-4'],
+    mediaDir: 'hometopia',
+    cardImage: 'images/hometopia.jpg',
+    cardSub: 'Sims-like house building game on Steam',
+  },
+  {
+    slug: 'voidclimber',
+    title: 'VOID CLIMBER',
+    year: 'Ongoing',
+    role: 'Design, Art & Development',
+    tags: ['Game Development', 'Procedural', 'Worldbuilding'],
+    description: `An original game project in development: climb a procedurally assembled tower of human history, ascending through prehistoric, ancient, industrial, and contemporary epochs. Work spans character design, four epoch-themed biome clusters, resource and platform systems, and fully procedural skyboxes.`,
+    mediaDir: 'void-climber',
+    cardSub: 'Original game — a climb through human history',
   },
   {
     slug: 'miumiu',
@@ -22,7 +37,8 @@ const projects = [
     director: 'Cecile B Evans',
     tags: ['Fashion', 'VFX', '3D Animation'],
     description: `VFX and animation work for the Miu Miu Fall/Winter 2024 collection campaign. Created procedural static effects and large-scale bird murmuration simulations in collaboration with director Cecile B Evans. The project blended photorealistic CG environments with live-action footage to create a dreamlike visual language for the collection.`,
-    images: ['miumiu', 'miumiu-2', 'miumiu-3', 'miumiu-4'],
+    mediaDir: 'miu-miu-fall-winter-2024',
+    cardSub: 'Directed by Cecile B Evans',
   },
   {
     slug: 'moncler',
@@ -32,18 +48,8 @@ const projects = [
     client: 'Moncler',
     tags: ['Fashion Campaign', 'VFX', 'CG'],
     description: `CG forest backgrounds and environmental VFX for the Moncler × Salehe Bembury Summer 2023 campaign. Assets were deployed across commercials, digital advertising, and large-format billboards. The work involved fully procedural forest generation, photorealistic foliage rendering, and seamless integration with live-action plates.`,
-    images: ['moncler', 'moncler-2', 'moncler-3', 'moncler-4'],
-  },
-  {
-    slug: 'bmth',
-    title: 'BRING ME THE HORIZON',
-    subtitle: 'AmEN!',
-    year: '2023',
-    role: 'VFX Artist',
-    director: 'Weston Allen',
-    tags: ['Music Video', 'VFX', 'Character Animation'],
-    description: `Character animation and perspective-defying CG sequences for Bring Me The Horizon's "AmEN!" music video, directed by Weston Allen. The project involved creating complex character rigs and fluid simulation effects that were seamlessly composited into the live-action footage.`,
-    images: ['bmth', 'bmth-2', 'bmth-3', 'bmth-4'],
+    mediaDir: 'moncler-x-salehe-bembury',
+    cardSub: 'Summer 2023 Campaign',
   },
   {
     slug: 'megan',
@@ -54,7 +60,32 @@ const projects = [
     studio: 'INCworks',
     tags: ['Music Video', 'VFX', '3D'],
     description: `VFX and 3D asset creation for Megan Thee Stallion's "Cobra" music video, produced at INCworks. Contributions included creature design and simulation, environmental effects, and the integration of CG elements with high-energy performance footage.`,
-    images: ['megan', 'megan-2', 'megan-3', 'megan-4'],
+    mediaDir: 'megan-thee-stallion-cobra',
+    cardSub: 'Cobra — Studio: INCworks',
+  },
+  {
+    slug: 'realityornot',
+    title: 'CECILE B. EVANS',
+    subtitle: 'Reality or Not',
+    year: '2024',
+    role: 'VFX Artist',
+    director: 'Cecile B. Evans',
+    tags: ['Film', 'VFX', 'CG'],
+    description: `CG and VFX sequences for Cecile B. Evans' film "Reality or Not", including large-scale flood simulations and fully CG environments — continuing the collaboration begun on the Miu Miu Fall/Winter 2024 campaign.`,
+    mediaDir: 'cecile-b-evans-reality-or-not',
+    cardSub: 'Reality or Not — Film VFX',
+  },
+  {
+    slug: 'bmth',
+    title: 'BRING ME THE HORIZON',
+    subtitle: 'AmEN!',
+    year: '2023',
+    role: 'VFX Artist',
+    director: 'Weston Allen',
+    tags: ['Music Video', 'VFX', 'Character Animation'],
+    description: `Character animation and perspective-defying CG sequences for Bring Me The Horizon's "AmEN!" music video, directed by Weston Allen. The project involved creating complex character rigs and fluid simulation effects that were seamlessly composited into the live-action footage.`,
+    mediaDir: 'bring-me-the-horizon-amen',
+    cardSub: 'AmEN! — Directed by Weston Allen',
   },
   {
     slug: 'elena',
@@ -65,7 +96,8 @@ const projects = [
     client: 'Elena Velez',
     tags: ['Fashion', 'AI', 'NYFW'],
     description: `AI-generated imagery composed and animated in 3D for Elena Velez's YR003 "HOW'S MY DRIVING?" runway show at New York Fashion Week 2023. The work explored the intersection of generative AI imagery and real-time 3D compositing to create an immersive backdrop for the collection.`,
-    images: ['elena', 'elena-2', 'elena-3', 'elena-4'],
+    mediaDir: 'elena-velez-yr-003-how-s-my-driving',
+    cardSub: 'YR003 — HOW\'S MY DRIVING? NYFW 2023',
   },
   {
     slug: 'lakings',
@@ -75,7 +107,98 @@ const projects = [
     client: 'LA Kings / AEG',
     tags: ['Sports', 'Virtual Production', 'Volumetric Capture'],
     description: `Volumetric capture cinematic animations and arena environments for the LA Kings at Crypto.com Arena. The project combined volumetric scanning of athletes with procedurally generated environments to create in-arena spectacle content viewed by tens of thousands of fans.`,
-    images: ['lakings', 'lakings-2', 'lakings-3', 'lakings-4'],
+    mediaDir: 'la-kings-jumbotron',
+    cardSub: 'Volumetric Capture — Crypto.com Arena',
+  },
+  {
+    slug: 'dorianelectra',
+    title: 'DORIAN ELECTRA',
+    subtitle: 'My Agenda',
+    year: '2020',
+    role: '3D Artist',
+    tags: ['Music', '3D', 'CG'],
+    description: `3D artwork and visuals created for Dorian Electra's album My Agenda.`,
+    mediaDir: 'dorian-electra-my-agenda',
+    cardSub: 'My Agenda — 3D visuals',
+  },
+  {
+    slug: 'pbrmaterials',
+    title: 'PBR MATERIALS',
+    year: 'Various',
+    role: 'Material Artist',
+    tags: ['Materials', 'Texturing', '3D'],
+    description: `A library of hand-authored PBR materials — from corroded bronze, cuneiform tablets, and cave walls to stained glass, gilded trim, and the ceilings of Versailles. Built procedurally and from photographic source, tuned for physically based real-time rendering.`,
+    mediaDir: 'pbr-materials',
+    cardSub: 'Hand-authored material library',
+  },
+  {
+    slug: 'beaktrio',
+    title: 'THE BEAK TRIO',
+    year: 'Various',
+    role: 'Art Direction & 3D',
+    tags: ['Music', 'Album Art', '3D'],
+    description: `Album artwork, covers, and promotional imagery for The Beak Trio — including the Bezoar cover and a series of CG environment pieces.`,
+    mediaDir: 'the-beak-trio',
+    cardSub: 'Album art & promos',
+  },
+  {
+    slug: 'eternalhappiness',
+    title: 'ETERNAL HAPPINESS',
+    role: 'CG Artist',
+    tags: ['Film', 'CG', 'Visual Development'],
+    description: `CG stills and visual development for Eternal Happiness — ghosts, gibbets, and final girls rendered as painterly game-engine scenes.`,
+    mediaDir: 'eternal-happiness',
+    cardSub: 'CG stills & visual development',
+  },
+  {
+    slug: 'procedural',
+    title: 'PROCEDURAL WORKS',
+    year: 'Various',
+    role: 'Technical Artist',
+    tags: ['Technical Tools', 'Blender', 'Procedural', 'Houdini'],
+    description: `Custom tools and dynamic systems for procedural animation and generative art workflows. Includes a published Blender plugin for geometry-node-driven animation systems, Houdini procedural rigs, and various experimental real-time generative systems built in Unreal Engine.`,
+    mediaDir: 'procedural-works',
+    cardSub: 'Custom tools and dynamic systems',
+  },
+  {
+    slug: 'cgijesus',
+    title: 'CGI JESUS',
+    year: 'Various',
+    role: 'CG Artist',
+    studio: 'INCworks',
+    tags: ['Music', 'CG', 'Character'],
+    description: `Character-driven CG pieces produced at INCworks, including the CGI Jesus artwork and the fully animated Citybike short.`,
+    mediaDir: 'cgi-jesus',
+    cardSub: 'Character-driven CG — INCworks',
+  },
+  {
+    slug: 'pitstop',
+    title: 'PITSTOP',
+    subtitle: 'Album Promos',
+    role: '3D Artist / Animator',
+    tags: ['Music', 'Animation', 'Promo'],
+    description: `A series of animated 3D promos created for Pitstop album releases.`,
+    mediaDir: 'pitstop-album-promos',
+    cardSub: 'Animated album promos',
+  },
+  {
+    slug: 'loveradio',
+    title: 'LOVE AND RADIO',
+    role: 'Animator',
+    tags: ['Animation', 'Video'],
+    description: `Animated visuals produced for Love and Radio.`,
+    mediaDir: 'love-radio',
+    cardSub: 'Animated visuals',
+  },
+  {
+    slug: 'characterdesign',
+    title: 'CHARACTER DESIGN',
+    year: 'Various',
+    role: 'Character Artist',
+    tags: ['Character Art', '3D', 'Design'],
+    description: `A collection of character design work — sculpts, stylized real-time characters, and animation tests spanning personal and client projects.`,
+    mediaDir: 'character-design',
+    cardSub: 'Sculpts, stylized characters, animation tests',
   },
   {
     slug: 'ultraman',
@@ -85,7 +208,9 @@ const projects = [
     client: 'Ultraman Connection',
     tags: ['Virtual Production', 'Unreal Engine 5', 'Game Engine'],
     description: `Virtual production sets and environments built in Unreal Engine 5 for the Ultraman Connection project. As Lead Unreal Artist, responsibilities included set design, real-time lighting, and performance optimization for use across live-streamed virtual productions.`,
-    images: ['ultraman', 'ultraman-2', 'ultraman-3', 'ultraman-4'],
+    mediaDir: 'ultraman-connection',
+    cardImage: 'images/ultraman.jpg',
+    cardSub: 'Virtual Production — Unreal Engine 5',
   },
   {
     slug: '1000deaths',
@@ -95,36 +220,9 @@ const projects = [
     client: 'Pariah Interactive',
     tags: ['Game Development', 'Character Art', 'Shaders'],
     description: `Character creation, rigging, and custom shader effects for the video game 1000 Deaths, developed by Pariah Interactive. Work spanned concepting, high-poly sculpting, retopology, texturing, and implementation of stylized real-time shaders within the game engine.`,
-    images: ['1000deaths', '1000deaths-2', '1000deaths-3', '1000deaths-4'],
-  },
-  {
-    slug: 'wingedfreaks',
-    title: 'WINGED FREAKS',
-    subtitle: 'Adventureverse',
-    year: '2022',
-    role: '3D Artist',
-    client: 'Elevate Pictures',
-    tags: ['Television', 'Animation', 'Virtual Production'],
-    description: `3D character and environment design combined with virtual production work for Winged Freaks: Adventureverse, produced by Elevate Pictures. The series utilized real-time rendering pipelines and LED volume technology to deliver a stylized animated look on a tight broadcast schedule.`,
-    images: ['wingedfreaks', 'wingedfreaks-2', 'wingedfreaks-3', 'wingedfreaks-4'],
-  },
-  {
-    slug: 'musicvideos',
-    title: 'MUSIC VIDEOS',
-    year: 'Various',
-    role: 'VFX Artist / Animator',
-    tags: ['Animation', 'VFX', 'Music'],
-    description: `A collection of animation and VFX work across multiple music video productions. Projects ranged from full CG music videos to hybrid live-action/CG compositions, spanning a variety of genres, aesthetics, and production scales.`,
-    images: ['musicvideos', 'musicvideos-2', 'musicvideos-3', 'musicvideos-4'],
-  },
-  {
-    slug: 'procedural',
-    title: 'PROCEDURAL WORKS',
-    year: 'Various',
-    role: 'Technical Artist',
-    tags: ['Technical Tools', 'Blender', 'Procedural', 'Houdini'],
-    description: `Custom tools and dynamic systems for procedural animation and generative art workflows. Includes a published Blender plugin for geometry-node-driven animation systems, Houdini procedural rigs, and various experimental real-time generative systems built in Unreal Engine.`,
-    images: ['procedural', 'procedural-2', 'procedural-3', 'procedural-4'],
+    mediaDir: '1000-deaths',
+    cardImage: 'images/1000deaths.jpg',
+    cardSub: 'Character Creation — Pariah Interactive',
   },
   {
     slug: 'mfathesis',
@@ -134,9 +232,89 @@ const projects = [
     client: 'Tulane University',
     tags: ['Academic', 'Generative Art', 'UE4', 'AI'],
     description: `MFA thesis project exploring generative artworks created through the intersection of Unreal Engine 4 and machine learning systems. The work interrogated notions of authorship and creative agency in AI-assisted art-making, presented as an interactive installation and accompanying written thesis at Tulane University's Digital Art program.`,
-    images: ['mfa', 'mfa-2', 'mfa-3', 'mfa-4'],
+    mediaDir: 'mfa-thesis',
+    cardImage: 'images/mfa.jpg',
+    cardSub: '2021 — Tulane University',
   },
 ];
+
+// ─── Media scanning ───────────────────────────────────────────────────────────
+const IMG_RE = /\.(webp|jpe?g|png)$/i;
+const VID_RE = /\.(mp4|webm)$/i;
+
+function scanMedia(dir) {
+  const root = path.join(__dirname, 'media', dir);
+  const m = { images: [], videos: [], hasThumbs: false, flat: false };
+  if (!fs.existsSync(root)) return m;
+
+  const imgDir = path.join(root, 'images');
+  const vidDir = path.join(root, 'video');
+
+  if (fs.existsSync(imgDir) || fs.existsSync(vidDir)) {
+    if (fs.existsSync(imgDir)) {
+      m.images = fs.readdirSync(imgDir).filter(f => IMG_RE.test(f)).sort();
+      m.hasThumbs = fs.existsSync(path.join(imgDir, 'thumbs'));
+    }
+    if (fs.existsSync(vidDir)) {
+      m.videos = fs.readdirSync(vidDir).filter(f => VID_RE.test(f)).sort();
+    }
+  } else {
+    m.flat = true;
+    const files = fs.readdirSync(root);
+    m.images = files.filter(f => IMG_RE.test(f)).sort();
+    m.videos = files.filter(f => VID_RE.test(f)).sort();
+  }
+  return m;
+}
+
+function imgPath(p, f)  { return p.flatMedia ? `../media/${p.mediaDir}/${f}` : `../media/${p.mediaDir}/images/${f}`; }
+function vidPath(p, f)  { return p.flatMedia ? `../media/${p.mediaDir}/${f}` : `../media/${p.mediaDir}/video/${f}`; }
+
+// Resolve hero + gallery for a project
+function resolveMedia(project) {
+  const m = scanMedia(project.mediaDir);
+  project.flatMedia = m.flat;
+  project.hasThumbs = m.hasThumbs;
+
+  const bg     = m.images.find(f => f.startsWith('bg-'));
+  const plain  = m.images.filter(f => !f.startsWith('bg-') && !f.startsWith('poster.'));
+  const poster = m.images.find(f => f.startsWith('poster.'));
+
+  let hero;
+  if (m.videos.length)      hero = { type: 'video', file: m.videos[0], poster: bg || plain[0] || poster || null };
+  else if (bg)              hero = { type: 'image', file: bg };
+  else if (plain.length)    hero = { type: 'image', file: plain[0] };
+  else if (poster)          hero = { type: 'image', file: poster };
+  else                      hero = null;
+
+  const galleryVideos = m.videos.slice(1);
+  let galleryImages = plain;
+  if (hero && hero.type === 'image' && !hero.file.startsWith('bg-')) {
+    galleryImages = plain.filter(f => f !== hero.file);
+  }
+
+  const gallery = [
+    ...galleryVideos.map(f => ({ type: 'video', file: f })),
+    ...galleryImages.map(f => ({ type: 'image', file: f })),
+  ];
+
+  // Card thumbnail (site-root-relative)
+  let card;
+  if (project.cardImage) {
+    card = project.cardImage;
+  } else if (m.hasThumbs) {
+    const t = bg || plain[0] || poster;
+    card = `media/${project.mediaDir}/images/thumbs/${t}`;
+  } else if (bg || plain[0] || poster) {
+    const t = bg || plain[0] || poster;
+    card = m.flat ? `media/${project.mediaDir}/${t}` : `media/${project.mediaDir}/images/${t}`;
+  } else {
+    card = '';
+  }
+  project.card = card;
+
+  return { hero, gallery };
+}
 
 // ─── HTML template ────────────────────────────────────────────────────────────
 function renderMeta(label, value) {
@@ -152,19 +330,32 @@ function renderTags(tags) {
   return tags.map(t => `<span>${t}</span>`).join('\n              ');
 }
 
-function renderGallery(images, slug) {
-  // First image is hero; rest go in the gallery grid (wide + two halves)
-  const [, ...rest] = images;
-  return rest.map((img, i) => {
-    const cls = i === 0 ? 'gallery-item wide' : 'gallery-item';
+function renderHero(project, hero) {
+  if (!hero) return '';
+  if (hero.type === 'video') {
+    const poster = hero.poster ? ` poster="${imgPath(project, hero.poster)}"` : '';
+    return `<video src="${vidPath(project, hero.file)}" autoplay muted loop playsinline${poster}></video>`;
+  }
+  return `<img src="${imgPath(project, hero.file)}" alt="${project.title}" loading="lazy">`;
+}
+
+function renderGallery(project, gallery) {
+  return gallery.map((item, i) => {
+    const cls = i === 0 && item.type === 'video' ? 'gallery-item wide' : 'gallery-item';
+    if (item.type === 'video') {
+      return `
+        <div class="${cls}">
+          <video src="${vidPath(project, item.file)}" autoplay muted loop playsinline></video>
+        </div>`;
+    }
     return `
         <div class="${cls}">
-          <img src="../images/${img}.jpg" alt="" loading="lazy">
+          <img src="${imgPath(project, item.file)}" alt="${project.title} still" loading="lazy">
         </div>`;
   }).join('');
 }
 
-function buildPage(project, index) {
+function buildPage(project, index, media) {
   const prev = projects[index - 1];
   const next = projects[index + 1];
 
@@ -190,8 +381,8 @@ function buildPage(project, index) {
   <!-- Desktop Navigation -->
   <nav class="nav-desktop">
     <ul>
-      <li><a href="../index.html">Work</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="../work.html">Work</a></li>
+      <li><a href="../about.html">About</a></li>
     </ul>
   </nav>
 
@@ -206,14 +397,14 @@ function buildPage(project, index) {
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="../index.html">Work</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="../work.html">Work</a></li>
+      <li><a href="../about.html">About</a></li>
     </ul>
   </div>
 
   <main>
 
-    <a href="../index.html" class="back-link">Work</a>
+    <a href="../work.html" class="back-link">Work</a>
 
     <!-- Project Header -->
     <div class="proj-header">
@@ -233,9 +424,9 @@ function buildPage(project, index) {
       ${renderMeta('Studio', project.studio || null)}
     </div>
 
-    <!-- Hero Image -->
+    <!-- Hero -->
     <div class="proj-hero">
-      <img src="../images/${project.images[0]}.jpg" alt="${project.title}" loading="lazy">
+      ${renderHero(project, media.hero)}
     </div>
 
     <!-- Description -->
@@ -243,7 +434,7 @@ function buildPage(project, index) {
 
     <!-- Gallery -->
     <div class="proj-gallery">
-      ${renderGallery(project.images, project.slug)}
+      ${renderGallery(project, media.gallery)}
     </div>
 
     <!-- Prev / Next -->
@@ -267,15 +458,141 @@ function buildPage(project, index) {
 `;
 }
 
+// ─── work.html (grid) ─────────────────────────────────────────────────────────
+function buildCard(project) {
+  const sub = project.cardSub ? `\n              <p class="card-sub">${project.cardSub}</p>` : '';
+  return `
+        <article class="card span-3">
+          <a href="projects/${project.slug}.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="${project.card}" alt="${project.title}" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>${project.title}</h2>${sub}
+              <div class="tags">
+                ${renderTags(project.tags.slice(0, 3))}
+              </div>
+            </div>
+          </a>
+        </article>`;
+}
+
+function buildWorkPage() {
+  const effectMakerCard = `
+        <article class="card span-3">
+          <a href="#" target="_blank">
+            <div class="card-img" style="background-color:#0a0a0a;">
+              <img src="media/effect-maker/images/maxresdefault.webp" alt="YouTube: Effect Maker" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>YOUTUBE: EFFECT MAKER</h2>
+              <p class="card-sub">Tutorial series on procedural VFX & real-time effects</p>
+              <div class="tags">
+                <span>YouTube</span>
+              <span>Tutorials</span>
+              <span>VFX</span>
+              </div>
+            </div>
+          </a>
+        </article>`;
+
+  const cards = [effectMakerCard, ...projects.map(buildCard)].join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Mitchell Craft</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Desktop Navigation -->
+  <nav class="nav-desktop">
+    <ul>
+      <li><a href="work.html" class="nav-active">Work</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <span class="mobile-site-name">Mitchell Craft</span>
+    <button class="burger" id="burger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="header-name">
+        <h1>Mitchell Craft</h1>
+        <p class="tagline">Creative Technologist + 3D Artist</p>
+        <p class="tagline-sub">Creative Technologist at YouTube · Technical 3D &amp; VFX Artist based in NYC</p>
+      </div>
+      <div class="header-contact">
+        <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
+        <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio">
+      <div class="grid">
+${cards}
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
+    <span class="footer-sep">·</span>
+    <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="webgl-fx.js"></script>
+</body>
+</html>
+`;
+}
+
 // ─── Generate files ───────────────────────────────────────────────────────────
 const outDir = path.join(__dirname, 'projects');
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
 
+const warnings = [];
+
 projects.forEach((project, i) => {
-  const html = buildPage(project, i);
-  const filePath = path.join(outDir, `${project.slug}.html`);
-  fs.writeFileSync(filePath, html, 'utf8');
-  console.log(`✓  projects/${project.slug}.html`);
+  const media = resolveMedia(project);
+  if (!media.hero) warnings.push(`NO MEDIA: ${project.slug} (media/${project.mediaDir})`);
+  const html = buildPage(project, i, media);
+  fs.writeFileSync(path.join(outDir, `${project.slug}.html`), html, 'utf8');
+  const m = scanMedia(project.mediaDir);
+  console.log(`✓  projects/${project.slug}.html  (${m.videos.length} videos, ${m.images.filter(f => !f.startsWith('bg-')).length} images)`);
 });
 
+fs.writeFileSync(path.join(__dirname, 'work.html'), buildWorkPage(), 'utf8');
+console.log('✓  work.html');
+
+if (warnings.length) {
+  console.log('\n⚠ Warnings:');
+  warnings.forEach(w => console.log('  ' + w));
+}
 console.log(`\nDone — ${projects.length} project pages generated.`);
