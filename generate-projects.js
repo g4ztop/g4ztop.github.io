@@ -51,6 +51,7 @@ const projects = [
     client: 'Moncler',
     tags: ['Fashion Campaign', 'VFX', 'CG'],
     studio: 'INCworks',
+    youtube: ['HgMMMktXVLw'],
     description: `Lush CG forests created for the Moncler × Salehe Bembury 2023 release campaign, shown on billboards in Los Angeles and New York City. Built with Blender, Nuke, and SpeedTree.`,
     mediaDir: 'moncler-x-salehe-bembury',
     cardSub: 'Summer 2023 Campaign',
@@ -63,6 +64,7 @@ const projects = [
     role: 'VFX Artist',
     studio: 'INCworks',
     tags: ['Music Video', 'VFX', '3D'],
+    youtube: ['DOZNRoL0310'],
     description: `Custom backdrops, a snake animation, and visual effects for the music video accompanying Megan Thee Stallion's single "Cobra" — produced at INCworks in partnership with ThermoNuclear's creative team, using Unreal Engine, Blender, and After Effects.`,
     mediaDir: 'megan-thee-stallion-cobra',
     cardSub: 'Cobra — Studio: INCworks',
@@ -89,6 +91,7 @@ const projects = [
     director: 'Weston Allen',
     tags: ['Music Video', 'VFX', 'Character Animation'],
     studio: 'INCworks',
+    youtube: ['2TjcPpasesA'],
     description: `Custom character creation and animation of Lil Uzi Vert, a perspective-defying communion wafer consumption sequence, and more for Bring Me The Horizon's "AmEN!" (featuring Lil Uzi Vert, Daryl Palumbo, and Glassjaw), directed by Weston Allen.`,
     mediaDir: 'bring-me-the-horizon-amen',
     cardSub: 'AmEN! — Directed by Weston Allen',
@@ -117,18 +120,6 @@ const projects = [
     cardSub: 'Volumetric Capture — Crypto.com Arena',
   },
   {
-    slug: 'dorianelectra',
-    title: 'DORIAN ELECTRA',
-    subtitle: 'My Agenda',
-    year: '2022',
-    role: '3D Artist',
-    director: 'Dorian Electra, Weston Allen, Mike Diva',
-    tags: ['Music Video', '3D', 'CG'],
-    description: `3D environments, character creation and animation, and post-production compositing for Dorian Electra's viral "My Agenda" music video, featuring Pussy R!ot and The Village People — used to promote their 2022 world tour. Directed by Dorian Electra, Weston Allen, and Mike Diva.`,
-    mediaDir: 'dorian-electra-my-agenda',
-    cardSub: 'My Agenda — ft. Pussy R!ot & The Village People',
-  },
-  {
     slug: 'pbrmaterials',
     title: 'PBR MATERIALS',
     year: 'Various',
@@ -144,6 +135,7 @@ const projects = [
     year: '2021–2024',
     role: 'Art Direction & 3D',
     tags: ['Music', 'Album Art', '3D'],
+    youtube: ['jvQD8oO_cys', 'y1qom73MRk4', 'q8unmF_E6dA'],
     description: `Album covers and promotional artwork for The Beak Trio's full-length releases Hydrogen Horse Factory (2024) and Bezoar (2021).`,
     mediaDir: 'the-beak-trio',
     cardSub: 'Album art & promos',
@@ -189,16 +181,6 @@ const projects = [
     description: `A collection of music video teasers — "Missing One", "FRAME", and "ANALOG Remote" — for Pressure Fit & David Ben-Porat's collaborative album PITSTOP. Each video was themed around the music within, created in collaboration with the musicians.`,
     mediaDir: 'pitstop-album-promos',
     cardSub: 'Teasers for the album PITSTOP',
-  },
-  {
-    slug: 'loveradio',
-    title: 'LOVE & RADIO',
-    year: '2022',
-    role: 'Creative Direction, Typography, Animation',
-    tags: ['Animation', 'Typography', 'Video'],
-    description: `Animated title cards created for "Love & Radio", Richmond.`,
-    mediaDir: 'love-radio',
-    cardSub: 'Animated title cards',
   },
   {
     slug: 'characterdesign',
@@ -350,7 +332,12 @@ function renderHero(project, hero) {
 }
 
 function renderGallery(project, gallery) {
-  return gallery.map((item, i) => {
+  const embeds = (project.youtube || []).map(id => `
+        <div class="gallery-item wide">
+          <iframe src="https://www.youtube.com/embed/${id}" title="${project.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>`).join('');
+
+  return embeds + gallery.map((item, i) => {
     const cls = i === 0 && item.type === 'video' ? 'gallery-item wide' : 'gallery-item';
     if (item.type === 'video') {
       return `
