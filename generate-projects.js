@@ -13,10 +13,15 @@ const projects = [
     role: 'Lead Technical Artist',
     client: 'Hometopia Inc.',
     tags: ['Game Development', 'Technical Art', 'Tools'],
-    description: `Lead Technical Artist on Hometopia, a Sims-like house building game available on Steam. Responsibilities spanned technical art pipeline development, custom tooling, and procedural systems designed to support a growing team of artists. Work included shader authoring, LOD and performance optimization, and developing Blender and Houdini tools to accelerate asset production.`,
+    description: `Lead Technical Artist on Hometopia, a sandbox home-building game released on Steam on April 2, 2025. Responsibilities spanned technical art pipeline development, custom tooling, and procedural systems designed to support a growing team of artists. Work included shader authoring, LOD and performance optimization, and developing Blender and Houdini tools to accelerate asset production.
+
+The game gives players thousands of assets and customization options across a variety of environments, with no budget limits — free-form building in sandbox mode, real-time multiplayer so friends can design entire neighborhoods together, ready-made homes to build on, landscaping tools for outdoor spaces, and a built-in camera and portfolio system for sharing creations with the community. GamesRadar+ called it "the best parts of The Sims 4 and House Flipper."`,
     mediaDir: 'hometopia',
-    cardImage: 'images/hometopia.jpg',
-    cardSub: 'Sims-like house building game on Steam',
+    cardSub: 'Sandbox home-building game on Steam',
+    links: [
+      { label: 'View on Steam', url: 'https://store.steampowered.com/app/1138640/Hometopia/' },
+      { label: 'hometopia.com', url: 'https://www.hometopia.com' },
+    ],
   },
   {
     slug: 'voidclimber',
@@ -258,6 +263,26 @@ function renderTags(tags) {
   return tags.map(t => `<span>${t}</span>`).join('\n              ');
 }
 
+// Blank lines in a description become separate paragraphs
+function renderDescription(text) {
+  return text
+    .split(/\n\s*\n/)
+    .map(p => `<p class="proj-description">${p.trim()}</p>`)
+    .join('\n    ');
+}
+
+function renderLinks(links) {
+  if (!links || !links.length) return '';
+  const items = links.map(l =>
+    `<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`
+  ).join('\n      ');
+  return `
+    <div class="proj-links">
+      ${items}
+    </div>
+`;
+}
+
 function renderHero(project, hero) {
   if (!hero) return '';
   if (hero.type === 'video') {
@@ -363,8 +388,8 @@ function buildPage(project, index, media) {
     </div>
 
     <!-- Description -->
-    <p class="proj-description">${project.description}</p>
-
+    ${renderDescription(project.description)}
+${renderLinks(project.links)}
     <!-- Gallery -->
     <div class="proj-gallery">
       ${renderGallery(project, media.gallery)}

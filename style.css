@@ -245,7 +245,33 @@
   font-size: 15px;
   line-height: 1.65;
   color: #aaa;
+  margin-bottom: 22px;
+}
+
+.proj-description:last-of-type {
   margin-bottom: 60px;
+}
+
+.proj-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: -38px;
+  margin-bottom: 60px;
+}
+
+.proj-links a {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: #777;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 3px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.proj-links a:hover {
+  color: #fff;
+  border-color: #555;
 }
 
 /* Gallery grid */
