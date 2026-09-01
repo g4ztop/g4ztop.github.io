@@ -3,328 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mitchell Craft — Coming Soon</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; overflow: hidden; }
-    body { background: #030308; font-family: Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-
-    canvas { display: block; position: fixed; inset: 0; }
-
-    /* ── Center text ── */
-    .hero {
-      position: fixed; inset: 0; z-index: 10;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      pointer-events: none;
-      mix-blend-mode: difference;
-    }
-    .hero h1 {
-      font-size: clamp(28px, 5vw, 64px);
-      font-weight: 400;
-      color: #fff;
-      letter-spacing: 0.04em;
-    }
-    .hero p {
-      margin-top: 14px;
-      font-size: 11px;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-    }
-
-    /* ── Footer ── */
-    .footer {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 10;
-      padding: 18px 28px;
-      font-size: 12px; color: #555;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .footer a { color: #555; pointer-events: auto; transition: color 0.25s; }
-    .footer a:hover { color: #fff; }
-    .footer-sep { color: #2a2a2a; }
-
-    .nav {
-      position: fixed; top: 0; right: 0; z-index: 20;
-      padding: 22px 30px;
-    }
-    .nav ul { list-style: none; display: flex; gap: 24px; }
-    .nav ul li a {
-      font-size: 13px; color: rgba(255,255,255,0.45);
-      letter-spacing: 0.04em;
-      transition: color 0.25s;
-    }
-    .nav ul li a:hover { color: #fff; }
-
-    #hint {
-      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
-      z-index: 10; font-size: 10px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: rgba(255,255,255,0.22);
-      transition: opacity 1.2s;
-    }
-  </style>
+  <title>Mitchell Craft — Creative Technologist + 3D Artist</title>
+  <link rel="stylesheet" href="style.css?v=mtiuiofz">
 </head>
 <body>
 
-  <canvas id="c"></canvas>
-
-  <nav class="nav">
+  <!-- Desktop Navigation -->
+  <nav class="nav-desktop">
     <ul>
-      <li><a href="work.html">Work</a></li>
+      <li><a href="index.html" class="nav-active">Work</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
 
-  <div class="hero">
-    <h1>Mitchell Craft</h1>
-    <p>New work coming soon</p>
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <span class="mobile-site-name">Mitchell Craft</span>
+    <button class="burger" id="burger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 
-  <p id="hint">move to bend the light</p>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
 
-  <footer class="footer">
+  <main>
+
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="header-name">
+        <h1>Mitchell Craft</h1>
+        <p class="tagline">Creative Technologist + 3D Artist</p>
+        <p class="tagline-sub">Creative Technologist at YouTube · Technical 3D &amp; VFX Artist based in NYC</p>
+      </div>
+      <div class="header-contact">
+        <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
+        <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio">
+      <div class="grid">
+
+        <article class="card span-3">
+          <a href="#" target="_blank">
+            <div class="card-img" style="background-color:#0a0a0a;">
+              <img src="media/effect-maker/images/maxresdefault.webp" alt="YouTube: Effect Maker" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>YOUTUBE: EFFECT MAKER</h2>
+              <p class="card-sub">Tutorial series on procedural VFX & real-time effects</p>
+              <div class="tags">
+                <span>YouTube</span>
+              <span>Tutorials</span>
+              <span>VFX</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/hometopia.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/hometopia/images/thumbs/bg-01-hometopia.webp" alt="HOMETOPIA" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>HOMETOPIA</h2>
+              <p class="card-sub">Sandbox home-building game on Steam</p>
+              <div class="tags">
+                <span>Game Development</span>
+              <span>Technical Art</span>
+              <span>Tools</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/voidclimber.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/void-climber/images/thumbs/01-Screenshot_-5.webp" alt="VOID CLIMBER" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>VOID CLIMBER</h2>
+              <p class="card-sub">Procedural level generation — FuturePerfect Studios</p>
+              <div class="tags">
+                <span>Game Development</span>
+              <span>Technical Art</span>
+              <span>Procedural</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/miumiu.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/miu-miu-fall-winter-2024/images/bg-01-429753658_18425388745049890_4814345837404597800_n-topaz-enhance-2x.webp" alt="MIU MIU FALL/WINTER 2024" loading="lazy" style="--card-zoom:1.32">
+            </div>
+            <div class="card-info">
+              <h2>MIU MIU FALL/WINTER 2024</h2>
+              <p class="card-sub">Directed by Cecile B Evans</p>
+              <div class="tags">
+                <span>Fashion</span>
+              <span>VFX</span>
+              <span>3D Animation</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/moncler.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/moncler-x-salehe-bembury/images/thumbs/07-Photo-Jul-21-2023-9-36-18-PM-gigapixel-standard-scale-2_00x.webp" alt="MONCLER × SALEHE BEMBURY" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>MONCLER × SALEHE BEMBURY</h2>
+              <p class="card-sub">Summer 2023 Campaign</p>
+              <div class="tags">
+                <span>Fashion Campaign</span>
+              <span>VFX</span>
+              <span>CG</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/megan.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/megan-thee-stallion-cobra/images/thumbs/bg-01-megan-thee-stallion-cobra-tgj-1.webp" alt="MEGAN THEE STALLION" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>MEGAN THEE STALLION</h2>
+              <p class="card-sub">Cobra — Studio: INCworks</p>
+              <div class="tags">
+                <span>Music Video</span>
+              <span>VFX</span>
+              <span>3D</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/realityornot.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/cecile-b-evans-reality-or-not/images/thumbs/bg-01-REALITY-OR-NOT-STILL-13-2.webp" alt="CECILE B. EVANS" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>CECILE B. EVANS</h2>
+              <p class="card-sub">Reality or Not — Film VFX</p>
+              <div class="tags">
+                <span>Film</span>
+              <span>VFX</span>
+              <span>AI</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/bmth.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/bring-me-the-horizon-amen/images/thumbs/bg-01-uzi_scoials1.webp" alt="BRING ME THE HORIZON" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>BRING ME THE HORIZON</h2>
+              <p class="card-sub">AmEN! — Directed by Weston Allen</p>
+              <div class="tags">
+                <span>Music Video</span>
+              <span>VFX</span>
+              <span>Character Animation</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/elena.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/elena-velez-yr-003-how-s-my-driving/images/01-Capture.webp" alt="ELENA VELEZ" loading="lazy" style="--card-zoom:1.7">
+            </div>
+            <div class="card-info">
+              <h2>ELENA VELEZ</h2>
+              <p class="card-sub">YR003 — HOW'S MY DRIVING? NYFW 2023</p>
+              <div class="tags">
+                <span>Fashion</span>
+              <span>AI</span>
+              <span>NYFW</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/lakings.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/la-kings-jumbotron/images/thumbs/01-Sequence-01.00_00_20_05.Still001.webp" alt="LA KINGS" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>LA KINGS</h2>
+              <p class="card-sub">Volumetric Capture — Crypto.com Arena</p>
+              <div class="tags">
+                <span>Sports</span>
+              <span>Virtual Production</span>
+              <span>Volumetric Capture</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/procedural.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/procedural-works/images/thumbs/01-inc-procedural-RainGrass4-optimized.webp" alt="PROCEDURAL WORKS" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>PROCEDURAL WORKS</h2>
+              <p class="card-sub">Custom tools and dynamic systems</p>
+              <div class="tags">
+                <span>Technical Tools</span>
+              <span>Blender</span>
+              <span>Procedural</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/pitstop.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="media/pitstop-album-promos/images/poster.jpg" alt="PITSTOP" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>PITSTOP</h2>
+              <p class="card-sub">Teasers for the album PITSTOP</p>
+              <div class="tags">
+                <span>Music</span>
+              <span>Animation</span>
+              <span>Typography</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/ultraman.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="images/ultraman.jpg" alt="ULTRAMAN CONNECTION" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>ULTRAMAN CONNECTION</h2>
+              <p class="card-sub">Virtual Production — Unreal Engine 5</p>
+              <div class="tags">
+                <span>Virtual Production</span>
+              <span>Unreal Engine 5</span>
+              <span>Game Engine</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="card span-3">
+          <a href="projects/1000deaths.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="images/1000deaths.jpg" alt="1000 DEATHS" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>1000 DEATHS</h2>
+              <p class="card-sub">Character Creation — Pariah Interactive</p>
+              <div class="tags">
+                <span>Game Development</span>
+              <span>Character Art</span>
+              <span>Shaders</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
     <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
     <span class="footer-sep">·</span>
     <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
   </footer>
 
-<script type="importmap">
-{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
-</script>
-<script type="module">
-import * as THREE from 'three';
-
-/* ══════════════════════════════════════════════════════════════
-   RENDERER + SCENE — foggy monolith field
-══════════════════════════════════════════════════════════════ */
-const canvas   = document.getElementById('c');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.8;
-
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x030308);
-scene.fog = new THREE.FogExp2(0x030308, 0.03);
-
-const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200);
-camera.position.set(0, 2.2, 14);
-
-/* Lights — cool key, warm rim */
-scene.add(new THREE.HemisphereLight(0x4a5a95, 0x141020, 3.2));
-const sun = new THREE.DirectionalLight(0x7788cc, 1.8);
-sun.position.set(-4, 12, 6);
-scene.add(sun);
-const keyLight = new THREE.PointLight(0x6688ff, 1200, 0, 1.6);
-keyLight.position.set(-6, 9, 4);
-scene.add(keyLight);
-const rimLight = new THREE.PointLight(0xff7744, 900, 0, 1.6);
-rimLight.position.set(8, 3, -10);
-scene.add(rimLight);
-const fillLight = new THREE.PointLight(0xff3388, 400, 0, 1.7);
-fillLight.position.set(0, 1, 8);
-scene.add(fillLight);
-
-/* Ground */
-const ground = new THREE.Mesh(
-  new THREE.PlaneGeometry(300, 300),
-  new THREE.MeshStandardMaterial({ color: 0x12121c, roughness: 0.35, metalness: 0.7 })
-);
-ground.rotation.x = -Math.PI / 2;
-scene.add(ground);
-
-/* Monoliths — tall boxes scattered on a loose grid */
-const monoliths = new THREE.Group();
-const boxGeo = new THREE.BoxGeometry(1, 1, 1);
-const boxMat = new THREE.MeshStandardMaterial({ color: 0x36364a, roughness: 0.45, metalness: 0.55 });
-const rng = (a, b) => a + Math.random() * (b - a);
-
-for (let gx = -7; gx <= 7; gx++) {
-  for (let gz = -10; gz <= 4; gz++) {
-    if (Math.abs(gx) < 2 && gz > -6) continue;          // keep a corridor clear
-    if (Math.random() < 0.55) continue;
-    const h = rng(2, 16);
-    const m = new THREE.Mesh(boxGeo, boxMat);
-    m.position.set(gx * 4 + rng(-1.2, 1.2), h / 2, gz * 4 + rng(-1.2, 1.2));
-    m.scale.set(rng(0.6, 1.8), h, rng(0.6, 1.8));
-    m.rotation.y = rng(-0.15, 0.15);
-    monoliths.add(m);
-  }
-}
-scene.add(monoliths);
-
-/* Floating orbs drifting through the corridor */
-const orbGeo = new THREE.SphereGeometry(0.28, 24, 24);
-const orbMat = new THREE.MeshStandardMaterial({
-  color: 0x000000, roughness: 0.15, metalness: 0.2,
-  emissive: 0x88aaff, emissiveIntensity: 2.2
-});
-const orbs = [];
-for (let i = 0; i < 14; i++) {
-  const o = new THREE.Mesh(orbGeo, orbMat);
-  o.userData = { seed: Math.random() * 100, r: rng(0.1, 0.35) };
-  o.scale.setScalar(o.userData.r / 0.28);
-  scene.add(o);
-  orbs.push(o);
-}
-
-/* ══════════════════════════════════════════════════════════════
-   POST-PROCESSING — wavy distortion + variable blur GLSL pass
-══════════════════════════════════════════════════════════════ */
-let target = new THREE.WebGLRenderTarget(1, 1, { samples: 2 });
-
-const postScene  = new THREE.Scene();
-const postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
-const postMat = new THREE.ShaderMaterial({
-  uniforms: {
-    tScene:  { value: target.texture },
-    uTime:   { value: 0 },
-    uRes:    { value: new THREE.Vector2(1, 1) },
-    uMouse:  { value: new THREE.Vector2(0.5, 0.5) },
-    uWave:   { value: 1.0 },   // wave strength
-    uBlur:   { value: 1.0 },   // blur strength
-  },
-  vertexShader: /* glsl */`
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = vec4(position.xy, 0.0, 1.0);
-    }
-  `,
-  fragmentShader: /* glsl */`
-    precision highp float;
-    uniform sampler2D tScene;
-    uniform float uTime;
-    uniform vec2  uRes;
-    uniform vec2  uMouse;
-    uniform float uWave;
-    uniform float uBlur;
-    varying vec2 vUv;
-
-    float hash(vec2 p) {
-      return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
-    }
-
-    void main() {
-      vec2 uv = vUv;
-      float t = uTime;
-
-      /* ── Wavy distortion: layered sine warp, bent by the mouse ── */
-      vec2 toMouse = uv - uMouse;
-      float mDist  = length(toMouse);
-      float mPush  = smoothstep(0.55, 0.0, mDist);   // strongest near cursor
-
-      vec2 warp = vec2(
-        sin(uv.y * 9.0  + t * 0.7) * 0.006 +
-        sin(uv.y * 23.0 - t * 1.3) * 0.0022,
-        sin(uv.x * 7.0  - t * 0.55) * 0.006 +
-        cos(uv.x * 19.0 + t * 1.1) * 0.0022
-      );
-      warp += normalize(toMouse + 1e-5) * mPush * 0.012 *
-              sin(mDist * 34.0 - t * 3.2);
-      uv += warp * uWave;
-
-      /* ── Variable blur: sharp center, dreamy edges (tilt-shift-ish) ── */
-      float edge = smoothstep(0.12, 0.85, distance(uv, vec2(0.5)));
-      float r    = (edge * 6.0 + mPush * 2.5) * uBlur;
-      vec2 px    = r / uRes;
-
-      vec3 col = texture2D(tScene, uv).rgb * 0.227;
-      col += texture2D(tScene, uv + vec2( 1.0,  0.0) * px * 1.38).rgb * 0.1945;
-      col += texture2D(tScene, uv - vec2( 1.0,  0.0) * px * 1.38).rgb * 0.1945;
-      col += texture2D(tScene, uv + vec2( 0.0,  1.0) * px * 1.38).rgb * 0.0965;
-      col += texture2D(tScene, uv - vec2( 0.0,  1.0) * px * 1.38).rgb * 0.0965;
-      col += texture2D(tScene, uv + vec2( 0.7,  0.7) * px * 3.23).rgb * 0.0475;
-      col += texture2D(tScene, uv - vec2( 0.7,  0.7) * px * 3.23).rgb * 0.0475;
-      col += texture2D(tScene, uv + vec2(-0.7,  0.7) * px * 3.23).rgb * 0.0475;
-      col += texture2D(tScene, uv - vec2(-0.7,  0.7) * px * 3.23).rgb * 0.0475;
-
-      /* ── Chromatic fringe on the blurred edges ── */
-      float ca = edge * 0.0035 * uBlur;
-      col.r = mix(col.r, texture2D(tScene, uv + vec2(ca, 0.0)).r, edge * 0.6);
-      col.b = mix(col.b, texture2D(tScene, uv - vec2(ca, 0.0)).b, edge * 0.6);
-
-      /* ── Grain + vignette ── */
-      col += (hash(vUv * uRes + fract(t) * 100.0) - 0.5) * 0.055;
-      col *= 1.0 - edge * 0.35;
-
-      gl_FragColor = vec4(col, 1.0);
-    }
-  `,
-});
-postScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), postMat));
-
-/* ══════════════════════════════════════════════════════════════
-   INPUT + RESIZE
-══════════════════════════════════════════════════════════════ */
-const mouse = new THREE.Vector2(0.5, 0.5);   // smoothed
-const mouseRaw = new THREE.Vector2(0.5, 0.5);
-
-function pointTo(x, y) {
-  mouseRaw.set(x / window.innerWidth, 1.0 - y / window.innerHeight);
-}
-window.addEventListener('mousemove', e => pointTo(e.clientX, e.clientY));
-window.addEventListener('touchmove', e => pointTo(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
-
-let hintGone = false;
-['mousemove', 'touchstart'].forEach(ev => window.addEventListener(ev, () => {
-  if (hintGone) return; hintGone = true;
-  const el = document.getElementById('hint');
-  if (el) { el.style.opacity = '0'; setTimeout(() => el.remove(), 1400); }
-}, { once: true }));
-
-function resize() {
-  const w = window.innerWidth, h = window.innerHeight;
-  const dpr = renderer.getPixelRatio();
-  renderer.setSize(w, h);
-  target.setSize(w * dpr, h * dpr);
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-  postMat.uniforms.uRes.value.set(w * dpr, h * dpr);
-}
-window.addEventListener('resize', resize);
-resize();
-
-/* ══════════════════════════════════════════════════════════════
-   LOOP — drifting camera, floating orbs, then the post pass
-══════════════════════════════════════════════════════════════ */
-const clock = new THREE.Clock();
-
-function animate() {
-  requestAnimationFrame(animate);
-  const t = clock.getElapsedTime();
-
-  mouse.lerp(mouseRaw, 0.06);
-  postMat.uniforms.uTime.value = t;
-  postMat.uniforms.uMouse.value.copy(mouse);
-
-  // Slow forward glide with a gentle sway; parallax from the cursor
-  camera.position.x = Math.sin(t * 0.11) * 2.2 + (mouse.x - 0.5) * 2.0;
-  camera.position.y = 3.0 + Math.sin(t * 0.17) * 0.35 + (mouse.y - 0.5) * 1.2;
-  camera.position.z = 14 - (t * 0.35) % 8.0;          // loops seamlessly past a grid cell
-  camera.lookAt(camera.position.x * 0.4, 4.5, camera.position.z - 12);
-
-  // Orbs bob through the corridor
-  for (const o of orbs) {
-    const s = o.userData.seed;
-    o.position.set(
-      Math.sin(t * 0.14 + s) * 6.5,
-      1.2 + Math.sin(t * 0.4 + s * 2.0) * 1.6 + Math.sin(s) * 1.5,
-      camera.position.z - 8 - ((s * 7.3 + t * 0.6) % 30)
-    );
-  }
-
-  keyLight.position.x = Math.sin(t * 0.2) * 8;
-  rimLight.position.z = camera.position.z - 16;
-
-  renderer.setRenderTarget(target);
-  renderer.render(scene, camera);
-  renderer.setRenderTarget(null);
-  renderer.render(postScene, postCamera);
-}
-animate();
-</script>
+  <script src="script.js?v=mtiuiofz"></script>
+  <script src="webgl-fx.js?v=mtiuiofz"></script>
 </body>
 </html>

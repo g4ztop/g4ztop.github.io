@@ -232,6 +232,11 @@
   margin-bottom: 40px;
 }
 
+/* Hero as the last block (videoFirst pages) */
+.proj-hero-last {
+  margin-bottom: 70px;
+}
+
 .proj-hero img,
 .proj-hero video {
   width: 100%;
@@ -279,20 +284,31 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3px;
+  align-items: start;
   margin-bottom: 70px;
 }
 
 .proj-gallery .gallery-item {
-  aspect-ratio: 16 / 9;
   background: #0d0d0d;
   overflow: hidden;
+}
+
+/* Embeds and video need a fixed frame; images keep their own proportions */
+.proj-gallery .gallery-item.wide,
+.proj-gallery .gallery-item.video-item {
+  aspect-ratio: 16 / 9;
 }
 
 .proj-gallery .gallery-item.wide {
   grid-column: span 2;
 }
 
-.proj-gallery .gallery-item img,
+.proj-gallery .gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .proj-gallery .gallery-item video {
   width: 100%;
   height: 100%;
@@ -304,6 +320,150 @@
   height: 100%;
   border: 0;
   display: block;
+}
+
+/* Gallery lightbox */
+.proj-gallery img.zoomable,
+.proj-gallery video.zoomable {
+  cursor: zoom-in;
+}
+
+.proj-gallery .gallery-item {
+  position: relative;
+}
+
+/* Embeds swallow their own clicks, so they get an explicit expand control */
+.expand-media {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(10, 10, 10, 0.55);
+  color: #ddd;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  cursor: zoom-in;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s, color 0.2s;
+}
+
+.gallery-item:hover .expand-media,
+.expand-media:focus-visible {
+  opacity: 1;
+}
+
+.expand-media:hover {
+  background: rgba(10, 10, 10, 0.8);
+  color: #fff;
+}
+
+@media (hover: none) {
+  .expand-media { opacity: 1; }
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 64px;
+  background: rgba(8, 8, 8, 0.45);
+  backdrop-filter: blur(26px) saturate(130%);
+  -webkit-backdrop-filter: blur(26px) saturate(130%);
+}
+
+/* Without backdrop-filter the page behind would just show through */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .lightbox {
+    background: rgba(5, 5, 5, 0.97);
+  }
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox-stage img,
+.lightbox-stage video {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 1;
+  cursor: default;
+}
+
+/* Embeds have no intrinsic size to contain, so they get a 16:9 box that fits */
+.lightbox-frame {
+  width: min(100%, calc((100vh - 160px) * 16 / 9));
+  aspect-ratio: 16 / 9;
+  max-height: 100%;
+}
+
+.lightbox-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  padding: 12px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+  color: #7a7a7a;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  color: #fff;
+}
+
+.lightbox-close {
+  top: 10px;
+  right: 16px;
+  font-size: 30px;
+}
+
+.lightbox-prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 10px; top: 50%; transform: translateY(-50%); }
+
+.lightbox-count {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #666;
 }
 
 /* Prev / Next navigation */
@@ -352,6 +512,13 @@
   .proj-gallery .gallery-item.wide {
     grid-column: span 1;
   }
+
+  .lightbox {
+    padding: 52px 10px;
+  }
+
+  .lightbox-prev { left: 0; }
+  .lightbox-next { right: 0; }
 }
 
 
@@ -616,10 +783,11 @@ main {
 
 .card-img img {
   transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(var(--card-zoom, 1));
 }
 
 .card:hover .card-img img.loaded {
-  transform: scale(1.015);
+  transform: scale(calc(var(--card-zoom, 1) * 1.015));
 }
 
 .card-img::after {

@@ -1,6 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+// Bumped whenever style.css or script.js changes, so browsers can't serve a
+// stale copy of either after a deploy.
+const assetVersion = ['style.css', 'script.js']
+  .map(f => Math.floor(fs.statSync(path.join(__dirname, f)).mtimeMs))
+  .reduce((a, b) => Math.max(a, b), 0)
+  .toString(36);
+
 // ─── Project data ────────────────────────────────────────────────────────────
 // mediaDir points at media/<dir>. Structured dirs have images/ (+ images/thumbs/)
 // and video/ subfolders; legacy dirs are flat. Hero = bg-* image if present,
@@ -47,6 +54,8 @@ The game gives players thousands of assets and customization options across a va
     description: `VFX for Miu Miu's Fall/Winter 2024 collection, directed by Cecile B Evans. Created a variety of 3D assets and animations for the short film "Reception!", which played before and during Miu Miu's show at Paris Fashion Week 2024. The film centers on a speculative future in which one of the last living translators on earth receives a series of messages in a mysterious storage center, and features challenging 3D animations and simulations — including a procedural static system designed to mimic the murmuration of flocks of birds.`,
     mediaDir: 'miu-miu-fall-winter-2024',
     cardSub: 'Directed by Cecile B Evans',
+    cardImage: 'media/miu-miu-fall-winter-2024/images/bg-01-429753658_18425388745049890_4814345837404597800_n-topaz-enhance-2x.webp',
+    cardZoom: 1.32,
   },
   {
     slug: 'moncler',
@@ -57,6 +66,10 @@ The game gives players thousands of assets and customization options across a va
     tags: ['Fashion Campaign', 'VFX', 'CG'],
     studio: 'INCworks',
     youtube: ['HgMMMktXVLw'],
+    youtubeAutoplay: true,
+    videoFirst: true,
+    exclude: ['03-'], // cropped repeat of the hero shot
+    cardImage: 'media/moncler-x-salehe-bembury/images/thumbs/07-Photo-Jul-21-2023-9-36-18-PM-gigapixel-standard-scale-2_00x.webp',
     description: `Lush CG forests created for the Moncler × Salehe Bembury 2023 release campaign, shown on billboards in Los Angeles and New York City. Built with Blender, Nuke, and SpeedTree.`,
     mediaDir: 'moncler-x-salehe-bembury',
     cardSub: 'Summer 2023 Campaign',
@@ -70,6 +83,9 @@ The game gives players thousands of assets and customization options across a va
     studio: 'INCworks',
     tags: ['Music Video', 'VFX', '3D'],
     youtube: ['DOZNRoL0310'],
+    youtubeAutoplay: true,
+    youtubeStart: 43,
+    videoFirst: true,
     description: `Custom backdrops, a snake animation, and visual effects for the music video accompanying Megan Thee Stallion's single "Cobra" — produced at INCworks in partnership with ThermoNuclear's creative team, using Unreal Engine, Blender, and After Effects.`,
     mediaDir: 'megan-thee-stallion-cobra',
     cardSub: 'Cobra — Studio: INCworks',
@@ -111,6 +127,10 @@ The game gives players thousands of assets and customization options across a va
     tags: ['Fashion', 'AI', 'NYFW'],
     description: `Campaign video for CFDA award winner Elena Velez's Autumn/Winter 2023 fashion show "YR003 — HOW'S MY DRIVING?" at New York Fashion Week. The video was installed across eight screens as the backdrop for the catwalk and the introduction to the designer's visual and conceptual world. Graphics were created using a combination of AI imagery, AI-generated depth maps, and 3D modeling in Blender. In partnership with Ophelia & Company.`,
     mediaDir: 'elena-velez-yr-003-how-s-my-driving',
+    // Source still is pillarboxed; 1.45 crops past the black bars. Full-size
+    // image rather than the thumb so it stays sharp at that crop.
+    cardImage: 'media/elena-velez-yr-003-how-s-my-driving/images/01-Capture.webp',
+    cardZoom: 1.7,
     cardSub: 'YR003 — HOW\'S MY DRIVING? NYFW 2023',
   },
   {
@@ -220,8 +240,11 @@ function resolveMedia(project) {
   else if (poster)          hero = { type: 'image', file: poster };
   else                      hero = null;
 
-  const galleryVideos = m.videos.slice(1);
-  let galleryImages = plain;
+  // project.exclude drops files from the gallery, matched by filename prefix
+  const excluded = f => (project.exclude || []).some(x => f.startsWith(x));
+
+  const galleryVideos = m.videos.slice(1).filter(f => !excluded(f));
+  let galleryImages = plain.filter(f => !excluded(f));
   if (hero && hero.type === 'image' && !hero.file.startsWith('bg-')) {
     galleryImages = plain.filter(f => f !== hero.file);
   }
@@ -292,14 +315,26 @@ function renderHero(project, hero) {
   return `<img src="${imgPath(project, hero.file)}" alt="${project.title}" loading="lazy">`;
 }
 
-function renderGallery(project, gallery) {
-  const embeds = (project.youtube || []).map(id => `
+function renderEmbeds(project) {
+  return (project.youtube || []).map((id, i) => {
+    // First embed autoplays muted from project.youtubeStart when youtubeAutoplay is set.
+    // Muting is what makes autoplay legal in browsers; lazy loading would defeat it.
+    const auto = project.youtubeAutoplay && i === 0;
+    const start = project.youtubeStart || 0;
+    const params = auto
+      ? `?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0${start ? `&amp;start=${start}` : ''}`
+      : '';
+    const lazy = auto ? '' : ' loading="lazy"';
+    return `
         <div class="gallery-item wide">
-          <iframe src="https://www.youtube.com/embed/${id}" title="${project.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>`).join('');
+          <iframe src="https://www.youtube.com/embed/${id}${params}" title="${project.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen${lazy}></iframe>
+        </div>`;
+  }).join('');
+}
 
-  return embeds + gallery.map((item, i) => {
-    const cls = i === 0 && item.type === 'video' ? 'gallery-item wide' : 'gallery-item';
+function renderStills(project, gallery) {
+  return gallery.map((item, i) => {
+    const cls = i === 0 && item.type === 'video' ? 'gallery-item video-item wide' : (item.type === 'video' ? 'gallery-item video-item' : 'gallery-item');
     if (item.type === 'video') {
       return `
         <div class="${cls}">
@@ -326,20 +361,46 @@ function buildPage(project, index, media) {
 
   const subtitle = project.subtitle ? `<p class="card-sub" style="margin-top:6px;color:#777;">${project.subtitle}</p>` : '';
 
+  const heroLast = project.videoFirst && !renderStills(project, media.gallery);
+  const heroBlock = `<!-- Hero -->
+    <div class="proj-hero${heroLast ? ' proj-hero-last' : ''}">
+      ${renderHero(project, media.hero)}
+    </div>`;
+
+  const textBlock = `<!-- Description -->
+    ${renderDescription(project.description)}${renderLinks(project.links)}`;
+
+  const embeds = renderEmbeds(project);
+  const stills = renderStills(project, media.gallery);
+
+  const galleryWrap = inner => inner
+    ? `<!-- Gallery -->
+    <div class="proj-gallery">
+      ${inner}
+    </div>`
+    : '';
+
+  // videoFirst leads with the video, then the copy, then the hero still, then
+  // whatever else is in the gallery
+  const blocks = (project.videoFirst
+    ? [galleryWrap(embeds), textBlock, heroBlock, galleryWrap(stills)]
+    : [heroBlock, textBlock, galleryWrap(embeds + stills)]
+  ).filter(Boolean).join('\n\n    ');
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${project.title} — Mitchell Craft</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.css?v=${assetVersion}">
 </head>
 <body class="project-page">
 
   <!-- Desktop Navigation -->
   <nav class="nav-desktop">
     <ul>
-      <li><a href="../work.html">Work</a></li>
+      <li><a href="../index.html">Work</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </nav>
@@ -355,14 +416,14 @@ function buildPage(project, index, media) {
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="../work.html">Work</a></li>
+      <li><a href="../index.html">Work</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </div>
 
   <main>
 
-    <a href="../work.html" class="back-link">Work</a>
+    <a href="../index.html" class="back-link">Work</a>
 
     <!-- Project Header -->
     <div class="proj-header">
@@ -382,18 +443,7 @@ function buildPage(project, index, media) {
       ${renderMeta('Studio', project.studio || null)}
     </div>
 
-    <!-- Hero -->
-    <div class="proj-hero">
-      ${renderHero(project, media.hero)}
-    </div>
-
-    <!-- Description -->
-    ${renderDescription(project.description)}
-${renderLinks(project.links)}
-    <!-- Gallery -->
-    <div class="proj-gallery">
-      ${renderGallery(project, media.gallery)}
-    </div>
+    ${blocks}
 
     <!-- Prev / Next -->
     <div class="proj-nav">
@@ -410,20 +460,21 @@ ${renderLinks(project.links)}
     <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
   </footer>
 
-  <script src="../script.js"></script>
+  <script src="../script.js?v=${assetVersion}"></script>
 </body>
 </html>
 `;
 }
 
-// ─── work.html (grid) ─────────────────────────────────────────────────────────
+// ─── index.html (grid) ─────────────────────────────────────────────────────────
 function buildCard(project) {
   const sub = project.cardSub ? `\n              <p class="card-sub">${project.cardSub}</p>` : '';
+  const zoom = project.cardZoom ? ` style="--card-zoom:${project.cardZoom}"` : '';
   return `
         <article class="card span-3">
           <a href="projects/${project.slug}.html">
             <div class="card-img" style="background-color:#0d0d0d;">
-              <img src="${project.card}" alt="${project.title}" loading="lazy">
+              <img src="${project.card}" alt="${project.title}" loading="lazy"${zoom}>
             </div>
             <div class="card-info">
               <h2>${project.title}</h2>${sub}
@@ -461,15 +512,15 @@ function buildWorkPage() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work — Mitchell Craft</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Mitchell Craft — Creative Technologist + 3D Artist</title>
+  <link rel="stylesheet" href="style.css?v=${assetVersion}">
 </head>
 <body>
 
   <!-- Desktop Navigation -->
   <nav class="nav-desktop">
     <ul>
-      <li><a href="work.html" class="nav-active">Work</a></li>
+      <li><a href="index.html" class="nav-active">Work</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
@@ -487,7 +538,7 @@ function buildWorkPage() {
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="work.html">Work</a></li>
+      <li><a href="index.html">Work</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </div>
@@ -524,8 +575,8 @@ ${cards}
     <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="webgl-fx.js"></script>
+  <script src="script.js?v=${assetVersion}"></script>
+  <script src="webgl-fx.js?v=${assetVersion}"></script>
 </body>
 </html>
 `;
@@ -546,8 +597,24 @@ projects.forEach((project, i) => {
   console.log(`✓  projects/${project.slug}.html  (${m.videos.length} videos, ${m.images.filter(f => !f.startsWith('bg-')).length} images)`);
 });
 
-fs.writeFileSync(path.join(__dirname, 'work.html'), buildWorkPage(), 'utf8');
-console.log('✓  work.html');
+fs.writeFileSync(path.join(__dirname, 'index.html'), buildWorkPage(), 'utf8');
+console.log('✓  index.html');
+
+// about.html and coming-soon.html are hand-maintained; keep their asset URLs
+// on the same version stamp as the generated pages.
+['about.html', 'coming-soon.html'].forEach(file => {
+  const full = path.join(__dirname, file);
+  if (!fs.existsSync(full)) return;
+  const before = fs.readFileSync(full, 'utf8');
+  const after = before.replace(
+    /(href|src)="(style\.css|script\.js)(\?v=[^"]*)?"/g,
+    (_, attr, asset) => `${attr}="${asset}?v=${assetVersion}"`
+  );
+  if (after !== before) {
+    fs.writeFileSync(full, after, 'utf8');
+    console.log(`\u2713  ${file} (asset version)`);
+  }
+});
 
 if (warnings.length) {
   console.log('\n⚠ Warnings:');
