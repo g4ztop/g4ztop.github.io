@@ -1,6 +1,8 @@
 .DS_Store
 **/.DS_Store
 .claude/
+.firebase/
 
-# Instagram archive derivatives — large, hosting not yet decided
+# Instagram archive derivatives — hosted in the mitchellcraft-net-media
+# GCS bucket instead of git; see build-instagram.js MEDIA_BASE
 media/instagram/

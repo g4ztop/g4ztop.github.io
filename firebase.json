@@ -1,0 +1,15 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "generate-projects.js",
+      "build-instagram.js",
+      "curate.js",
+      "instagram-curation.json",
+      "media/instagram/**"
+    ]
+  }
+}
