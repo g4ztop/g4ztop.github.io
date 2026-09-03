@@ -135,14 +135,16 @@ The game gives players thousands of assets and customization options across a va
   },
   {
     slug: 'lakings',
-    title: 'LA KINGS',
+    title: 'YOOM × LA KINGS',
     year: '2023',
     role: 'Lead VFX Artist',
     client: 'LA Kings / AEG',
     tags: ['Sports', 'Virtual Production', 'Volumetric Capture'],
+    youtube: ['JGETVhesGkw', 'IFcZWVEDKXw'],
     description: `Props, environments, physics simulations, and set pieces for a series of cinematic Unreal Engine animations featuring volumetric captures of LA Kings players, built on Yoom's volumetric capture technology. The videos were presented on the Crypto.com Arena jumbotron during LA Kings games. In partnership with Yoom and the LA Kings.`,
     mediaDir: 'la-kings-jumbotron',
-    cardSub: 'Volumetric Capture — Crypto.com Arena',
+    cardImage: 'media/la-kings-jumbotron/images/thumbs/02-3.webp',
+    cardSub: 'Jumbotron animations — Crypto.com Arena',
   },
   {
     slug: 'procedural',
@@ -401,6 +403,7 @@ function buildPage(project, index, media) {
   <nav class="nav-desktop">
     <ul>
       <li><a href="../index.html">Work</a></li>
+      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </nav>
@@ -417,6 +420,7 @@ function buildPage(project, index, media) {
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="../index.html">Work</a></li>
+      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </div>
@@ -521,6 +525,7 @@ function buildWorkPage() {
   <nav class="nav-desktop">
     <ul>
       <li><a href="index.html" class="nav-active">Work</a></li>
+      <li><a href="instagram.html">Archive</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
@@ -539,6 +544,7 @@ function buildWorkPage() {
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="index.html">Work</a></li>
+      <li><a href="instagram.html">Archive</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </div>
@@ -549,8 +555,8 @@ function buildWorkPage() {
     <header class="site-header">
       <div class="header-name">
         <h1>Mitchell Craft</h1>
-        <p class="tagline">Creative Technologist + 3D Artist</p>
-        <p class="tagline-sub">Creative Technologist at YouTube · Technical 3D &amp; VFX Artist based in NYC</p>
+        <p class="tagline">Creative technologist on Effects @ YouTube</p>
+        <p class="tagline-sub">Technical 3D &amp; VFX Artist based in NYC</p>
       </div>
       <div class="header-contact">
         <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>

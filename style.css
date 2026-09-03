@@ -466,6 +466,84 @@ body.lightbox-open {
   color: #666;
 }
 
+.lightbox-link {
+  position: absolute;
+  bottom: 18px;
+  right: 24px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #777;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.lightbox-link:hover {
+  color: #fff;
+  border-color: #666;
+}
+
+/* ============================================================
+   INSTAGRAM ARCHIVE
+   ============================================================ */
+
+.ig-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 70px;
+}
+
+/* Every item in a row shares one aspect ratio, set per row */
+.ig-row {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+  gap: 3px;
+}
+
+.ig-item {
+  position: relative;
+  aspect-ratio: var(--ratio, 1);
+  background: #0d0d0d;
+  overflow: hidden;
+}
+
+.ig-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: opacity 0.5s ease, transform 0.4s ease;
+}
+
+.ig-item:hover img.loaded {
+  transform: scale(1.02);
+}
+
+/* Play badge on video items */
+.ig-play {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .ig-row {
+    gap: 2px;
+  }
+
+  .ig-grid {
+    gap: 2px;
+  }
+}
+
 /* Prev / Next navigation */
 .proj-nav {
   display: flex;

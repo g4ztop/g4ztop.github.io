@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Lazy-load images ───────────────────────────────────────────
-  const images = document.querySelectorAll('.card-img img, .proj-hero img, .proj-gallery img');
+  const images = document.querySelectorAll('.card-img img, .proj-hero img, .proj-gallery img, .ig-item img');
 
   const imgObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Gallery lightbox ───────────────────────────────────────────
   const galleryMedia = Array.from(
-    document.querySelectorAll('.proj-gallery img, .proj-gallery video, .proj-gallery iframe')
+    document.querySelectorAll(
+      '.proj-gallery img, .proj-gallery video, .proj-gallery iframe, .ig-item img'
+    )
   );
 
   if (galleryMedia.length) {
@@ -39,11 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
       <button class="lightbox-nav lightbox-prev" aria-label="Previous">&#8592;</button>
       <div class="lightbox-stage"></div>
       <button class="lightbox-nav lightbox-next" aria-label="Next">&#8594;</button>
-      <div class="lightbox-count"></div>`;
+      <div class="lightbox-count"></div>
+      <a class="lightbox-link" target="_blank" rel="noopener" hidden>View on Instagram &#8599;</a>`;
     document.body.appendChild(overlay);
 
     const stage  = overlay.querySelector('.lightbox-stage');
     const count  = overlay.querySelector('.lightbox-count');
+    const link   = overlay.querySelector('.lightbox-link');
     const single = galleryMedia.length < 2;
     let current  = 0;
     let lastFocus = null;
@@ -85,6 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return frame;
       }
 
+      // Archive posters stand in for a video; play that instead of the still
+      if (source.dataset.video) {
+        const video = document.createElement('video');
+        video.src = source.dataset.video;
+        video.poster = source.currentSrc || source.src;
+        video.controls = true;
+        video.autoplay = true;
+        video.loop = true;
+        video.playsInline = true;
+        return video;
+      }
+
       const img = document.createElement('img');
       img.src = source.currentSrc || source.src;
       img.alt = source.alt || '';
@@ -93,8 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const show = i => {
       current = (i + galleryMedia.length) % galleryMedia.length;
-      stage.replaceChildren(buildMedia(galleryMedia[current]));
+      const source = galleryMedia[current];
+      stage.replaceChildren(buildMedia(source));
       count.textContent = single ? '' : `${current + 1} / ${galleryMedia.length}`;
+
+      // Archive items carry the post they came from
+      const post = source.dataset.post;
+      link.hidden = !post;
+      if (post) link.href = post;
     };
 
     // Inline loops would keep moving behind the blurred backdrop
