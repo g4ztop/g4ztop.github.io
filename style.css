@@ -322,6 +322,11 @@
   grid-column: span 2;
 }
 
+/* Vertical Shorts/face-filter samples, e.g. Effect Maker creator clips */
+.proj-gallery .gallery-item.portrait {
+  aspect-ratio: 9 / 16;
+}
+
 .proj-gallery .gallery-item img {
   width: 100%;
   height: auto;

@@ -26,6 +26,9 @@ Also writes the system instructions and preamble behind the platform's generativ
     mediaDir: 'effect-maker',
     cardImage: 'media/effect-maker/images/maxresdefault.webp',
     cardSub: '3P design platform for effects & face filters',
+    // Creator sample clips are vertical Shorts footage; the promo previews
+    // (channel_page_preview, desktop_preview, shorts_preview) stay 16:9.
+    portraitVideos: f => f.endsWith('_labeled_v2.webm'),
   },
   {
     slug: 'miumiu',
@@ -354,7 +357,10 @@ function renderEmbeds(project) {
 
 function renderStills(project, gallery) {
   return gallery.map((item, i) => {
-    const cls = i === 0 && item.type === 'video' ? 'gallery-item video-item wide' : (item.type === 'video' ? 'gallery-item video-item' : 'gallery-item');
+    const portrait = item.type === 'video' && project.portraitVideos && project.portraitVideos(item.file);
+    const cls = portrait
+      ? 'gallery-item video-item portrait'
+      : (i === 0 && item.type === 'video' ? 'gallery-item video-item wide' : (item.type === 'video' ? 'gallery-item video-item' : 'gallery-item'));
     if (item.type === 'video') {
       return `
         <div class="${cls}">
