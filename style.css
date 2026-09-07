@@ -195,6 +195,25 @@
   margin-top: 10px;
 }
 
+/* Misc. Projects page — several projects folded into one page */
+.misc-project {
+  margin-top: 50px;
+}
+
+.misc-project .proj-header h2 {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.misc-divider {
+  border: none;
+  border-top: 1px solid #1a1a1a;
+  margin: 60px 0 0;
+}
+
 /* Project meta row */
 .proj-meta {
   display: flex;

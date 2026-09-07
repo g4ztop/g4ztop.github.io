@@ -14,35 +14,6 @@ const assetVersion = ['style.css', 'script.js']
 // else first video, else first image.
 const projects = [
   {
-    slug: 'hometopia',
-    title: 'HOMETOPIA',
-    year: '2022–2024',
-    role: 'Lead Technical Artist',
-    client: 'Hometopia Inc.',
-    tags: ['Game Development', 'Technical Art', 'Tools'],
-    description: `Lead Technical Artist on Hometopia, a sandbox home-building game released on Steam on April 2, 2025. Responsibilities spanned technical art pipeline development, custom tooling, and procedural systems designed to support a growing team of artists. Work included shader authoring, LOD and performance optimization, and developing Blender and Houdini tools to accelerate asset production.
-
-The game gives players thousands of assets and customization options across a variety of environments, with no budget limits — free-form building in sandbox mode, real-time multiplayer so friends can design entire neighborhoods together, ready-made homes to build on, landscaping tools for outdoor spaces, and a built-in camera and portfolio system for sharing creations with the community. GamesRadar+ called it "the best parts of The Sims 4 and House Flipper."`,
-    mediaDir: 'hometopia',
-    cardSub: 'Sandbox home-building game on Steam',
-    links: [
-      { label: 'View on Steam', url: 'https://store.steampowered.com/app/1138640/Hometopia/' },
-      { label: 'hometopia.com', url: 'https://www.hometopia.com' },
-    ],
-  },
-  {
-    slug: 'voidclimber',
-    title: 'VOID CLIMBER',
-    year: '2025',
-    role: 'Technical Artist',
-    client: 'FuturePerfect Studios',
-    studio: 'INCworks',
-    tags: ['Game Development', 'Technical Art', 'Procedural'],
-    description: `Technical art for FuturePerfect Studios' 2025 video game Void Climber — a roguelike platformer in which the player climbs to the top of a collapsing universe and must survive its hazardous, decaying environment. Designed the game's procedural level generators in Blender and Python, building systems that assemble levels from modular assets and reshuffle the skybox, background, and environment on every playthrough. The generators were built to support the game's four historical "epochs" — prehistory, antiquity, industrial, and contemporary — so that each run produces a distinct climb while holding to the art direction.`,
-    mediaDir: 'void-climber',
-    cardSub: 'Procedural level generation — FuturePerfect Studios',
-  },
-  {
     slug: 'miumiu',
     title: 'MIU MIU FALL/WINTER 2024',
     year: '2024',
@@ -91,19 +62,6 @@ The game gives players thousands of assets and customization options across a va
     cardSub: 'Cobra — Studio: INCworks',
   },
   {
-    slug: 'realityornot',
-    title: 'CECILE B. EVANS',
-    subtitle: 'Reality or Not',
-    year: '2023',
-    role: 'VFX Artist',
-    director: 'Cecile B. Evans',
-    studio: 'INCworks',
-    tags: ['Film', 'VFX', 'AI'],
-    description: `A series of special effects for artist Cecile B. Evans' 2023 film "Reality Or Not", which premiered at MAMbo — Museo d'Arte Moderna di Bologna and has since been featured at the Singapore Art Museum, SODA Manchester, and Lafayette Anticipations. Work included AI-assisted character animation for ML — live-action performances by Hayett McCarthy run through Stable Diffusion's ControlNet and EbSynth to map a hand-drawn character onto the footage — plus the Anti-Verity Factory, a flooded, post-apocalyptic take on CERN's ELENA particle collider staged in Unreal Engine 5 with swarms of CG butterflies, and the Collective of Renders, a fictional K-Pop group built with MetaHuman.`,
-    mediaDir: 'cecile-b-evans-reality-or-not',
-    cardSub: 'Reality or Not — Film VFX',
-  },
-  {
     slug: 'bmth',
     title: 'BRING ME THE HORIZON',
     subtitle: 'AmEN!',
@@ -134,6 +92,19 @@ The game gives players thousands of assets and customization options across a va
     cardSub: 'YR003 — HOW\'S MY DRIVING? NYFW 2023',
   },
   {
+    slug: 'realityornot',
+    title: 'CECILE B. EVANS',
+    subtitle: 'Reality or Not',
+    year: '2023',
+    role: 'VFX Artist',
+    director: 'Cecile B. Evans',
+    studio: 'INCworks',
+    tags: ['Film', 'VFX', 'AI'],
+    description: `A series of special effects for artist Cecile B. Evans' 2023 film "Reality Or Not", which premiered at MAMbo — Museo d'Arte Moderna di Bologna and has since been featured at the Singapore Art Museum, SODA Manchester, and Lafayette Anticipations. Work included AI-assisted character animation for ML — live-action performances by Hayett McCarthy run through Stable Diffusion's ControlNet and EbSynth to map a hand-drawn character onto the footage — plus the Anti-Verity Factory, a flooded, post-apocalyptic take on CERN's ELENA particle collider staged in Unreal Engine 5 with swarms of CG butterflies, and the Collective of Renders, a fictional K-Pop group built with MetaHuman.`,
+    mediaDir: 'cecile-b-evans-reality-or-not',
+    cardSub: 'Reality or Not — Film VFX',
+  },
+  {
     slug: 'lakings',
     title: 'YOOM × LA KINGS',
     year: '2023',
@@ -148,13 +119,58 @@ The game gives players thousands of assets and customization options across a va
   },
   {
     slug: 'procedural',
-    title: 'PROCEDURAL WORKS',
+    title: 'PERSONAL WORK',
     year: 'Various',
     role: 'Technical Artist',
     tags: ['Technical Tools', 'Blender', 'Procedural', 'Houdini'],
     description: `Custom tools and dynamic systems for procedural animation and generative art workflows. Includes a published Blender plugin for geometry-node-driven animation systems, Houdini procedural rigs, and various experimental real-time generative systems built in Unreal Engine.`,
     mediaDir: 'procedural-works',
     cardSub: 'Custom tools and dynamic systems',
+  },
+  {
+    slug: 'hometopia',
+    title: 'HOMETOPIA',
+    year: '2022–2024',
+    role: 'Lead Technical Artist',
+    client: 'Hometopia Inc.',
+    tags: ['Game Development', 'Technical Art', 'Tools'],
+    description: `Lead Technical Artist on Hometopia, a sandbox home-building game released on Steam on April 2, 2025. Responsibilities spanned technical art pipeline development, custom tooling, and procedural systems designed to support a growing team of artists. Work included shader authoring, LOD and performance optimization, and developing Blender and Houdini tools to accelerate asset production.
+
+The game gives players thousands of assets and customization options across a variety of environments, with no budget limits — free-form building in sandbox mode, real-time multiplayer so friends can design entire neighborhoods together, ready-made homes to build on, landscaping tools for outdoor spaces, and a built-in camera and portfolio system for sharing creations with the community. GamesRadar+ called it "the best parts of The Sims 4 and House Flipper."`,
+    mediaDir: 'hometopia',
+    cardSub: 'Sandbox home-building game on Steam',
+    links: [
+      { label: 'View on Steam', url: 'https://store.steampowered.com/app/1138640/Hometopia/' },
+      { label: 'hometopia.com', url: 'https://www.hometopia.com' },
+    ],
+  },
+  {
+    slug: 'voidclimber',
+    title: 'VOID CLIMBER',
+    year: '2025',
+    role: 'Technical Artist',
+    client: 'FuturePerfect Studios',
+    studio: 'INCworks',
+    tags: ['Game Development', 'Technical Art', 'Procedural'],
+    description: `Technical art for FuturePerfect Studios' 2025 video game Void Climber — a roguelike platformer in which the player climbs to the top of a collapsing universe and must survive its hazardous, decaying environment. Designed the game's procedural level generators in Blender and Python, building systems that assemble levels from modular assets and reshuffle the skybox, background, and environment on every playthrough. The generators were built to support the game's four historical "epochs" — prehistory, antiquity, industrial, and contemporary — so that each run produces a distinct climb while holding to the art direction.`,
+    mediaDir: 'void-climber',
+    cardSub: 'Procedural level generation — FuturePerfect Studios',
+  },
+];
+
+// Folded into a single "Misc. Projects" page rather than individual cards.
+const miscProjects = [
+  {
+    slug: '1000deaths',
+    title: '1000 DEATHS',
+    year: '2022',
+    role: 'Character Artist',
+    client: 'Pariah Interactive',
+    tags: ['Game Development', 'Character Art', 'Shaders'],
+    description: `Character creation, rigging, and custom shader effects for the video game 1000 Deaths, developed by Pariah Interactive. Work spanned concepting, high-poly sculpting, retopology, texturing, and implementation of stylized real-time shaders within the game engine.`,
+    mediaDir: '1000-deaths',
+    cardImage: 'images/1000deaths.jpg',
+    cardSub: 'Character Creation — Pariah Interactive',
   },
   {
     slug: 'pitstop',
@@ -178,18 +194,6 @@ The game gives players thousands of assets and customization options across a va
     mediaDir: 'ultraman-connection',
     cardImage: 'images/ultraman.jpg',
     cardSub: 'Virtual Production — Unreal Engine 5',
-  },
-  {
-    slug: '1000deaths',
-    title: '1000 DEATHS',
-    year: '2022',
-    role: 'Character Artist',
-    client: 'Pariah Interactive',
-    tags: ['Game Development', 'Character Art', 'Shaders'],
-    description: `Character creation, rigging, and custom shader effects for the video game 1000 Deaths, developed by Pariah Interactive. Work spanned concepting, high-poly sculpting, retopology, texturing, and implementation of stylized real-time shaders within the game engine.`,
-    mediaDir: '1000-deaths',
-    cardImage: 'images/1000deaths.jpg',
-    cardSub: 'Character Creation — Pariah Interactive',
   },
 ];
 
@@ -403,7 +407,6 @@ function buildPage(project, index, media) {
   <nav class="nav-desktop">
     <ul>
       <li><a href="../index.html">Work</a></li>
-      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </nav>
@@ -420,7 +423,6 @@ function buildPage(project, index, media) {
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="../index.html">Work</a></li>
-      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </div>
@@ -454,6 +456,110 @@ function buildPage(project, index, media) {
       ${prevLink}
       ${nextLink}
     </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
+    <span class="footer-sep">·</span>
+    <a href="https://instagram.com/murchellcruft" target="_blank">@murchellcruft</a>
+  </footer>
+
+  <script src="../script.js?v=${assetVersion}"></script>
+</body>
+</html>
+`;
+}
+
+// ─── projects/misc.html (folded ultraman / 1000deaths / pitstop) ──────────────
+function buildMiscSection(project) {
+  const media = resolveMedia(project);
+  if (!media.hero) warnings.push(`NO MEDIA: ${project.slug} (media/${project.mediaDir})`);
+
+  const subtitle = project.subtitle ? `<p class="card-sub" style="margin-top:6px;color:#777;">${project.subtitle}</p>` : '';
+  const heroBlock = media.hero ? `<!-- Hero -->
+      <div class="proj-hero">
+        ${renderHero(project, media.hero)}
+      </div>` : '';
+  const textBlock = `<!-- Description -->
+      ${renderDescription(project.description)}${renderLinks(project.links)}`;
+  const galleryInner = renderEmbeds(project) + renderStills(project, media.gallery);
+  const galleryBlock = galleryInner ? `<!-- Gallery -->
+      <div class="proj-gallery">
+        ${galleryInner}
+      </div>` : '';
+
+  return `
+    <section class="misc-project">
+      <div class="proj-header">
+        <h2>${project.title}</h2>
+        ${subtitle}
+        <div class="tags">
+          ${renderTags(project.tags)}
+        </div>
+      </div>
+
+      <div class="proj-meta">
+        ${renderMeta('Year', project.year)}
+        ${renderMeta('Role', project.role)}
+        ${renderMeta('Client', project.client || null)}
+      </div>
+
+      ${heroBlock}
+
+      ${textBlock}
+
+      ${galleryBlock}
+    </section>`;
+}
+
+function buildMiscPage() {
+  const sections = miscProjects.map(buildMiscSection).join('\n\n    <hr class="misc-divider">\n');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MISC. PROJECTS — Mitchell Craft</title>
+  <link rel="stylesheet" href="../style.css?v=${assetVersion}">
+</head>
+<body class="project-page">
+
+  <!-- Desktop Navigation -->
+  <nav class="nav-desktop">
+    <ul>
+      <li><a href="../index.html">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <span class="mobile-site-name">Mitchell Craft</span>
+    <button class="burger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <a href="../index.html" class="back-link">Work</a>
+
+    <div class="proj-header">
+      <h1>MISC. PROJECTS</h1>
+      <p class="card-sub" style="margin-top:6px;color:#777;">A few smaller projects that didn't need a page of their own</p>
+    </div>
+    ${sections}
 
   </main>
 
@@ -509,7 +615,41 @@ function buildWorkPage() {
           </a>
         </article>`;
 
-  const cards = [effectMakerCard, ...projects.map(buildCard)].join('\n');
+  const miscCard = `
+        <article class="card span-3">
+          <a href="projects/misc.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="images/ultraman.jpg" alt="Misc. Projects" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>MISC. PROJECTS</h2>
+              <p class="card-sub">Ultraman Connection, 1000 Deaths, Pitstop</p>
+              <div class="tags">
+                <span>Unreal Engine</span>
+              <span>Games</span>
+              <span>Animation</span>
+              </div>
+            </div>
+          </a>
+        </article>`;
+
+  const instagramCard = `
+        <article class="card span-3">
+          <a href="instagram.html">
+            <div class="card-img" style="background-color:#0d0d0d;">
+              <img src="https://storage.googleapis.com/mitchellcraft-net-media/instagram/2025-02-09_19-44-16_DF3T9KjyDXF_5.webp" alt="Instagram Archive" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h2>INSTAGRAM ARCHIVE</h2>
+              <p class="card-sub">290 posts · 2015–2025</p>
+              <div class="tags">
+                <span>Archive</span>
+              </div>
+            </div>
+          </a>
+        </article>`;
+
+  const cards = [effectMakerCard, ...projects.map(buildCard), miscCard, instagramCard].join('\n');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -525,7 +665,6 @@ function buildWorkPage() {
   <nav class="nav-desktop">
     <ul>
       <li><a href="index.html" class="nav-active">Work</a></li>
-      <li><a href="instagram.html">Archive</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
@@ -544,7 +683,6 @@ function buildWorkPage() {
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="index.html">Work</a></li>
-      <li><a href="instagram.html">Archive</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </div>
@@ -602,6 +740,9 @@ projects.forEach((project, i) => {
   const m = scanMedia(project.mediaDir);
   console.log(`✓  projects/${project.slug}.html  (${m.videos.length} videos, ${m.images.filter(f => !f.startsWith('bg-')).length} images)`);
 });
+
+fs.writeFileSync(path.join(outDir, 'misc.html'), buildMiscPage(), 'utf8');
+console.log('✓  projects/misc.html');
 
 fs.writeFileSync(path.join(__dirname, 'index.html'), buildWorkPage(), 'utf8');
 console.log('✓  index.html');
