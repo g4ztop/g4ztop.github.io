@@ -14,6 +14,20 @@ const assetVersion = ['style.css', 'script.js']
 // else first video, else first image.
 const projects = [
   {
+    slug: 'effectmaker',
+    title: 'YOUTUBE: EFFECT MAKER',
+    year: '2024–Present',
+    role: 'Creative Technologist',
+    client: 'YouTube',
+    tags: ['YouTube', 'Product Design', 'GenAI', 'VFX', 'AR Effects'],
+    description: `Creative Technologist on Effect Maker, YouTube's third-party design platform for Shorts effects and face filters. Designs and builds the templates featured on the platform's homepage, develops all first-party effects for YouTube, and consults with engineering on best practices informed by real-world VFX production experience.
+
+Also writes the system instructions and preamble behind the platform's generative AI features, including image and video generation.`,
+    mediaDir: 'effect-maker',
+    cardImage: 'media/effect-maker/images/maxresdefault.webp',
+    cardSub: '3P design platform for effects & face filters',
+  },
+  {
     slug: 'miumiu',
     title: 'MIU MIU FALL/WINTER 2024',
     year: '2024',
@@ -601,24 +615,6 @@ function buildCard(project) {
 }
 
 function buildWorkPage() {
-  const effectMakerCard = `
-        <article class="card span-3">
-          <a href="#" target="_blank">
-            <div class="card-img" style="background-color:#0a0a0a;">
-              <img src="media/effect-maker/images/maxresdefault.webp" alt="YouTube: Effect Maker" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>YOUTUBE: EFFECT MAKER</h2>
-              <p class="card-sub">Tutorial series on procedural VFX & real-time effects</p>
-              <div class="tags">
-                <span>YouTube</span>
-              <span>Tutorials</span>
-              <span>VFX</span>
-              </div>
-            </div>
-          </a>
-        </article>`;
-
   const miscCard = `
         <article class="card span-3">
           <a href="projects/misc.html">
@@ -637,7 +633,7 @@ function buildWorkPage() {
           </a>
         </article>`;
 
-  const cards = [effectMakerCard, ...projects.map(buildCard), miscCard].join('\n');
+  const cards = [...projects.map(buildCard), miscCard].join('\n');
 
   return `<!DOCTYPE html>
 <html lang="en">
