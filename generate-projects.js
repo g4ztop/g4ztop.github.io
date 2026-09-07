@@ -637,23 +637,7 @@ function buildWorkPage() {
           </a>
         </article>`;
 
-  const instagramCard = `
-        <article class="card span-3">
-          <a href="instagram.html">
-            <div class="card-img" style="background-color:#0d0d0d;">
-              <img src="https://storage.googleapis.com/mitchellcraft-net-media/instagram/2025-02-09_19-44-16_DF3T9KjyDXF_5.webp" alt="Instagram Archive" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h2>INSTAGRAM ARCHIVE</h2>
-              <p class="card-sub">290 posts · 2015–2025</p>
-              <div class="tags">
-                <span>Archive</span>
-              </div>
-            </div>
-          </a>
-        </article>`;
-
-  const cards = [effectMakerCard, ...projects.map(buildCard), miscCard, instagramCard].join('\n');
+  const cards = [effectMakerCard, ...projects.map(buildCard), miscCard].join('\n');
 
   return `<!DOCTYPE html>
 <html lang="en">
