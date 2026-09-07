@@ -118,16 +118,6 @@ const projects = [
     cardSub: 'Jumbotron animations — Crypto.com Arena',
   },
   {
-    slug: 'procedural',
-    title: 'PERSONAL WORK',
-    year: 'Various',
-    role: 'Technical Artist',
-    tags: ['Technical Tools', 'Blender', 'Procedural', 'Houdini'],
-    description: `Custom tools and dynamic systems for procedural animation and generative art workflows. Includes a published Blender plugin for geometry-node-driven animation systems, Houdini procedural rigs, and various experimental real-time generative systems built in Unreal Engine.`,
-    mediaDir: 'procedural-works',
-    cardSub: 'Custom tools and dynamic systems',
-  },
-  {
     slug: 'hometopia',
     title: 'HOMETOPIA',
     year: '2022–2024',
@@ -155,6 +145,16 @@ The game gives players thousands of assets and customization options across a va
     description: `Technical art for FuturePerfect Studios' 2025 video game Void Climber — a roguelike platformer in which the player climbs to the top of a collapsing universe and must survive its hazardous, decaying environment. Designed the game's procedural level generators in Blender and Python, building systems that assemble levels from modular assets and reshuffle the skybox, background, and environment on every playthrough. The generators were built to support the game's four historical "epochs" — prehistory, antiquity, industrial, and contemporary — so that each run produces a distinct climb while holding to the art direction.`,
     mediaDir: 'void-climber',
     cardSub: 'Procedural level generation — FuturePerfect Studios',
+  },
+  {
+    slug: 'procedural',
+    title: 'PERSONAL WORK',
+    year: 'Various',
+    role: 'Technical Artist',
+    tags: ['Technical Tools', 'Blender', 'Procedural', 'Houdini'],
+    description: `Custom tools and dynamic systems for procedural animation and generative art workflows. Includes a published Blender plugin for geometry-node-driven animation systems, Houdini procedural rigs, and various experimental real-time generative systems built in Unreal Engine.`,
+    mediaDir: 'procedural-works',
+    cardSub: 'Custom tools and dynamic systems',
   },
 ];
 
@@ -407,6 +407,7 @@ function buildPage(project, index, media) {
   <nav class="nav-desktop">
     <ul>
       <li><a href="../index.html">Work</a></li>
+      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </nav>
@@ -423,6 +424,7 @@ function buildPage(project, index, media) {
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="../index.html">Work</a></li>
+      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </div>
@@ -531,6 +533,7 @@ function buildMiscPage() {
   <nav class="nav-desktop">
     <ul>
       <li><a href="../index.html">Work</a></li>
+      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </nav>
@@ -547,6 +550,7 @@ function buildMiscPage() {
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="../index.html">Work</a></li>
+      <li><a href="../instagram.html">Archive</a></li>
       <li><a href="../about.html">About</a></li>
     </ul>
   </div>
@@ -665,6 +669,7 @@ function buildWorkPage() {
   <nav class="nav-desktop">
     <ul>
       <li><a href="index.html" class="nav-active">Work</a></li>
+      <li><a href="instagram.html">Archive</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
@@ -683,6 +688,7 @@ function buildWorkPage() {
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="index.html">Work</a></li>
+      <li><a href="instagram.html">Archive</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </div>
