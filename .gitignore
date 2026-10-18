@@ -7,3 +7,6 @@ firebase-debug.log
 # Instagram archive derivatives — hosted in the mitchellcraft-net-media
 # GCS bucket instead of git; see build-instagram.js MEDIA_BASE
 media/instagram/
+
+# Local review notes, historical résumé, and browser drafts
+.review/

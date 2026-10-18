@@ -657,7 +657,7 @@ img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease;
 }
 
@@ -1067,4 +1067,79 @@ main {
   .footer-sep {
     display: none;
   }
+}
+
+/* Application portfolio: clearer positioning, evidence and reading hierarchy. */
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid #c0e5bd;
+  outline-offset: 5px;
+}
+.mobile-menu:not(.open) { visibility: hidden; }
+.site-kicker { font-size: 11px; letter-spacing: .12em; color: #a9b2a6; margin-bottom: 24px; }
+.home-hero { gap: 60px; padding: 82px 0 56px; align-items: flex-end; }
+.home-hero .header-name { max-width: 960px; }
+.home-hero .header-name h1 { font-size: clamp(40px, 5.4vw, 78px); line-height: 1.02; letter-spacing: -.055em; font-weight: 400; margin: 0 0 26px; }
+.home-intro { max-width: 720px; font-size: 17px; line-height: 1.65; color: #aaa; }
+.home-hero .header-contact { padding-bottom: 5px; flex-shrink: 0; gap: 7px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: 0 0 19px; }
+.section-heading h2 { font-size: 12px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; }
+.section-heading > span { font-size: 11px; color: #999; }
+.grid { column-gap: 16px; row-gap: 12px; }
+.featured-card .card-info h2 { font-size: 15px; }
+.card-info { padding-top: 13px; }
+.card-sub { color: #a0a0a0; line-height: 1.55; }
+.tags span { color: #929292; border-color: #383838; font-size: 11px; }
+.portfolio { padding-bottom: 48px; }
+.practice { border-top: 1px solid #2c2c2c; padding: 28px 0 60px; margin-bottom: 28px; }
+.practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+.practice-item { border-top: 1px solid #222; padding-top: 20px; }
+.practice-item h3 { font-size: 18px; font-weight: 400; letter-spacing: -.02em; margin-bottom: 14px; }
+.practice-item p { font-size: 14px; line-height: 1.75; color: #aaa; max-width: 410px; }
+.more-work { padding-bottom: 80px; }
+.case-overview { margin: -10px 0 32px; }
+.case-deck { font-size: clamp(20px, 2.5vw, 32px); font-weight: 400; line-height: 1.35; letter-spacing: -.025em; max-width: 850px; margin-bottom: 26px; color: #e1e1dc; }
+.case-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding-bottom: 24px; border-bottom: 1px solid #252525; }
+.case-facts dt { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #b8c5b1; margin-bottom: 8px; }
+.case-facts dd { font-size: 13px; line-height: 1.6; color: #aaa; }
+.proj-meta { margin-bottom: 32px; }
+.meta-item label, .cv-section-title { color: #999; font-size: 11px; }
+.cv-year, .cv-company, .about-title-line, .software-list span { color: #999; }
+.cv-scope { font-size: 12px; line-height: 1.65; color: #aaa; margin-top: 9px; max-width: 430px; }
+.about-title-line { line-height: 1.7; }
+.site-footer, .site-footer a, .back-link, .proj-nav a { color: #999; }
+.image-unavailable { min-height: 80px; color: #aaa; font-size: 13px; }
+@media (max-width: 1024px) { .home-hero { gap: 30px; } .home-intro { font-size: 15px; } .home-hero .header-contact { font-size: 11px; } .practice-grid { gap: 22px; } }
+@media (max-width: 760px) { .home-hero { display: block; padding-top: 75px; } .home-hero .header-contact { align-items: flex-start; text-align: left; margin-top: 24px; } .practice-grid { grid-template-columns: 1fr; gap: 25px; } .practice-item p { max-width: none; } }
+@media (max-width: 600px) {
+  .home-hero { padding: 32px 0 33px; }
+  .site-kicker { font-size: 9px; letter-spacing: .08em; margin-bottom: 20px; }
+  .home-hero .header-name h1 { font-size: clamp(36px, 10.6vw, 54px); margin-bottom: 21px; }
+  .home-intro { font-size: 14px; line-height: 1.7; }
+  .home-hero .header-contact { margin-top: 21px; gap: 6px; }
+  .home-hero .header-contact a { font-size: 12px; }
+  .section-heading { display: block; padding-bottom: 18px; }
+  .section-heading h2 { margin-bottom: 8px; font-size: 11px; }
+  .section-heading > span { font-size: 10px; }
+  .grid { row-gap: 10px; }
+  .featured-card .card-info h2 { font-size: 13px; }
+  .case-facts { grid-template-columns: 1fr; gap: 17px; }
+  .case-facts > div { display: grid; grid-template-columns: 70px 1fr; gap: 12px; }
+  .case-facts dt { margin-top: 4px; }
+  .case-facts dd { font-size: 12px; }
+  .case-deck { font-size: 23px; margin-bottom: 24px; }
+  .practice { padding-bottom: 34px; margin-bottom: 15px; }
+  .site-footer { flex-wrap: wrap; row-gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+/* Keep project context close to the work, particularly on a phone. */
+.back-link { padding-top: 28px; margin-bottom: 24px; }
+.proj-header { padding-bottom: 20px; margin-bottom: 20px; }
+@media (max-width: 600px) {
+  .proj-meta { padding: 15px 0; margin-bottom: 23px; gap: 16px 0; }
+  .case-facts { gap: 12px; padding-bottom: 17px; }
+  .case-deck { margin-bottom: 18px; }
+  .case-overview { margin-bottom: 24px; }
 }

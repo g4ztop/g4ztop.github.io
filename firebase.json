@@ -9,7 +9,11 @@
       "build-instagram.js",
       "curate.js",
       "instagram-curation.json",
-      "media/instagram/**"
+      "media/instagram/**",
+      "tools/**",
+      ".review/**",
+      "REVIEW.md",
+      "package.json"
     ]
   }
 }

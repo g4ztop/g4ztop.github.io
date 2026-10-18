@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio workshop — Mitchell Craft</title>
+  <link rel="stylesheet" href="/__review/workshop.css">
+</head>
+<body>
+  <header class="toolbar">
+    <a class="brand" href="/__review/"><span class="brand-mark">mc<span>↗</span></span><span>Portfolio workshop<small>MITCHELL CRAFT / LOCAL DRAFT</small></span></a>
+    <div class="page-control"><label for="page">Reviewing</label><select id="page" aria-label="Page to review"></select></div>
+    <div class="toolbar-actions"><a id="clean-preview" href="/__preview/index.html" target="_blank" rel="noopener">Open site ↗</a><a href="/api/export" download>Export notes ↓</a><span class="local-indicator">Saved on this Mac</span></div>
+  </header>
+  <div id="error" role="alert" hidden></div>
+  <main class="workspace">
+    <section class="preview-panel" aria-label="Site preview">
+      <div class="preview-toolbar">
+        <div class="segmented" aria-label="Preview width"><button data-width="1440" aria-pressed="true">Desktop</button><button data-width="768" aria-pressed="false">Tablet</button><button data-width="390" aria-pressed="false">Phone</button></div>
+        <span id="viewport-label" class="viewport-label"></span>
+        <div class="preview-actions"><button id="refresh" title="Reload the site preview">↻ <span>Refresh</span></button><button id="mode" class="comment-mode" aria-pressed="false">⌖ Add a pin</button></div>
+      </div>
+      <div id="preview-hint" class="preview-hint">Browse the site, or choose <strong>Add a pin</strong> and click anything you want to discuss.</div>
+      <div id="canvas" class="preview-canvas"><div id="frame-shell"><iframe id="preview" title="Portfolio site preview" src="about:blank"></iframe></div></div>
+      <div class="preview-bottom"><span id="page-path">/index.html</span><span>Local changes · nothing published</span></div>
+    </section>
+    <aside class="sidebar" aria-label="Review notes and project context">
+      <div class="sidebar-heading"><span class="eyebrow">THE NEXT EDITING PASS</span><h1>Make the work clear.</h1><p>Add the details only you know. I’ll use your notes to turn the work into stronger case studies.</p></div>
+      <div class="tabs" role="tablist" aria-label="Feedback type"><button id="notes-tab" role="tab" aria-selected="true" aria-controls="notes-panel">Notes <span id="note-count">0</span></button><button id="context-tab" role="tab" aria-selected="false" aria-controls="context-panel">Project context <span id="answer-count">0</span></button></div>
+      <section id="notes-panel" role="tabpanel" aria-labelledby="notes-tab">
+        <form id="note-form">
+          <div class="composer-label"><label for="note-text">Add a note</label><button id="whole-page" type="button">Whole page</button></div>
+          <div id="selection" class="selection"><span class="selection-dot"></span><span id="selection-label">Whole page</span></div>
+          <textarea id="note-text" rows="4" placeholder="What should change? What context is missing?" required maxlength="20000"></textarea>
+          <div class="composer-bottom"><select id="category" aria-label="Note category"><option value="context">Add context</option><option value="correction">Correct a fact</option><option value="design">Design / wording</option><option value="asset">Asset / link</option></select><button id="save-note" class="primary" type="submit">Save note <span>↗</span></button></div>
+          <p id="save-status" role="status" class="save-status">Choose a section with Add a pin, or leave a page note.</p>
+        </form>
+        <div class="list-toolbar"><h2>Review notes</h2><select id="filter" aria-label="Filter review notes"><option value="page">This page</option><option value="all">All open notes</option><option value="resolved">Resolved</option><option value="archived">Archived</option></select></div>
+        <div id="notes-list"></div>
+      </section>
+      <section id="context-panel" role="tabpanel" aria-labelledby="context-tab" hidden>
+        <div class="context-intro"><span class="context-symbol">✳</span><p>Answer in rough notes. Links, filenames, bullet points and “I’m not sure” are all useful.</p></div>
+        <div id="questions"></div>
+        <details class="reference"><summary>2025 résumé & first-pass changes</summary><a id="resume-link" target="_blank" rel="noopener">Open the 2025 résumé ↗</a><p>Read as historical context. INCworks dates conflict with the existing site; confirm them on About before we edit the timeline.</p><ul id="changes"></ul></details>
+      </section>
+      <footer class="sidebar-footer">When you’re ready, tell me <strong>“Use my review notes.”</strong><br>I can read the saved feedback directly from this repo.</footer>
+    </aside>
+  </main>
+  <script type="module" src="/__review/workshop.js"></script>
+</body>
+</html>

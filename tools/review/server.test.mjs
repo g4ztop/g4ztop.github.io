@@ -1,0 +1,64 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { once } from 'node:events';
+import { createReviewServer } from './server.mjs';
+
+test('notes survive restart; edits, answers, exports and soft archive preserve context', async t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'portfolio-review-test-'));
+  fs.writeFileSync(path.join(root, 'index.html'), '<html><body><h1>Portfolio</h1></body></html>');
+  let server, origin, token;
+  const start = async () => {
+    server = createReviewServer({ root }); server.listen(0, '127.0.0.1'); await once(server, 'listening');
+    origin = 'http://127.0.0.1:' + server.address().port;
+    token = (await (await fetch(origin + '/api/bootstrap')).json()).token;
+  };
+  const stop = () => new Promise(resolve => { server.closeAllConnections(); server.close(resolve); });
+  const mutate = (route, method, data) => fetch(origin + route, { method, headers: { 'Content-Type': 'application/json', 'X-Review-Token': token, Origin: origin }, body: JSON.stringify(data) });
+  t.after(async () => { if (server.listening) await stop(); fs.rmSync(root, { recursive: true, force: true }); });
+  await start();
+  const response = await mutate('/api/comments', 'POST', { page: '/index.html', text: 'My role: built the shader tool.', category: 'context', anchor: { selector: 'h1', quote: 'Portfolio', label: 'Heading', viewportWidth: 390, scrollRatio: .3 } });
+  assert.equal(response.status, 201); const note = await response.json();
+  await mutate('/api/answers', 'POST', { id: 'home-positioning', text: 'Focus on production systems.' });
+  await stop(); await start();
+  let state = await (await fetch(origin + '/api/state')).json();
+  assert.equal(state.comments[0].id, note.id); assert.equal(state.comments[0].anchor.viewportWidth, 390);
+  assert.equal(state.answers['home-positioning'].text, 'Focus on production systems.');
+  await mutate('/api/comments/' + note.id, 'PATCH', { text: 'Corrected ownership.', status: 'resolved' });
+  const exported = await (await fetch(origin + '/api/export')).text();
+  assert.match(exported, /Corrected ownership/); assert.match(exported, /Selector: h1/); assert.match(exported, /Focus on production systems/);
+  await mutate('/api/comments/' + note.id, 'PATCH', { status: 'archived' });
+  state = await (await fetch(origin + '/api/state')).json(); assert.equal(state.comments.length, 1); assert.equal(state.comments[0].status, 'archived');
+  await mutate('/api/comments/' + note.id, 'PATCH', { status: 'open' });
+  const invalid = await mutate('/api/comments/' + note.id, 'PATCH', { text: '' }); assert.equal(invalid.status, 400);
+  state = await (await fetch(origin + '/api/state')).json(); assert.equal(state.comments[0].text, 'Corrected ownership.');
+});
+
+test('preview protects local files, checks save origin, and serves seekable video', async t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'portfolio-preview-test-'));
+  fs.mkdirSync(path.join(root, 'media')); fs.mkdirSync(path.join(root, '.review'));
+  fs.writeFileSync(path.join(root, 'index.html'), '<html><body>Hello</body></html>');
+  fs.writeFileSync(path.join(root, '.review', 'resume.md'), 'PRIVATE');
+  fs.writeFileSync(path.join(root, 'media', 'clip.mp4'), '0123456789');
+  const outside = path.join(root, 'outside.html'); fs.writeFileSync(outside, 'secret');
+  fs.symlinkSync(os.tmpdir(), path.join(root, 'media', 'escape'));
+  const server = createReviewServer({ root }); server.listen(0, '127.0.0.1'); await once(server, 'listening');
+  const origin = 'http://127.0.0.1:' + server.address().port;
+  t.after(async () => { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); fs.rmSync(root, { recursive: true, force: true }); });
+  const bootstrap = await (await fetch(origin + '/api/bootstrap')).json();
+  assert.equal((await fetch(origin + '/api/comments', { method: 'POST', body: '{}' })).status, 403);
+  assert.equal((await fetch(origin + '/api/comments', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Review-Token': bootstrap.token, Origin: 'https://example.com' }, body: '{}' })).status, 403);
+  for (const route of ['/__preview/.review/resume.md', '/__preview/media/%2e%2e%2f.review/resume.md', '/__preview/tools/review/server.mjs', '/__preview/media/escape/index.html']) assert.equal((await fetch(origin + route)).status, 404);
+  const preview = await (await fetch(origin + '/__preview/index.html')).text(); assert.match(preview, /__review\/bridge.js/);
+  const range = await fetch(origin + '/__preview/media/clip.mp4', { headers: { Range: 'bytes=2-5' } });
+  assert.equal(range.status, 206); assert.equal(range.headers.get('content-range'), 'bytes 2-5/10'); assert.equal(await range.text(), '2345');
+  const suffix = await fetch(origin + '/__preview/media/clip.mp4', { headers: { Range: 'bytes=-3' } }); assert.equal(await suffix.text(), '789');
+  assert.equal((await fetch(origin + '/__preview/media/clip.mp4', { headers: { Range: 'bytes=50-' } })).status, 416);
+  const head = await fetch(origin + '/__preview/index.html', { method: 'HEAD' }); assert.equal(head.status, 200); assert.equal(await head.text(), '');
+  fs.writeFileSync(path.join(root, '.review', 'comments.json'), '{broken json');
+  assert.equal((await fetch(origin + '/api/state')).status, 500);
+  const save = await fetch(origin + '/api/comments', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Review-Token': bootstrap.token }, body: JSON.stringify({ text: 'Do not overwrite', page: '/index.html' }) });
+  assert.equal(save.status, 500); assert.equal(fs.readFileSync(path.join(root, '.review', 'comments.json'), 'utf8'), '{broken json');
+});

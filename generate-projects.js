@@ -20,12 +20,12 @@ const projects = [
     role: 'Creative Technologist',
     client: 'YouTube',
     tags: ['YouTube', 'Product Design', 'GenAI', 'VFX', 'AR Effects'],
-    description: `Creative Technologist on Effect Maker, YouTube's third-party design platform for Shorts effects and face filters. Designs and builds the templates featured on the platform's homepage, develops all first-party effects for YouTube, and consults with engineering on best practices informed by real-world VFX production experience.
+    description: `Creative Technologist on Effect Maker, YouTube's third-party design platform for Shorts effects and face filters. Designs and builds effects and homepage templates, and consults with engineering on best practices informed by real-world VFX production experience.
 
 Also writes the system instructions and preamble behind the platform's generative AI features, including image and video generation.`,
     mediaDir: 'effect-maker',
     cardImage: 'media/effect-maker/images/maxresdefault.webp',
-    cardSub: '3P design platform for effects & face filters',
+    cardSub: 'Effects, reusable templates & generative AI',
     // Creator sample clips are vertical Shorts footage; the promo previews
     // (channel_page_preview, desktop_preview, shorts_preview) stay 16:9.
     portraitVideos: f => f.endsWith('_labeled_v2.webm'),
@@ -54,13 +54,12 @@ Also writes the system instructions and preamble behind the platform's generativ
     tags: ['Fashion Campaign', 'VFX', 'CG'],
     studio: 'INCworks',
     youtube: ['HgMMMktXVLw'],
-    youtubeAutoplay: true,
     videoFirst: true,
     exclude: ['03-'], // cropped repeat of the hero shot
-    cardImage: 'media/moncler-x-salehe-bembury/images/thumbs/07-Photo-Jul-21-2023-9-36-18-PM-gigapixel-standard-scale-2_00x.webp',
+    cardImage: 'media/moncler-x-salehe-bembury/images/bg-01-Moncler_SaleheBembury_FW23_0660_VFX_Retouched.webp',
     description: `Lush CG forests created for the Moncler × Salehe Bembury 2023 release campaign, shown on billboards in Los Angeles and New York City. Built with Blender, Nuke, and SpeedTree.`,
     mediaDir: 'moncler-x-salehe-bembury',
-    cardSub: 'Summer 2023 Campaign',
+    cardSub: 'CG environments for a global fashion campaign',
   },
   {
     slug: 'megan',
@@ -71,7 +70,6 @@ Also writes the system instructions and preamble behind the platform's generativ
     studio: 'INCworks',
     tags: ['Music Video', 'VFX', '3D'],
     youtube: ['DOZNRoL0310'],
-    youtubeAutoplay: true,
     youtubeStart: 43,
     videoFirst: true,
     description: `Custom backdrops, a snake animation, and visual effects for the music video accompanying Megan Thee Stallion's single "Cobra" — produced at INCworks in partnership with ThermoNuclear's creative team, using Unreal Engine, Blender, and After Effects.`,
@@ -106,7 +104,7 @@ Also writes the system instructions and preamble behind the platform's generativ
     // image rather than the thumb so it stays sharp at that crop.
     cardImage: 'media/elena-velez-yr-003-how-s-my-driving/images/01-Capture.webp',
     cardZoom: 1.7,
-    cardSub: 'YR003 — HOW\'S MY DRIVING? NYFW 2023',
+    cardSub: 'AI imagery, depth maps & Blender for NYFW',
   },
   {
     slug: 'realityornot',
@@ -119,7 +117,7 @@ Also writes the system instructions and preamble behind the platform's generativ
     tags: ['Film', 'VFX', 'AI'],
     description: `A series of special effects for artist Cecile B. Evans' 2023 film "Reality Or Not", which premiered at MAMbo — Museo d'Arte Moderna di Bologna and has since been featured at the Singapore Art Museum, SODA Manchester, and Lafayette Anticipations. Work included AI-assisted character animation for ML — live-action performances by Hayett McCarthy run through Stable Diffusion's ControlNet and EbSynth to map a hand-drawn character onto the footage — plus the Anti-Verity Factory, a flooded, post-apocalyptic take on CERN's ELENA particle collider staged in Unreal Engine 5 with swarms of CG butterflies, and the Collective of Renders, a fictional K-Pop group built with MetaHuman.`,
     mediaDir: 'cecile-b-evans-reality-or-not',
-    cardSub: 'Reality or Not — Film VFX',
+    cardSub: 'AI-assisted character animation & real-time VFX',
   },
   {
     slug: 'lakings',
@@ -141,14 +139,11 @@ Also writes the system instructions and preamble behind the platform's generativ
     role: 'Lead Technical Artist',
     client: 'Hometopia Inc.',
     tags: ['Game Development', 'Technical Art', 'Tools'],
-    description: `Lead Technical Artist on Hometopia, a sandbox home-building game released on Steam on April 2, 2025. Responsibilities spanned technical art pipeline development, custom tooling, and procedural systems designed to support a growing team of artists. Work included shader authoring, LOD and performance optimization, and developing Blender and Houdini tools to accelerate asset production.
-
-The game gives players thousands of assets and customization options across a variety of environments, with no budget limits — free-form building in sandbox mode, real-time multiplayer so friends can design entire neighborhoods together, ready-made homes to build on, landscaping tools for outdoor spaces, and a built-in camera and portfolio system for sharing creations with the community. GamesRadar+ called it "the best parts of The Sims 4 and House Flipper."`,
+    description: `Lead Technical Artist on Hometopia, a sandbox home-building game released on Steam on April 2, 2025. Responsibilities spanned technical art pipeline development, custom tooling, and procedural systems designed to support a growing team of artists. Work included shader authoring, LOD and performance optimization, and developing Blender and Houdini tools to accelerate asset production.`,
     mediaDir: 'hometopia',
-    cardSub: 'Sandbox home-building game on Steam',
+    cardSub: 'Artist tools, shaders & asset production pipelines',
     links: [
       { label: 'View on Steam', url: 'https://store.steampowered.com/app/1138640/Hometopia/' },
-      { label: 'hometopia.com', url: 'https://www.hometopia.com' },
     ],
   },
   {
@@ -165,15 +160,48 @@ The game gives players thousands of assets and customization options across a va
   },
   {
     slug: 'procedural',
-    title: 'PERSONAL WORK',
+    title: 'PROCEDURAL TOOLS & SYSTEMS',
     year: 'Various',
     role: 'Technical Artist',
     tags: ['Technical Tools', 'Blender', 'Procedural', 'Houdini'],
     description: `Custom tools and dynamic systems for procedural animation and generative art workflows. Includes a published Blender plugin for geometry-node-driven animation systems, Houdini procedural rigs, and various experimental real-time generative systems built in Unreal Engine.`,
     mediaDir: 'procedural-works',
-    cardSub: 'Custom tools and dynamic systems',
+    cardSub: 'Blender geometry nodes & procedural animation',
   },
 ];
+
+const projectOrder = ['effectmaker', 'moncler', 'hometopia', 'realityornot', 'elena', 'procedural', 'voidclimber', 'miumiu', 'lakings', 'megan', 'bmth'];
+projects.sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug));
+
+const caseNotes = {
+  effectmaker: ['Effects and generative AI for YouTube Shorts.', 'A third-party effects platform', 'Effects, reusable templates and GenAI system instructions', 'Platform templates and interactive experiences'],
+  moncler: ['CG environments for the Moncler × Salehe Bembury campaign.', 'Campaign art direction', 'Blender, SpeedTree and Nuke', 'Campaign imagery and billboard placements in LA and NYC'],
+  hometopia: ['Production tools and procedural systems for a growing art team.', 'Game asset production requirements', 'Blender and Houdini tools, shader authoring and optimization', 'Artist-facing tools and game-ready assets'],
+  realityornot: ['An AI-assisted character workflow within a larger film VFX production.', 'Live-action performance and a hand-drawn character', 'ControlNet and EbSynth, alongside Unreal Engine 5 work', 'Character animation and film environments'],
+  elena: ['AI imagery and 3D environments for a multi-screen fashion show.', 'The visual world of YR003', 'AI-generated imagery and depth maps, with Blender modeling', 'Campaign video installed across eight NYFW screens'],
+  procedural: ['Reusable controls for procedural animation and generative art.', 'Geometry, motion parameters and creative constraints', 'Blender geometry nodes, Houdini rigs and real-time systems', 'Custom tools, a Blender plugin and animated studies'],
+  voidclimber: ['Procedural level generation in Blender and Python.', 'Modular assets and four historical epochs', 'Rule-based assembly and environment variation', 'Distinct level layouts within the game’s art direction']
+};
+
+function escapeHtml(value) { return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function metadata(title, description, route) {
+  const url = 'https://mitchellcraft.net/' + route;
+  return `<meta name="description" content="${escapeHtml(description)}">
+  <link rel="canonical" href="${url}">
+  <meta property="og:title" content="${escapeHtml(title)}">
+  <meta property="og:description" content="${escapeHtml(description)}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${url}">
+  <meta property="og:image" content="https://mitchellcraft.net/media/moncler-x-salehe-bembury/images/bg-01-Moncler_SaleheBembury_FW23_0660_VFX_Retouched.webp">
+  <meta name="twitter:card" content="summary_large_image">`;
+}
+function renderOverview(project) {
+  const notes = caseNotes[project.slug]; if (!notes) return '';
+  return `<section class="case-overview" data-review-id="case-overview" aria-label="Project overview">
+      <p class="case-deck">${escapeHtml(notes[0])}</p>
+      <dl class="case-facts">${['Brief', 'Approach', 'Delivery'].map((label, i) => `<div><dt>${label}</dt><dd>${escapeHtml(notes[i+1])}</dd></div>`).join('')}</dl>
+    </section>`;
+}
 
 // Folded into a single "Misc. Projects" page rather than individual cards.
 const miscProjects = [
@@ -333,24 +361,19 @@ function renderHero(project, hero) {
   if (!hero) return '';
   if (hero.type === 'video') {
     const poster = hero.poster ? ` poster="${imgPath(project, hero.poster)}"` : '';
-    return `<video src="${vidPath(project, hero.file)}" autoplay muted loop playsinline${poster}></video>`;
+    return `<video src="${vidPath(project, hero.file)}" data-loop-preview muted loop playsinline controls preload="metadata"${poster}></video>`;
   }
   return `<img src="${imgPath(project, hero.file)}" alt="${project.title}" loading="lazy">`;
 }
 
 function renderEmbeds(project) {
   return (project.youtube || []).map((id, i) => {
-    // First embed autoplays muted from project.youtubeStart when youtubeAutoplay is set.
-    // Muting is what makes autoplay legal in browsers; lazy loading would defeat it.
-    const auto = project.youtubeAutoplay && i === 0;
-    const start = project.youtubeStart || 0;
-    const params = auto
-      ? `?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0${start ? `&amp;start=${start}` : ''}`
-      : '';
-    const lazy = auto ? '' : ' loading="lazy"';
+    // Load embeds near the viewport and preserve the selected shot's start time.
+    const start = i === 0 ? project.youtubeStart || 0 : 0;
+    const params = `?playsinline=1&amp;rel=0${start ? `&amp;start=${start}` : ''}`;
     return `
         <div class="gallery-item wide">
-          <iframe src="https://www.youtube.com/embed/${id}${params}" title="${project.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen${lazy}></iframe>
+          <iframe src="https://www.youtube.com/embed/${id}${params}" title="${project.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>`;
   }).join('');
 }
@@ -364,7 +387,7 @@ function renderStills(project, gallery) {
     if (item.type === 'video') {
       return `
         <div class="${cls}">
-          <video src="${vidPath(project, item.file)}" autoplay muted loop playsinline></video>
+          <video data-src="${vidPath(project, item.file)}" data-loop-preview muted loop playsinline controls preload="none"></video>
         </div>`;
     }
     return `
@@ -418,7 +441,8 @@ function buildPage(project, index, media) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${project.title} — Mitchell Craft</title>
+  <title>${escapeHtml(project.title)} — Mitchell Craft</title>
+  ${metadata(project.title + " — Mitchell Craft", caseNotes[project.slug]?.[0] || project.cardSub || project.title, `projects/${project.slug}.html`)}
   <link rel="stylesheet" href="../style.css?v=${assetVersion}">
 </head>
 <body class="project-page">
@@ -470,6 +494,8 @@ function buildPage(project, index, media) {
       ${renderMeta('Director', project.director || null)}
       ${renderMeta('Studio', project.studio || null)}
     </div>
+
+    ${renderOverview(project)}
 
     ${blocks}
 
@@ -605,10 +631,10 @@ function buildCard(project) {
   const sub = project.cardSub ? `\n              <p class="card-sub">${project.cardSub}</p>` : '';
   const zoom = project.cardZoom ? ` style="--card-zoom:${project.cardZoom}"` : '';
   return `
-        <article class="card span-3">
+        <article class="card ${projects.indexOf(project) < 2 ? 'span-6 featured-card' : 'span-3'}" data-review-id="card-${project.slug}">
           <a href="projects/${project.slug}.html">
             <div class="card-img" style="background-color:#0d0d0d;">
-              <img src="${project.card}" alt="${project.title}" loading="lazy"${zoom}>
+              <img src="${project.card}" alt="${project.title}" ${projects.indexOf(project) === 0 ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"'}${zoom}>
             </div>
             <div class="card-info">
               <h2>${project.title}</h2>${sub}
@@ -639,14 +665,16 @@ function buildWorkPage() {
           </a>
         </article>`;
 
-  const cards = [...projects.map(buildCard), miscCard].join('\n');
+  const cards = projects.slice(0, 6).map(buildCard).join('\n');
+  const moreCards = [...projects.slice(6).map(buildCard), miscCard].join('\n');
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mitchell Craft — Creative Technologist + 3D Artist</title>
+  <title>Mitchell Craft — AI + 3D Production Pipelines</title>
+  ${metadata("Mitchell Craft — AI + 3D Production Pipelines", "Creative technologist at Google on YouTube’s Effects team. AI-assisted production workflows, Blender, real-time graphics and commercial VFX. Based in NYC.", "")}
   <link rel="stylesheet" href="style.css?v=${assetVersion}">
 </head>
 <body>
@@ -682,11 +710,11 @@ function buildWorkPage() {
   <main>
 
     <!-- Site Header -->
-    <header class="site-header">
+    <header class="site-header home-hero" data-review-id="home-hero">
       <div class="header-name">
-        <h1>Mitchell Craft</h1>
-        <p class="tagline">Creative technologist on Effects @ YouTube</p>
-        <p class="tagline-sub">Technical 3D &amp; VFX Artist based in NYC</p>
+        <p class="site-kicker">MITCHELL CRAFT / CREATIVE TECHNOLOGIST / NYC</p>
+        <h1>I build AI + 3D<br>production pipelines.</h1>
+        <p class="home-intro">I’m a creative technologist at Google on YouTube’s Effects team. I combine Blender, real-time graphics, generative models and agentic coding to build visual tools and repeatable production workflows.</p>
       </div>
       <div class="header-contact">
         <a href="mailto:mitchell.a.craft@gmail.com">mitchell.a.craft@gmail.com</a>
@@ -695,11 +723,25 @@ function buildWorkPage() {
     </header>
 
     <!-- Portfolio Grid -->
-    <section class="portfolio">
+    <section class="portfolio" aria-labelledby="selected-work-title" data-review-id="selected-work">
+      <div class="section-heading"><h2 id="selected-work-title">Selected work</h2><span>Production systems, platforms &amp; visual craft</span></div>
       <div class="grid">
 ${cards}
-
       </div>
+    </section>
+
+    <section class="practice" data-review-id="current-practice" aria-labelledby="practice-title">
+      <div class="section-heading"><h2 id="practice-title">Current practice</h2><span>AI, automation &amp; creative tools</span></div>
+      <div class="practice-grid">
+        <div class="practice-item" data-review-id="practice-agents"><h3>Agent workflows</h3><p>Blender MCP automation, Claude Code workflows with validation and failure handling, daily AI reports, and AR effects tracking.</p></div>
+        <div class="practice-item" data-review-id="practice-models"><h3>Generative systems</h3><p>FLUX LoRA training on an RTX 3090, API-driven Seedance video, and co-founding Provenance: a multi-step model pipeline with a verification layer.</p></div>
+        <div class="practice-item" data-review-id="practice-tools"><h3>Interactive tools</h3><p>A mobile-first 3D painting app in Three.js, alongside procedural Blender work and creative coding in p5.js and GLSL.</p></div>
+      </div>
+    </section>
+
+    <section class="portfolio more-work" data-review-id="more-work" aria-labelledby="more-work-title">
+      <div class="section-heading"><h2 id="more-work-title">More work</h2><span>Games, fashion, film &amp; virtual production</span></div>
+      <div class="grid">${moreCards}</div>
     </section>
 
   </main>
@@ -728,7 +770,7 @@ projects.forEach((project, i) => {
   const media = resolveMedia(project);
   if (!media.hero) warnings.push(`NO MEDIA: ${project.slug} (media/${project.mediaDir})`);
   const html = buildPage(project, i, media);
-  fs.writeFileSync(path.join(outDir, `${project.slug}.html`), html, 'utf8');
+  fs.writeFileSync(path.join(outDir, `${project.slug}.html`), html.replace(/[ \t]+$/gm, ''), 'utf8');
   const m = scanMedia(project.mediaDir);
   console.log(`✓  projects/${project.slug}.html  (${m.videos.length} videos, ${m.images.filter(f => !f.startsWith('bg-')).length} images)`);
 });

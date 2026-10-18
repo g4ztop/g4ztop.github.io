@@ -1,5 +1,6 @@
 (function () {
   'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 

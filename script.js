@@ -1,5 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const videoObserver = new IntersectionObserver(entries => {
+    entries.forEach(({ target: video, isIntersecting }) => {
+      if (isIntersecting && video.dataset.src) {
+        video.src = video.dataset.src;
+        delete video.dataset.src;
+        video.load();
+      }
+      if (!isIntersecting || reducedMotion.matches || document.hidden || document.body.classList.contains('lightbox-open')) video.pause();
+      else video.play().catch(() => {});
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('video[data-loop-preview]').forEach(video => videoObserver.observe(video));
+  const pausePreviews = () => document.querySelectorAll('video[data-loop-preview]').forEach(video => {
+    if (document.hidden || reducedMotion.matches) video.pause();
+  });
+  document.addEventListener('visibilitychange', pausePreviews);
+  reducedMotion.addEventListener('change', pausePreviews);
+
   // ─── Lazy-load images ───────────────────────────────────────────
   const images = document.querySelectorAll('.card-img img, .proj-hero img, .proj-gallery img, .ig-item img');
 
@@ -9,8 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = entry.target;
       img.addEventListener('load', () => img.classList.add('loaded'));
       img.addEventListener('error', () => {
-        // Image missing — just keep the background colour visible
-        img.style.display = 'none';
+        img.classList.add('image-unavailable');
       });
       // Trigger load (src already set in HTML; this handles cached images too)
       if (img.complete && img.naturalWidth) {
@@ -69,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (tag === 'video') {
         const video = document.createElement('video');
-        video.src = source.currentSrc || source.src;
+        video.src = source.currentSrc || source.src || source.dataset.src;
         video.controls = true;
         video.autoplay = true;
         video.loop = true;
@@ -127,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       show(i);
       overlay.hidden = false;
       document.body.classList.add('lightbox-open');
+      document.querySelectorAll('body > nav, body > main, body > footer, body > .mobile-header').forEach(el => { el.inert = true; });
       inlineVideos.forEach(v => v.pause());
       overlay.querySelector('.lightbox-close').focus();
     };
@@ -134,13 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const close = () => {
       overlay.hidden = true;
       document.body.classList.remove('lightbox-open');
+      document.querySelectorAll('body > nav, body > main, body > footer, body > .mobile-header').forEach(el => { el.inert = false; });
       stage.replaceChildren();
-      inlineVideos.forEach(v => { v.play().catch(() => {}); });
+      inlineVideos.forEach(v => {
+        const rect = v.getBoundingClientRect();
+        if (!reducedMotion.matches && !document.hidden && rect.bottom > 0 && rect.top < innerHeight) v.play().catch(() => {});
+      });
       if (lastFocus) lastFocus.focus();
     };
 
     galleryMedia.forEach((el, i) => {
-      if (el.tagName.toLowerCase() === 'iframe') {
+      if (['iframe', 'video'].includes(el.tagName.toLowerCase())) {
         // An iframe swallows its own clicks, so give embeds an expand button
         const button = document.createElement('button');
         button.className = 'expand-media';
@@ -152,6 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       el.classList.add('zoomable');
+      el.tabIndex = 0;
+      el.setAttribute('role', 'button');
+      el.setAttribute('aria-label', `Expand ${el.alt || 'media'}`);
+      el.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(i); }
+      });
       el.addEventListener('click', () => open(i));
     });
 
@@ -163,6 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', e => {
       if (overlay.hidden) return;
+      if (e.key === 'Tab') {
+        const focusable = [...overlay.querySelectorAll('button, a, video[controls], iframe')].filter(el => !el.hidden && el.getClientRects().length);
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
       if (e.key === 'Escape') close();
       else if (e.key === 'ArrowRight' && !single) show(current + 1);
       else if (e.key === 'ArrowLeft' && !single) show(current - 1);
@@ -174,19 +209,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobileMenu');
 
   if (burger && mobileMenu) {
-    burger.addEventListener('click', () => {
-      const isOpen = burger.classList.toggle('open');
+    const setMenu = isOpen => {
+      burger.classList.toggle('open', isOpen);
       mobileMenu.classList.toggle('open', isOpen);
       burger.setAttribute('aria-expanded', String(isOpen));
+      burger.setAttribute('aria-controls', 'mobileMenu');
+      mobileMenu.inert = !isOpen;
+      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    };
+    setMenu(false);
+    burger.addEventListener('click', () => {
+      setMenu(!burger.classList.contains('open'));
     });
 
     // Close menu when a link is tapped
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        burger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
+        setMenu(false);
       });
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && burger.classList.contains('open')) { setMenu(false); burger.focus(); }
     });
   }
 

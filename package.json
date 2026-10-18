@@ -1,0 +1,9 @@
+{
+  "name": "mitchell-craft-portfolio",
+  "private": true,
+  "scripts": {
+    "review": "node tools/review/server.mjs",
+    "generate": "node generate-projects.js",
+    "test:review": "node --test tools/review/server.test.mjs"
+  }
+}
