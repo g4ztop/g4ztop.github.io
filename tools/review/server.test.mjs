@@ -52,6 +52,11 @@ test('preview protects local files, checks save origin, and serves seekable vide
   assert.equal((await fetch(origin + '/api/comments', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Review-Token': bootstrap.token, Origin: 'https://example.com' }, body: '{}' })).status, 403);
   for (const route of ['/__preview/.review/resume.md', '/__preview/media/%2e%2e%2f.review/resume.md', '/__preview/tools/review/server.mjs', '/__preview/media/escape/index.html']) assert.equal((await fetch(origin + route)).status, 404);
   const preview = await (await fetch(origin + '/__preview/index.html')).text(); assert.match(preview, /__review\/bridge.js/);
+  fs.writeFileSync(path.join(root, '.review', 'portfolio-homepage.html'), '<html><body>PORTFOLIO DRAFT</body></html>');
+  const draft = await (await fetch(origin + '/__preview/index.html')).text();
+  assert.match(draft, /PORTFOLIO DRAFT/); assert.match(draft, /__review\/bridge.js/);
+  assert.equal(fs.readFileSync(path.join(root, 'index.html'), 'utf8'), '<html><body>Hello</body></html>');
+  assert.equal((await fetch(origin + '/__preview/.review/portfolio-homepage.html')).status, 404);
   const range = await fetch(origin + '/__preview/media/clip.mp4', { headers: { Range: 'bytes=2-5' } });
   assert.equal(range.status, 206); assert.equal(range.headers.get('content-range'), 'bytes 2-5/10'); assert.equal(await range.text(), '2345');
   const suffix = await fetch(origin + '/__preview/media/clip.mp4', { headers: { Range: 'bytes=-3' } }); assert.equal(await suffix.text(), '789');

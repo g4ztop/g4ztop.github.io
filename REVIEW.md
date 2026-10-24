@@ -22,6 +22,6 @@ The server binds to 127.0.0.1 only. `/__preview/` serves allowlisted portfolio a
 
 ## Site edits
 
-`generate-projects.js` is the source for `index.html` and `projects/*.html`. Edit the generator, then run `npm run generate`. `about.html` is maintained by hand. Regeneration updates its asset version. Refresh the workshop preview after source edits.
+`generate-projects.js` is the source for the portfolio homepage and `projects/*.html`. Edit the generator, then run `npm run generate`. While `coming-soon.html` exists, the generator copies it to the public `index.html` and retains the portfolio homepage in the ignored `.review/portfolio-homepage.html`. The workshop's **Work / homepage** still previews that draft with its existing notes; choose **Coming soon / temporary homepage** to review the public landing page. Remove `coming-soon.html` and regenerate when the full homepage is ready to launch. `about.html` is maintained by hand. Regeneration updates its asset version. Refresh the workshop preview after source edits.
 
 Run `npm run test:review` for persistence, exports, file isolation and media-range checks. Browser QA should cover pin capture/save/jump, context autosave, navigation, mobile preview and private draft access.

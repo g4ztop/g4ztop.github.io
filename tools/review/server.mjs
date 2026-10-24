@@ -136,6 +136,11 @@ export function createReviewServer({ root = defaultRoot, dataDir = path.join(roo
       if (route.startsWith('/__preview/')) {
         const relative = route.slice('/__preview/'.length) || 'index.html';
         if (!/^(?:[a-zA-Z0-9_-]+\.html|(?:style\.css|script\.js|webgl-fx\.js)|(?:projects|media|images)\/.+)$/.test(relative)) throw fail(404, 'Not found');
+        // Preserve the Work page's URL and existing review anchors while the
+        // production index is the temporary coming-soon page.
+        if (relative === 'index.html' && fs.existsSync(path.join(root, '.review', 'portfolio-homepage.html'))) {
+          await serveFile(req, res, path.join(root, '.review'), 'portfolio-homepage.html', true); return;
+        }
         await serveFile(req, res, root, relative, true); return;
       }
       throw fail(404, 'Not found');

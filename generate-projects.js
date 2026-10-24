@@ -778,8 +778,20 @@ projects.forEach((project, i) => {
 fs.writeFileSync(path.join(outDir, 'misc.html'), buildMiscPage(), 'utf8');
 console.log('✓  projects/misc.html');
 
-fs.writeFileSync(path.join(__dirname, 'index.html'), buildWorkPage(), 'utf8');
-console.log('✓  index.html');
+// Keep the portfolio homepage available for local review while the temporary
+// landing page is active. Removing coming-soon.html restores the full homepage.
+const workHomepage = buildWorkPage();
+const comingSoonPath = path.join(__dirname, 'coming-soon.html');
+if (fs.existsSync(comingSoonPath)) {
+  const reviewDir = path.join(__dirname, '.review');
+  fs.mkdirSync(reviewDir, { recursive: true });
+  fs.writeFileSync(path.join(reviewDir, 'portfolio-homepage.html'), workHomepage, 'utf8');
+  fs.copyFileSync(comingSoonPath, path.join(__dirname, 'index.html'));
+  console.log('✓  index.html (coming soon; portfolio draft retained in .review/)');
+} else {
+  fs.writeFileSync(path.join(__dirname, 'index.html'), workHomepage, 'utf8');
+  console.log('✓  index.html');
+}
 
 // about.html and coming-soon.html are hand-maintained; keep their asset URLs
 // on the same version stamp as the generated pages.
