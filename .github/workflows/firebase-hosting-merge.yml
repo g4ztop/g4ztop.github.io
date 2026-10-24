@@ -14,3 +14,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MITCHELLCRAFT_NET }}'
           channelId: live
           projectId: mitchellcraft-net
+          # Last successful CLI version; 15.34.1 adds a Service Usage permission check.
+          firebaseToolsVersion: 15.34.0
