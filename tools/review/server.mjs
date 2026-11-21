@@ -8,7 +8,7 @@ import { reviewBrief } from './brief.mjs';
 
 const toolRoot = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(toolRoot, '../..');
-const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.mp4': 'video/mp4', '.webm': 'video/webm', '.woff2': 'font/woff2', '.pdf': 'application/pdf' };
+const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.ktx2': 'image/ktx2', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.mp4': 'video/mp4', '.webm': 'video/webm', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.wasm': 'application/wasm', '.bin': 'application/octet-stream', '.meshbin': 'application/octet-stream', '.pdf': 'application/pdf' };
 const emptyState = () => ({ version: 1, comments: [], answers: {} });
 const fail = (status, message) => Object.assign(new Error(message), { status });
 const bounded = (v, max = 1000) => typeof v === 'string' ? v.slice(0, max) : '';

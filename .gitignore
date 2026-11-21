@@ -10,3 +10,6 @@ media/instagram/
 
 # Local review notes, historical résumé, and browser drafts
 .review/
+
+# Local JavaScript build dependencies
+node_modules/

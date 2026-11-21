@@ -1,0 +1,20 @@
+{
+  "sourceBytes": 5108127,
+  "tiers": {
+    "low": {
+      "textureBytes": 878625,
+      "geometryBytes": 310373,
+      "environmentBytes": 276614
+    },
+    "balanced": {
+      "textureBytes": 2478609,
+      "geometryBytes": 310373,
+      "environmentBytes": 276614
+    },
+    "high": {
+      "textureBytes": 3328979,
+      "geometryBytes": 872350,
+      "environmentBytes": 276614
+    }
+  }
+}

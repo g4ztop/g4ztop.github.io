@@ -3,38 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
-  <title>Mitchell Craft — Coming soon</title>
-  <meta name="description" content="A new portfolio is on the way. Mitchell Craft — creative technology, AI and 3D. Find me on LinkedIn and Instagram.">
+  <meta name="color-scheme" content="dark">
+  <title>Mitchell Craft — Creative Technologist</title>
+  <meta name="description" content="Mitchell Craft is a New York City–based Creative Technologist on YouTube’s Effects team at Google, building AI + 3D production pipelines, real-time graphics, and artist-grade creative tools.">
   <link rel="canonical" href="https://mitchellcraft.net/">
-  <meta property="og:title" content="Mitchell Craft — Coming soon">
-  <meta property="og:description" content="A new portfolio is on the way. In the meantime, find me on LinkedIn and Instagram.">
+  <meta property="og:title" content="Mitchell Craft — Creative Technologist">
+  <meta property="og:description" content="Creative Technologist on YouTube’s Effects team at Google. AI + 3D production pipelines, real-time graphics, and commercial VFX in NYC.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mitchellcraft.net/">
   <meta name="twitter:card" content="summary">
-  <style>
-    body { background: white; color: black; font-family: "Times New Roman", Times, serif; }
-    a:link { color: #0000ee; }
-    a:visited { color: #551a8b; }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://mitchellcraft.net/#person",
+    "name": "Mitchell Craft",
+    "url": "https://mitchellcraft.net/",
+    "jobTitle": "Creative Technologist",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Google (YouTube Effects)"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "New York",
+      "addressRegion": "NY",
+      "addressCountry": "US"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Tulane University"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Virginia Commonwealth University School of the Arts"
+      }
+    ],
+    "award": [
+      "Google AI Award (2026)",
+      "YouTube North Star Award"
+    ],
+    "knowsAbout": [
+      "Creative Technology",
+      "AI and 3D Production Pipelines",
+      "Real-Time Graphics",
+      "Blender Python and MCP Automation",
+      "Houdini",
+      "Unreal Engine 5",
+      "Three.js",
+      "GLSL Shaders",
+      "Generative Media Workflows"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/mitchell-c-1a5757141/",
+      "https://github.com/g4ztop",
+      "https://www.instagram.com/murchellcruft/",
+      "https://incworks.studio/projects/"
+    ]
+  }
+  </script>
+  <link rel="preload" href="media/flower-field/fonts/DMSerifDisplay.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="media/flower-field/field.css">
 </head>
-<body>
-  <header>
-    <h1>Mitchell Craft's Home Page</h1>
-    <hr>
-  </header>
-  <main>
-    <h2>Under construction</h2>
-    <p>My portfolio is getting an update. Please check back soon.</p>
-    <p>In the meantime, you can find me on:</p>
-    <ul>
-      <li><a href="https://www.linkedin.com/in/mitchell-c-1a5757141/">LinkedIn</a></li>
-      <li><a href="https://www.instagram.com/murchellcruft/">Instagram</a></li>
-    </ul>
-  </main>
-  <footer>
-    <hr>
-    <address>Creative technology, AI &amp; 3D<br>New York, NY</address>
-  </footer>
+<body data-intro="loading" data-field-ui="off" data-quality-lock="high">
+  <div id="arrival" aria-label="Welcome">
+    <div class="arrival-loader" role="status">
+      <svg class="arrival-spinner" viewBox="-32 -32 64 64" aria-hidden="true">
+        <defs><linearGradient id="petal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8f1b5"/><stop offset=".5" stop-color="#f5ebd6"/><stop offset="1" stop-color="#f1a7b6"/></linearGradient></defs>
+        <g fill="url(#petal)"><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(0)"/><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(45)"/><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(90)"/><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(135)"/><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(180)"/><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(225)"/><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(270)"/><ellipse cx="0" cy="-18" rx="5" ry="11" transform="rotate(315)"/></g><circle r="4" fill="#e9e3ce"/>
+      </svg>
+      <span>One moment</span>
+    </div>
+    <p class="arrival-line" aria-live="polite" aria-atomic="true"></p>
+    <button class="arrival-skip" type="button" hidden>Skip intro <span aria-hidden="true">↗</span></button>
+  </div>
+  <div class="field" aria-hidden="true"><canvas id="flower-field"></canvas></div>
+  <div class="page">
+    <main class="identity">
+      <h1>Mitchell Craft</h1>
+      <p class="identity-role">Creative Technologist at Google (YouTube Effects) · NYC</p>
+      <p class="identity-bio">I build controllable AI + 3D production pipelines, interactive AR tools, and real-time graphics systems — combining Blender, shaders, and agentic workflows. Co-founder of INCworks Studio (Miu Miu, Moncler, Megan Thee Stallion, Bring Me The Horizon); MFA in Digital Art, Tulane University.</p>
+      <nav aria-label="Find me elsewhere">
+        <a href="https://www.linkedin.com/in/mitchell-c-1a5757141/">LinkedIn</a>
+        <span aria-hidden="true">-</span>
+        <a href="https://github.com/g4ztop">GitHub</a>
+        <span aria-hidden="true">-</span>
+        <a href="https://www.instagram.com/murchellcruft/">Instagram</a>
+        <span aria-hidden="true">-</span>
+        <a href="https://incworks.studio/projects/">INCworks Studio</a>
+        <span aria-hidden="true">-</span>
+        <a href="mailto:mitchell.a.craft@gmail.com">Email</a>
+      </nav>
+      <p class="site-status">Full portfolio archive in progress</p>
+    </main>
+  </div>
+  <script type="module" src="media/flower-field/field.js"></script>
+<noscript><style>#arrival{display:none}body[data-intro] .field,body[data-intro] .page{opacity:1;visibility:visible}</style></noscript>
 </body>
 </html>
