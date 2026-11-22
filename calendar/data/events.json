@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-22T16:30:56.292124+00:00",
-  "updated_at_ny": "Nov 22, 2026 · 11:30 AM ET",
+  "generated_at": "2026-11-22T17:06:40.555202+00:00",
+  "updated_at_ny": "Nov 22, 2026 · 12:06 PM ET",
   "window_label": "Nov 22 – Dec 13, 2026",
   "counts": {
-    "total": 34,
-    "timed": 19,
-    "on_view": 15
+    "total": 46,
+    "timed": 25,
+    "on_view": 21
   },
   "events": [
     {
@@ -120,6 +120,22 @@
       "end_time": "18:00",
       "time_label": "12–6 PM",
       "admission": "Free"
+    },
+    {
+      "id": "cooper-hewitt-design-museum-at-the-hearth-food-festivities-and-design-46d2f8ed",
+      "title": "At the Hearth: Food, Festivities, and Design",
+      "venue": "Cooper Hewitt Design Museum",
+      "neighborhood": "Upper East Side",
+      "address": "2 East 91st St, New York, NY 10128",
+      "category": "design",
+      "kind": "timed",
+      "url": "https://www.cooperhewitt.org/events/",
+      "blurb": "Intimate fireside conversation in the Carnegie Library with Cooper Hewitt curators, conservators, and makers on tabletop objects and ritual design.",
+      "date": "2026-11-25",
+      "start_time": "17:00",
+      "end_time": "18:00",
+      "time_label": "5–6 PM",
+      "admission": "Pay What You Wish"
     },
     {
       "id": "empire-stores-fad-market-dumbo-independent-jewelry-design-pop--efa0d199",
@@ -266,6 +282,38 @@
       "admission": "Free"
     },
     {
+      "id": "metropolitan-pavilion-renegade-craft-fair-chelsea-winter-market-day-1-22038723",
+      "title": "Renegade Craft Fair — Chelsea Winter Market (Day 1)",
+      "venue": "Metropolitan Pavilion",
+      "neighborhood": "Chelsea",
+      "address": "125 West 18th St, New York, NY 10011",
+      "category": "jewelry",
+      "kind": "pop_up",
+      "url": "https://www.renegadecraft.com/city/new-york/",
+      "blurb": "Large-scale Chelsea winter showcase of independent silversmiths, contemporary studio jewelers, ceramicists, and small-batch object makers.",
+      "date": "2026-12-05",
+      "start_time": "11:00",
+      "end_time": "17:00",
+      "time_label": "11 AM–5 PM",
+      "admission": "Suggested $5"
+    },
+    {
+      "id": "e-flux-screening-room-what-happened-to-video-art-moving-image-symposiu-8ef07935",
+      "title": "What Happened to Video Art?: Moving Image Symposium",
+      "venue": "e-flux Screening Room",
+      "neighborhood": "Clinton Hill",
+      "address": "172 Classon Ave, Brooklyn, NY 11205",
+      "category": "lecture",
+      "kind": "timed",
+      "url": "https://www.e-flux.com/events/",
+      "blurb": "Full-afternoon e-flux symposium with artists, theorists, and curators reassessing the trajectory of experimental video and moving-image installation.",
+      "date": "2026-12-05",
+      "start_time": "12:00",
+      "end_time": "17:00",
+      "time_label": "12–5 PM",
+      "admission": "RSVP"
+    },
+    {
       "id": "index-greenpoint-trimming-phase-book-launch-presentation-a7450024",
       "title": "Trimming Phase: Book Launch & Presentation",
       "venue": "Index Greenpoint",
@@ -280,6 +328,22 @@
       "end_time": "17:00",
       "time_label": "1:30–5 PM",
       "admission": "RSVP"
+    },
+    {
+      "id": "metropolitan-pavilion-renegade-craft-fair-chelsea-winter-market-day-2-20a89c6d",
+      "title": "Renegade Craft Fair — Chelsea Winter Market (Day 2)",
+      "venue": "Metropolitan Pavilion",
+      "neighborhood": "Chelsea",
+      "address": "125 West 18th St, New York, NY 10011",
+      "category": "jewelry",
+      "kind": "pop_up",
+      "url": "https://www.renegadecraft.com/city/new-york/",
+      "blurb": "Final day of Renegade's Manhattan winter market featuring independent handmade jewelry, metalwork, ceramics, and tactile home objects.",
+      "date": "2026-12-06",
+      "start_time": "11:00",
+      "end_time": "17:00",
+      "time_label": "11 AM–5 PM",
+      "admission": "Suggested $5"
     },
     {
       "id": "index-greenpoint-breaking-walled-gardens-1c2459f6",
@@ -312,6 +376,38 @@
       "end_time": "20:30",
       "time_label": "6:30–8:30 PM",
       "admission": "RSVP"
+    },
+    {
+      "id": "swiss-institute-nolan-oswald-dennis-ecliptics-book-launch-3f796d43",
+      "title": "Nolan Oswald Dennis: Ecliptics — Book Launch",
+      "venue": "Swiss Institute",
+      "neighborhood": "Bowery",
+      "address": "250 Bowery, New York, NY 10012",
+      "category": "index",
+      "kind": "timed",
+      "url": "https://www.swissinstitute.net/programs/",
+      "blurb": "Swiss Institute publication launch examining Nolan Oswald Dennis's cosmological diagrams, speculative cartographies, and sculptural systems.",
+      "date": "2026-12-12",
+      "start_time": "12:00",
+      "end_time": "14:00",
+      "time_label": "12–2 PM",
+      "admission": "Free"
+    },
+    {
+      "id": "pioneer-works-press-play-2026-independent-art-book-sound-fair-b2991ace",
+      "title": "Press Play 2026 — Independent Art, Book & Sound Fair",
+      "venue": "Pioneer Works",
+      "neighborhood": "Red Hook",
+      "address": "159 Pioneer St, Brooklyn, NY 11231",
+      "category": "index",
+      "kind": "pop_up",
+      "url": "https://pioneerworks.org/programs",
+      "blurb": "Pioneer Works' annual weekend gathering of small-press artist publishers, experimental music labels, printmakers, and editioned objects.",
+      "date": "2026-12-12",
+      "start_time": "12:00",
+      "end_time": "19:00",
+      "time_label": "12–7 PM",
+      "admission": "Free / RSVP"
     },
     {
       "id": "superhouse-pattern-recognition-superhouse-at-five-9ff3e04c",
@@ -522,6 +618,90 @@
       "start_date": "2026-11-15",
       "end_date": "2026-12-23",
       "hours": "Mon–Sun 11 AM–7 PM (Closed Nov 26–28)"
+    },
+    {
+      "id": "company-gallery-ra-l-de-nieves-the-sword-the-horse-and-the-silen-45c8f154",
+      "title": "Raúl de Nieves: The Sword, the Horse, and the Silence",
+      "venue": "Company Gallery",
+      "neighborhood": "Chinatown / LES",
+      "address": "145 Elizabeth St, New York, NY 10012",
+      "category": "henry_st",
+      "kind": "on_view",
+      "url": "https://companygallery.us/",
+      "blurb": "Obsessively bead- and jewel-encrusted figurative sculptures and luminous faux-stained-glass works blurring devotional craft and downtown performance.",
+      "start_date": "2026-11-05",
+      "end_date": "2026-12-19",
+      "hours": "Tue–Sat 11 AM–6 PM"
+    },
+    {
+      "id": "essex-flowers-break-up-3c72c777",
+      "title": "Break Up",
+      "venue": "Essex Flowers",
+      "neighborhood": "Two Bridges",
+      "address": "19 Monroe St, New York, NY 10002",
+      "category": "henry_st",
+      "kind": "on_view",
+      "url": "https://essexflowers.us/",
+      "blurb": "Artist-run Two Bridges storefront exhibition one block south of Henry Street featuring intimate sculptural and mixed-media works.",
+      "start_date": "2026-11-13",
+      "end_date": "2026-12-19",
+      "hours": "Fri–Sat 12–6 PM"
+    },
+    {
+      "id": "miguel-abreu-gallery-scott-lyall-reds-jimmy-raskin-s-curio-shop-223278f7",
+      "title": "Scott Lyall: REDS & Jimmy Raskin's Curio Shop",
+      "venue": "Miguel Abreu Gallery",
+      "neighborhood": "Chinatown / LES",
+      "address": "88 Eldridge St & 36 Orchard St, New York, NY 10002",
+      "category": "henry_st",
+      "kind": "on_view",
+      "url": "https://miguelabreugallery.com/",
+      "blurb": "Dual Chinatown/LES presentations pairing Scott Lyall's color-calibrated material panels with Jimmy Raskin's dense sculptural cabinet of curiosities.",
+      "start_date": "2026-11-06",
+      "end_date": "2026-12-23",
+      "hours": "Tue–Sat 10 AM–6 PM"
+    },
+    {
+      "id": "demisch-danant-sheila-hicks-favorite-odds-and-ends-studio-visit-0e77e92c",
+      "title": "Sheila Hicks: Favorite Odds and Ends & Studio Visits",
+      "venue": "Demisch Danant",
+      "neighborhood": "Greenwich Village",
+      "address": "30 West 12th St, New York, NY 10011",
+      "category": "design",
+      "kind": "on_view",
+      "url": "https://www.demischdanant.com/exhibitions",
+      "blurb": "Intimate wrapped-linen, pigment-saturated fiber reliefs by Sheila Hicks shown alongside collectible 20th-century and contemporary French furniture.",
+      "start_date": "2026-11-04",
+      "end_date": "2026-12-19",
+      "hours": "Mon–Sat 10 AM–6 PM"
+    },
+    {
+      "id": "the-noguchi-museum-noguchi-to-asawa-designing-postwar-america-akari-03b83b7a",
+      "title": "Noguchi to Asawa: Designing Postwar America & Akari at 75",
+      "venue": "The Noguchi Museum",
+      "neighborhood": "Long Island City",
+      "address": "9-01 33rd Rd, Long Island City, NY 11106",
+      "category": "design",
+      "kind": "on_view",
+      "url": "https://www.noguchi.org/museum/exhibitions/",
+      "blurb": "Dialogues between Isamu Noguchi's stone and Akari washi-paper light sculptures and Ruth Asawa's looped-wire biomorphic forms.",
+      "start_date": "2026-10-15",
+      "end_date": "2027-05-09",
+      "hours": "Wed–Sun 11 AM–5 PM"
+    },
+    {
+      "id": "sculpturecenter-cevdet-erek-americas-yining-fei-feral-sediment-85ecdaaa",
+      "title": "Cevdet Erek: Americas & Yining Fei: Feral Sediment",
+      "venue": "SculptureCenter",
+      "neighborhood": "Long Island City",
+      "address": "44-19 Purves St, Long Island City, NY 11101",
+      "category": "chelsea",
+      "kind": "on_view",
+      "url": "https://www.sculpture-center.org/exhibitions/",
+      "blurb": "Site-specific architectural sound-and-rhythm scaffolding by Cevdet Erek alongside Yining Fei's speculative prosthetic and material sculptures.",
+      "start_date": "2026-09-19",
+      "end_date": "2026-12-28",
+      "hours": "Thu–Mon 12–6 PM"
     }
   ]
 }

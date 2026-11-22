@@ -25,7 +25,7 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:20-grand-studio-intro-to-soft-solder-mini-frames-gems-shells-5bdbca7
  7@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261122T100000
 DTEND;TZID=America/New_York:20261122T123000
 SUMMARY:Intro to Soft Solder: Mini Frames\, Gems & Shells — 20 Grand S
@@ -39,7 +39,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:nyc-jewelry-week-partner-studios-nyc-jewelry-week-2026-final-day-ope
  n-houses-e0fb2d7d@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261122T110000
 DTEND;TZID=America/New_York:20261122T180000
 SUMMARY:[CLOSING] NYC Jewelry Week 2026 — Final Day Open Houses — NY
@@ -53,7 +53,7 @@ URL:https://nycjewelryweek.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:index-greenpoint-intro-to-close-reading-f5ba12f7@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261122T130000
 DTEND;TZID=America/New_York:20261122T160000
 SUMMARY:Intro to Close Reading — Index Greenpoint
@@ -66,7 +66,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-new-school-in-conversation-with-tiffany-co-3831852d@mitchellcraf
  t.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261123T130000
 DTEND;TZID=America/New_York:20261123T143000
 SUMMARY:In Conversation with Tiffany & Co. — The New School
@@ -79,7 +79,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:streeters-gallery-it-s-not-always-metamorphosis-exhibition-opening-d
  321a481@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261123T190000
 DTEND;TZID=America/New_York:20261123T223000
 SUMMARY:[OPENING] It's Not Always — Metamorphosis Exhibition Opening 
@@ -93,7 +93,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-cooper-union-ricardo-flores-flores-prats-lecture-a006dfde@mitche
  llcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261124T103000
 DTEND;TZID=America/New_York:20261124T123000
 SUMMARY:Ricardo Flores: Flores & Prats Lecture — The Cooper Union
@@ -106,7 +106,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:56-henry-46-walker-al-freeman-from-behind-closing-day-265b563f@mitch
  ellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261125T120000
 DTEND;TZID=America/New_York:20261125T180000
 SUMMARY:[CLOSING] Al Freeman: From Behind — Closing Day — 56 Henry (
@@ -118,9 +118,24 @@ DESCRIPTION:Final day to catch Al Freeman's soft-sculptural padded vinyl
 URL:https://56henry.nyc/exhibitions/from-behind
 END:VEVENT
 BEGIN:VEVENT
+UID:cooper-hewitt-design-museum-at-the-hearth-food-festivities-and-desig
+ n-46d2f8ed@mitchellcraft.net
+DTSTAMP:20261122T170640Z
+DTSTART;TZID=America/New_York:20261125T170000
+DTEND;TZID=America/New_York:20261125T180000
+SUMMARY:At the Hearth: Food\, Festivities\, and Design — Cooper Hewitt
+  Design Museum
+LOCATION:Cooper Hewitt Design Museum\, 2 East 91st St\, New York\, NY 10
+ 128
+DESCRIPTION:Intimate fireside conversation in the Carnegie Library with 
+ Cooper Hewitt curators\, conservators\, and makers on tabletop objects 
+ and ritual design.\n\nhttps://www.cooperhewitt.org/events/
+URL:https://www.cooperhewitt.org/events/
+END:VEVENT
+BEGIN:VEVENT
 UID:empire-stores-fad-market-dumbo-independent-jewelry-design-pop--efa0d
  199@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261130T110000
 DTEND;TZID=America/New_York:20261130T190000
 SUMMARY:FAD Market Dumbo — Independent Jewelry & Design Pop-Up — Emp
@@ -134,7 +149,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-new-school-for-social-research-natasha-lennard-alice-crary-on-un
  -certainty-c56367c4@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261201T180000
 DTEND;TZID=America/New_York:20261201T190000
 SUMMARY:Natasha Lennard & Alice Crary — On Un/Certainty — The New Sc
@@ -149,7 +164,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-cooper-union-current-work-forms-of-intelligence-labor-0eb166c2@m
  itchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261201T183000
 DTEND;TZID=America/New_York:20261201T203000
 SUMMARY:Current Work — Forms of Intelligence: Labor — The Cooper Union
@@ -161,7 +176,7 @@ URL:https://cooper.edu/events-and-exhibitions/events
 END:VEVENT
 BEGIN:VEVENT
 UID:index-greenpoint-skill-for-skill-70a3cc79@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261203T190000
 DTEND;TZID=America/New_York:20261203T210000
 SUMMARY:Skill For Skill — Index Greenpoint
@@ -174,7 +189,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-cooper-union-paulina-sawczuk-design-as-an-encounter-fef48c77@mit
  chellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261204T123000
 DTEND;TZID=America/New_York:20261204T143000
 SUMMARY:Paulina Sawczuk: Design as an Encounter — The Cooper Union
@@ -187,7 +202,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:56-henry-46-walker-wretched-mirror-group-show-opening-35c1b996@mitch
  ellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261204T180000
 DTEND;TZID=America/New_York:20261204T200000
 SUMMARY:[OPENING] Wretched Mirror — Group Show Opening — 56 Henry (4
@@ -201,7 +216,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:urbanglass-first-friday-hot-glass-hangout-handmade-jewelry--f143b049
  @mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261204T180000
 DTEND;TZID=America/New_York:20261204T210000
 SUMMARY:First Friday Hot Glass Hangout & Handmade Jewelry Sale — Urban
@@ -215,7 +230,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-new-school-sites-of-memory-spaces-of-resistance-8ff264ed@mitchel
  lcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261204T180000
 DTEND;TZID=America/New_York:20261204T193000
 SUMMARY:Sites of Memory\, Spaces of Resistance — The New School
@@ -228,7 +243,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:st-paul-s-historic-hall-fad-market-cobble-hill-jewelry-object-makers
  -59a01153@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261205T110000
 DTEND;TZID=America/New_York:20261205T180000
 SUMMARY:FAD Market Cobble Hill — Jewelry & Object Makers — St. Paul'
@@ -240,9 +255,37 @@ DESCRIPTION:Curated weekend showcase of 70+ independent designers with a
 URL:https://fadmarket.co/
 END:VEVENT
 BEGIN:VEVENT
+UID:metropolitan-pavilion-renegade-craft-fair-chelsea-winter-market-day-
+ 1-22038723@mitchellcraft.net
+DTSTAMP:20261122T170640Z
+DTSTART;TZID=America/New_York:20261205T110000
+DTEND;TZID=America/New_York:20261205T170000
+SUMMARY:Renegade Craft Fair — Chelsea Winter Market (Day 1) — Metrop
+ olitan Pavilion
+LOCATION:Metropolitan Pavilion\, 125 West 18th St\, New York\, NY 10011
+DESCRIPTION:Large-scale Chelsea winter showcase of independent silversmi
+ ths\, contemporary studio jewelers\, ceramicists\, and small-batch obje
+ ct makers.\n\nhttps://www.renegadecraft.com/city/new-york/
+URL:https://www.renegadecraft.com/city/new-york/
+END:VEVENT
+BEGIN:VEVENT
+UID:e-flux-screening-room-what-happened-to-video-art-moving-image-sympos
+ iu-8ef07935@mitchellcraft.net
+DTSTAMP:20261122T170640Z
+DTSTART;TZID=America/New_York:20261205T120000
+DTEND;TZID=America/New_York:20261205T170000
+SUMMARY:What Happened to Video Art?: Moving Image Symposium — e-flux S
+ creening Room
+LOCATION:e-flux Screening Room\, 172 Classon Ave\, Brooklyn\, NY 11205
+DESCRIPTION:Full-afternoon e-flux symposium with artists\, theorists\, a
+ nd curators reassessing the trajectory of experimental video and moving
+ -image installation.\n\nhttps://www.e-flux.com/events/
+URL:https://www.e-flux.com/events/
+END:VEVENT
+BEGIN:VEVENT
 UID:index-greenpoint-trimming-phase-book-launch-presentation-a7450024@mi
  tchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261205T133000
 DTEND;TZID=America/New_York:20261205T170000
 SUMMARY:Trimming Phase: Book Launch & Presentation — Index Greenpoint
@@ -252,8 +295,22 @@ DESCRIPTION:Afternoon artist publication launch\, presentation\, and con
 URL:https://lu.ma/31uogh2v
 END:VEVENT
 BEGIN:VEVENT
+UID:metropolitan-pavilion-renegade-craft-fair-chelsea-winter-market-day-
+ 2-20a89c6d@mitchellcraft.net
+DTSTAMP:20261122T170640Z
+DTSTART;TZID=America/New_York:20261206T110000
+DTEND;TZID=America/New_York:20261206T170000
+SUMMARY:Renegade Craft Fair — Chelsea Winter Market (Day 2) — Metrop
+ olitan Pavilion
+LOCATION:Metropolitan Pavilion\, 125 West 18th St\, New York\, NY 10011
+DESCRIPTION:Final day of Renegade's Manhattan winter market featuring in
+ dependent handmade jewelry\, metalwork\, ceramics\, and tactile home ob
+ jects.\n\nhttps://www.renegadecraft.com/city/new-york/
+URL:https://www.renegadecraft.com/city/new-york/
+END:VEVENT
+BEGIN:VEVENT
 UID:index-greenpoint-breaking-walled-gardens-1c2459f6@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261206T130000
 DTEND;TZID=America/New_York:20261206T160000
 SUMMARY:Breaking Walled Gardens — Index Greenpoint
@@ -266,7 +323,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:index-greenpoint-counterfictional-futures-speculations-on-machine-a0
  4255c0@mitchellcraft.net
-DTSTAMP:20261122T163056Z
+DTSTAMP:20261122T170640Z
 DTSTART;TZID=America/New_York:20261207T183000
 DTEND;TZID=America/New_York:20261207T203000
 SUMMARY:Counterfictional Futures: Speculations On Machine Intelligence 
@@ -276,5 +333,32 @@ DESCRIPTION:Evening salon and speculative research session at Index prob
  ing non-standard aesthetics and counterfictional models of machine inte
  lligence.\n\nhttps://lu.ma/512vxpj8
 URL:https://lu.ma/512vxpj8
+END:VEVENT
+BEGIN:VEVENT
+UID:swiss-institute-nolan-oswald-dennis-ecliptics-book-launch-3f796d43@m
+ itchellcraft.net
+DTSTAMP:20261122T170640Z
+DTSTART;TZID=America/New_York:20261212T120000
+DTEND;TZID=America/New_York:20261212T140000
+SUMMARY:Nolan Oswald Dennis: Ecliptics — Book Launch — Swiss Institute
+LOCATION:Swiss Institute\, 250 Bowery\, New York\, NY 10012
+DESCRIPTION:Swiss Institute publication launch examining Nolan Oswald De
+ nnis's cosmological diagrams\, speculative cartographies\, and sculptur
+ al systems.\n\nhttps://www.swissinstitute.net/programs/
+URL:https://www.swissinstitute.net/programs/
+END:VEVENT
+BEGIN:VEVENT
+UID:pioneer-works-press-play-2026-independent-art-book-sound-fair-b2991a
+ ce@mitchellcraft.net
+DTSTAMP:20261122T170640Z
+DTSTART;TZID=America/New_York:20261212T120000
+DTEND;TZID=America/New_York:20261212T190000
+SUMMARY:Press Play 2026 — Independent Art\, Book & Sound Fair — Pion
+ eer Works
+LOCATION:Pioneer Works\, 159 Pioneer St\, Brooklyn\, NY 11231
+DESCRIPTION:Pioneer Works' annual weekend gathering of small-press artis
+ t publishers\, experimental music labels\, printmakers\, and editioned 
+ objects.\n\nhttps://pioneerworks.org/programs
+URL:https://pioneerworks.org/programs
 END:VEVENT
 END:VCALENDAR
