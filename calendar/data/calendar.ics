@@ -1,0 +1,280 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mitchell Craft//NYC Curated Weekly Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NYC / Curated Weekly Calendar
+X-WR-TIMEZONE:America/New_York
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20-grand-studio-intro-to-soft-solder-mini-frames-gems-shells-5bdbca7
+ 7@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261122T100000
+DTEND;TZID=America/New_York:20261122T123000
+SUMMARY:Intro to Soft Solder: Mini Frames\, Gems & Shells — 20 Grand S
+ tudio
+LOCATION:20 Grand Studio\, 20 Grand Ave\, Brooklyn\, NY 11205
+DESCRIPTION:Hands-on metalwork session covering copper-foil and lead-fre
+ e soft-solder techniques around cabochon gems\, shells\, and miniature 
+ metal frames.\n\nhttps://lu.ma/na58jsb3
+URL:https://lu.ma/na58jsb3
+END:VEVENT
+BEGIN:VEVENT
+UID:nyc-jewelry-week-partner-studios-nyc-jewelry-week-2026-final-day-ope
+ n-houses-e0fb2d7d@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261122T110000
+DTEND;TZID=America/New_York:20261122T180000
+SUMMARY:[CLOSING] NYC Jewelry Week 2026 — Final Day Open Houses — NY
+ C Jewelry Week / Partner Studios
+LOCATION:NYC Jewelry Week / Partner Studios\, 93 Reade St & Partner Venu
+ es\, New York\, NY
+DESCRIPTION:Closing day of the 9th annual NYC Jewelry Week featuring ind
+ ependent studio open houses\, artist-made adornment showcases\, and dow
+ ntown trunk shows.\n\nhttps://nycjewelryweek.com/
+URL:https://nycjewelryweek.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:index-greenpoint-intro-to-close-reading-f5ba12f7@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261122T130000
+DTEND;TZID=America/New_York:20261122T160000
+SUMMARY:Intro to Close Reading — Index Greenpoint
+LOCATION:Index Greenpoint\, Index Space\, Greenpoint\, Brooklyn\, NY
+DESCRIPTION:Small-group seminar and slow textual analysis workshop at In
+ dex Space focused on critical reading methods across theory and artist 
+ writing.\n\nhttps://lu.ma/5o3ghv4q
+URL:https://lu.ma/5o3ghv4q
+END:VEVENT
+BEGIN:VEVENT
+UID:the-new-school-in-conversation-with-tiffany-co-3831852d@mitchellcraf
+ t.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261123T130000
+DTEND;TZID=America/New_York:20261123T143000
+SUMMARY:In Conversation with Tiffany & Co. — The New School
+LOCATION:The New School\, 66 West 12th St\, New York\, NY 10011
+DESCRIPTION:New School public conversation examining jewelry design heri
+ tage\, contemporary object fabrication\, and creative direction at Tiff
+ any & Co.\n\nhttps://events.newschool.edu/
+URL:https://events.newschool.edu/
+END:VEVENT
+BEGIN:VEVENT
+UID:streeters-gallery-it-s-not-always-metamorphosis-exhibition-opening-d
+ 321a481@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261123T190000
+DTEND;TZID=America/New_York:20261123T223000
+SUMMARY:[OPENING] It's Not Always — Metamorphosis Exhibition Opening 
+ — Streeters Gallery
+LOCATION:Streeters Gallery\, 101 Reade St\, New York\, NY 10013
+DESCRIPTION:Downtown opening reception for a group show focused on mater
+ ial transformation\, sculptural objects\, and emerging NYC studio pract
+ ices.\n\nhttps://lu.ma/hwe7arsm
+URL:https://lu.ma/hwe7arsm
+END:VEVENT
+BEGIN:VEVENT
+UID:the-cooper-union-ricardo-flores-flores-prats-lecture-a006dfde@mitche
+ llcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261124T103000
+DTEND;TZID=America/New_York:20261124T123000
+SUMMARY:Ricardo Flores: Flores & Prats Lecture — The Cooper Union
+LOCATION:The Cooper Union\, 7 East 7th St\, New York\, NY 10003
+DESCRIPTION:Barcelona studio Flores & Prats presents physical drawing mo
+ dels\, adaptive reuse fabrication\, and spatial research at Cooper Unio
+ n.\n\nhttps://cooper.edu/events-and-exhibitions/events
+URL:https://cooper.edu/events-and-exhibitions/events
+END:VEVENT
+BEGIN:VEVENT
+UID:56-henry-46-walker-al-freeman-from-behind-closing-day-265b563f@mitch
+ ellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261125T120000
+DTEND;TZID=America/New_York:20261125T180000
+SUMMARY:[CLOSING] Al Freeman: From Behind — Closing Day — 56 Henry (
+ 46 Walker)
+LOCATION:56 Henry (46 Walker)\, 46 Walker St\, New York\, NY 10013
+DESCRIPTION:Final day to catch Al Freeman's soft-sculptural padded vinyl
+  objects reimagining everyday mass-produced forms with deadpan tactile 
+ humor.\n\nhttps://56henry.nyc/exhibitions/from-behind
+URL:https://56henry.nyc/exhibitions/from-behind
+END:VEVENT
+BEGIN:VEVENT
+UID:empire-stores-fad-market-dumbo-independent-jewelry-design-pop--efa0d
+ 199@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261130T110000
+DTEND;TZID=America/New_York:20261130T190000
+SUMMARY:FAD Market Dumbo — Independent Jewelry & Design Pop-Up — Emp
+ ire Stores
+LOCATION:Empire Stores\, 55 Water St\, Brooklyn\, NY 11201
+DESCRIPTION:Opening day of FAD Market's winter residency featuring 35+ r
+ otating independent studio jewelers\, metalsmiths\, and small-batch obj
+ ect makers.\n\nhttps://fadmarket.co/
+URL:https://fadmarket.co/
+END:VEVENT
+BEGIN:VEVENT
+UID:the-new-school-for-social-research-natasha-lennard-alice-crary-on-un
+ -certainty-c56367c4@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261201T180000
+DTEND;TZID=America/New_York:20261201T190000
+SUMMARY:Natasha Lennard & Alice Crary — On Un/Certainty — The New Sc
+ hool for Social Research
+LOCATION:The New School for Social Research\, 6 East 16th St\, New York\
+ , NY 10003
+DESCRIPTION:Public NSSR conversation dissecting how political and AI-ind
+ ustry rhetoric weaponize uncertainty\, celebrating Natasha Lennard's ne
+ w book.\n\nhttps://www.newschool.edu/nssr/events/
+URL:https://www.newschool.edu/nssr/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:the-cooper-union-current-work-forms-of-intelligence-labor-0eb166c2@m
+ itchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261201T183000
+DTEND;TZID=America/New_York:20261201T203000
+SUMMARY:Current Work — Forms of Intelligence: Labor — The Cooper Union
+LOCATION:The Cooper Union\, 7 East 7th St\, New York\, NY 10003
+DESCRIPTION:Evening lecture examining computational automation\, materia
+ l craft labor\, and architectural production systems in the Great Hall.
+ \n\nhttps://cooper.edu/events-and-exhibitions/events
+URL:https://cooper.edu/events-and-exhibitions/events
+END:VEVENT
+BEGIN:VEVENT
+UID:index-greenpoint-skill-for-skill-70a3cc79@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261203T190000
+DTEND;TZID=America/New_York:20261203T210000
+SUMMARY:Skill For Skill — Index Greenpoint
+LOCATION:Index Greenpoint\, Index Space\, Greenpoint\, Brooklyn\, NY
+DESCRIPTION:Peer-to-peer creative exchange night at Index Space pairing 
+ artists\, designers\, and technologists to trade practical studio workf
+ lows.\n\nhttps://lu.ma/xbntp0oz
+URL:https://lu.ma/xbntp0oz
+END:VEVENT
+BEGIN:VEVENT
+UID:the-cooper-union-paulina-sawczuk-design-as-an-encounter-fef48c77@mit
+ chellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261204T123000
+DTEND;TZID=America/New_York:20261204T143000
+SUMMARY:Paulina Sawczuk: Design as an Encounter — The Cooper Union
+LOCATION:The Cooper Union\, 7 East 7th St\, New York\, NY 10003
+DESCRIPTION:Finnish Cultural Institute NYC lecture exploring material de
+ sign objects situated between spatial context\, craft tradition\, and p
+ lace.\n\nhttps://cooper.edu/events-and-exhibitions/events
+URL:https://cooper.edu/events-and-exhibitions/events
+END:VEVENT
+BEGIN:VEVENT
+UID:56-henry-46-walker-wretched-mirror-group-show-opening-35c1b996@mitch
+ ellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261204T180000
+DTEND;TZID=America/New_York:20261204T200000
+SUMMARY:[OPENING] Wretched Mirror — Group Show Opening — 56 Henry (4
+ 6 Walker)
+LOCATION:56 Henry (46 Walker)\, 46 Walker St\, New York\, NY 10013
+DESCRIPTION:Eighteen-artist exhibition on the domestic uncanny featuring
+  sculptural reliefs and works by LaKela Brown\, Nikita Gale\, Sara Cwyn
+ ar\, and Al Freeman.\n\nhttps://56henry.nyc/exhibitions/wretched-mirror
+URL:https://56henry.nyc/exhibitions/wretched-mirror
+END:VEVENT
+BEGIN:VEVENT
+UID:urbanglass-first-friday-hot-glass-hangout-handmade-jewelry--f143b049
+ @mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261204T180000
+DTEND;TZID=America/New_York:20261204T210000
+SUMMARY:First Friday Hot Glass Hangout & Handmade Jewelry Sale — Urban
+ Glass
+LOCATION:UrbanGlass\, 647 Fulton St\, Brooklyn\, NY 11217
+DESCRIPTION:Live molten-glass studio demonstrations paired with a commun
+ ity pop-up sale of flameworked glass jewelry and sculptural vessels.\n\
+ nhttps://urbanglass.org/classes/detail/hot-glass-hangout-studio-sale
+URL:https://urbanglass.org/classes/detail/hot-glass-hangout-studio-sale
+END:VEVENT
+BEGIN:VEVENT
+UID:the-new-school-sites-of-memory-spaces-of-resistance-8ff264ed@mitchel
+ lcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261204T180000
+DTEND;TZID=America/New_York:20261204T193000
+SUMMARY:Sites of Memory\, Spaces of Resistance — The New School
+LOCATION:The New School\, 66 West 12th St\, New York\, NY 10011
+DESCRIPTION:Evening public lecture at The New School examining archival 
+ counter-mapping\, spatial memory\, and decolonial public history.\n\nht
+ tps://events.newschool.edu/
+URL:https://events.newschool.edu/
+END:VEVENT
+BEGIN:VEVENT
+UID:st-paul-s-historic-hall-fad-market-cobble-hill-jewelry-object-makers
+ -59a01153@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261205T110000
+DTEND;TZID=America/New_York:20261205T180000
+SUMMARY:FAD Market Cobble Hill — Jewelry & Object Makers — St. Paul'
+ s Historic Hall
+LOCATION:St. Paul's Historic Hall\, 190 Court St\, Brooklyn\, NY 11201
+DESCRIPTION:Curated weekend showcase of 70+ independent designers with a
+  strong bench of handmade silver\, glass\, and sculptural jewelry studi
+ os.\n\nhttps://fadmarket.co/
+URL:https://fadmarket.co/
+END:VEVENT
+BEGIN:VEVENT
+UID:index-greenpoint-trimming-phase-book-launch-presentation-a7450024@mi
+ tchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261205T133000
+DTEND;TZID=America/New_York:20261205T170000
+SUMMARY:Trimming Phase: Book Launch & Presentation — Index Greenpoint
+LOCATION:Index Greenpoint\, Index Space\, Greenpoint\, Brooklyn\, NY
+DESCRIPTION:Afternoon artist publication launch\, presentation\, and con
+ versation hosted by Index Space.\n\nhttps://lu.ma/31uogh2v
+URL:https://lu.ma/31uogh2v
+END:VEVENT
+BEGIN:VEVENT
+UID:index-greenpoint-breaking-walled-gardens-1c2459f6@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261206T130000
+DTEND;TZID=America/New_York:20261206T160000
+SUMMARY:Breaking Walled Gardens — Index Greenpoint
+LOCATION:Index Greenpoint\, Index Space\, Greenpoint\, Brooklyn\, NY
+DESCRIPTION:Sunday workshop at Index exploring independent web infrastru
+ cture\, open creative tools\, and alternatives to closed platform ecosy
+ stems.\n\nhttps://lu.ma/m5ozspht
+URL:https://lu.ma/m5ozspht
+END:VEVENT
+BEGIN:VEVENT
+UID:index-greenpoint-counterfictional-futures-speculations-on-machine-a0
+ 4255c0@mitchellcraft.net
+DTSTAMP:20261122T163056Z
+DTSTART;TZID=America/New_York:20261207T183000
+DTEND;TZID=America/New_York:20261207T203000
+SUMMARY:Counterfictional Futures: Speculations On Machine Intelligence 
+ — Index Greenpoint
+LOCATION:Index Greenpoint\, Index Space\, Greenpoint\, Brooklyn\, NY
+DESCRIPTION:Evening salon and speculative research session at Index prob
+ ing non-standard aesthetics and counterfictional models of machine inte
+ lligence.\n\nhttps://lu.ma/512vxpj8
+URL:https://lu.ma/512vxpj8
+END:VEVENT
+END:VCALENDAR

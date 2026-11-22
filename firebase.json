@@ -80,6 +80,15 @@
             "value": "no-cache"
           }
         ]
+      },
+      {
+        "source": "/calendar/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
       }
     ]
   }
