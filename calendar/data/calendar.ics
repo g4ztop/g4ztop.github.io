@@ -25,7 +25,7 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:the-new-school-book-launch-on-un-certainty-by-natasha-lennard-i-3134
  ba5c@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261201T180000
 DTEND;TZID=America/New_York:20261201T200000
 SUMMARY:Book Launch: On Un/Certainty by Natasha Lennard\, In Conversatio
@@ -40,7 +40,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-cooper-union-frederick-p-rose-auditorium-current-work-forms-of-i
  ntelligence-labor-0694c944@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261201T183000
 DTEND;TZID=America/New_York:20261201T200000
 SUMMARY:Current Work | Forms of Intelligence: Labor — The Cooper Union
@@ -56,7 +56,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:the-cooper-union-finnish-cultural-institute-lecture-paulina-sawcz-bf
  896147@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261204T123000
 DTEND;TZID=America/New_York:20261204T143000
 SUMMARY:Finnish Cultural Institute Lecture | Paulina Sawczuk: Design as 
@@ -72,7 +72,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:e-flux-screening-room-what-happened-to-video-art-a-symposium-on-arti
  st-cbe3dffc@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261205T120000
 DTEND;TZID=America/New_York:20261205T190000
 SUMMARY:What Happened to Video Art?: A Symposium on Artists’ Moving Im
@@ -82,45 +82,61 @@ DESCRIPTION:Martha Rosler keynotes a one-day symposium with Peggy Ahwesh
  \, Coco Fusco\, Paul Pfeiffer\, Alison Nguyen\, and Rachel Rose on arti
  st-run moving-image distribution.\n\nhttps://www.e-flux.com/events/6783
  406/what-happened-to-video-art-a-symposium-on-artists-rsquo-moving-imag
- es/
+ es-nbsp
 URL:https://www.e-flux.com/events/6783406/what-happened-to-video-art-a-s
- ymposium-on-artists-rsquo-moving-images/
+ ymposium-on-artists-rsquo-moving-images-nbsp
 END:VEVENT
 BEGIN:VEVENT
-UID:the-new-school-marketing-radicalism-book-launch-with-vir-g-moln-75d7
- e172@mitchellcraft.net
-DTSTAMP:20261123T111037Z
-DTSTART;TZID=America/New_York:20261208T180000
-DTEND;TZID=America/New_York:20261208T200000
-SUMMARY:Marketing Radicalism: Book Launch with Virág Molnár — The Ne
- w School
-LOCATION:The New School\, 66 West 12th St\, New York\, NY 10011
-DESCRIPTION:Sociologist Virág Molnár speaks with Manuela Boatcă about
-  how fashion\, design\, and consumer culture industries normalize far-r
- ight populism in contemporary Hungary.\n\nhttps://events.newschool.edu/
- event/marketingradicalism
-URL:https://events.newschool.edu/event/marketingradicalism
+UID:the-cooper-union-frederick-p-rose-auditorium-jan-wilker-for-open-fla
+ t-file-d7c09590@mitchellcraft.net
+DTSTAMP:20261126T112813Z
+DTSTART;TZID=America/New_York:20261210T183000
+DTEND;TZID=America/New_York:20261210T213000
+SUMMARY:Jan Wilker for Open Flat File — The Cooper Union (Frederick P.
+  Rose Auditorium)
+LOCATION:The Cooper Union (Frederick P. Rose Auditorium)\, 41 Cooper Squ
+ are\, New York\, NY 10003
+DESCRIPTION:Karlssonwilker co-founder Jan Wilker lectures on Karl Gerstn
+ er's Think Program and morphological boxes from the Herb Lubalin Study 
+ Center archive\, with a free commemorative poster.\n\nhttps://cooper.ed
+ u/events-and-exhibitions/events/jan-wilker-open-flat-file
+URL:https://cooper.edu/events-and-exhibitions/events/jan-wilker-open-fla
+ t-file
+END:VEVENT
+BEGIN:VEVENT
+UID:the-new-school-starr-foundation-hall-war-trash-23438ef8@mitchellcraf
+ t.net
+DTSTAMP:20261126T112813Z
+DTSTART;TZID=America/New_York:20261212T150000
+DTEND;TZID=America/New_York:20261212T173000
+SUMMARY:War Trash — The New School (Starr Foundation Hall)
+LOCATION:The New School (Starr Foundation Hall)\, 63 Fifth Ave\, Lower L
+ evel\, New York\, NY 10003
+DESCRIPTION:Vera List Center convenes artist Aziz Hazara with Tom Keenan
+ \, Jasbir K. Puar\, and Madiha Tahir to examine military debris discard
+ ed from Bagram Airfield alongside Hazara's SculptureCenter show.\n\nhtt
+ ps://veralistcenter.org/events/war-trash
+URL:https://veralistcenter.org/events/war-trash
 END:VEVENT
 BEGIN:VEVENT
 UID:index-chinatown-counterfictional-futures-speculations-on-biologi-0d8
  a24ab@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261201T183000
 DTEND;TZID=America/New_York:20261201T203000
 SUMMARY:Counterfictional Futures: Speculations On Biological Intelligenc
  e — Index Chinatown
-LOCATION:Index Chinatown\, 120 Walker St\, Floors 3 & 4\, New York\, NY 
- 10013
-DESCRIPTION:Tony Wang hosts authors from the Office of Applied Strategy'
- s Dossier 3 book launch exploring speculative scenarios around biologic
- al intelligence\, open-source seeds\, and living systems.\n\nhttps://lu
- ma.com/index-9b2d
+LOCATION:Index Chinatown\, 120 Walker St\, 3rd Fl\, New York\, NY 10013
+DESCRIPTION:Tony Wang hosts contributors to the Office of Applied Strate
+ gy Dossier 3 book launch exploring speculative scenarios around biologi
+ cal intelligence\, open-source seeds\, and living systems.\n\nhttps://l
+ uma.com/index-9b2d
 URL:https://luma.com/index-9b2d
 END:VEVENT
 BEGIN:VEVENT
 UID:pioneer-works-ksi-yc-pioneer-works-x-unsound-festival-404adce6@mitch
  ellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261201T200000
 DTEND;TZID=America/New_York:20261201T220000
 SUMMARY:Księżyc (Pioneer Works x Unsound Festival) — Pioneer Works
@@ -132,35 +148,9 @@ DESCRIPTION:Polish avant-folk and minimalist vocal ensemble Księżyc pe
 URL:https://pioneerworks.org/programs/ksiezyc
 END:VEVENT
 BEGIN:VEVENT
-UID:index-chinatown-unruly-play-56275023@mitchellcraft.net
-DTSTAMP:20261123T111037Z
-DTSTART;TZID=America/New_York:20261202T190000
-DTEND;TZID=America/New_York:20261202T210000
-SUMMARY:Unruly Play — Index Chinatown
-LOCATION:Index Chinatown\, 120 Walker St\, Floors 3 & 4\, New York\, NY 
- 10013
-DESCRIPTION:Creative studio Imagination of Things activates an archive o
- f experimental games\, public interventions\, and rule-bending play sco
- res in a participatory evening session.\n\nhttps://luma.com/index-vh9d
-URL:https://luma.com/index-vh9d
-END:VEVENT
-BEGIN:VEVENT
-UID:index-greenpoint-skill-for-skill-70a3cc79@mitchellcraft.net
-DTSTAMP:20261123T111037Z
-DTSTART;TZID=America/New_York:20261203T190000
-DTEND;TZID=America/New_York:20261203T210000
-SUMMARY:Skill For Skill — Index Greenpoint
-LOCATION:Index Greenpoint\, 698 Manhattan Ave\, Floors 2 & 3\, Brooklyn\
- , NY 11222
-DESCRIPTION:Hosted by Skillhaus\, attendees pair up to barter practical 
- skills as currency and build a small collaborative artifact before the 
- two-hour clock runs out.\n\nhttps://luma.com/xbntp0oz
-URL:https://luma.com/xbntp0oz
-END:VEVENT
-BEGIN:VEVENT
 UID:index-greenpoint-trimming-phase-book-launch-presentation-a7450024@mi
  tchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261205T133000
 DTEND;TZID=America/New_York:20261205T170000
 SUMMARY:Trimming Phase: Book Launch & Presentation — Index Greenpoint
@@ -173,7 +163,7 @@ URL:https://luma.com/31uogh2v
 END:VEVENT
 BEGIN:VEVENT
 UID:index-greenpoint-breaking-walled-gardens-1c2459f6@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261206T130000
 DTEND;TZID=America/New_York:20261206T160000
 SUMMARY:Breaking Walled Gardens — Index Greenpoint
@@ -187,7 +177,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:index-greenpoint-counterfictional-futures-speculations-on-machine-a0
  4255c0@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261207T183000
 DTEND;TZID=America/New_York:20261207T203000
 SUMMARY:Counterfictional Futures: Speculations On Machine Intelligence 
@@ -200,24 +190,54 @@ DESCRIPTION:Part two of the Office of Applied Strategy Dossier 3 launch
 URL:https://luma.com/512vxpj8
 END:VEVENT
 BEGIN:VEVENT
-UID:56-henry-46-walker-st-al-freeman-from-behind-closing-791af4dc@mitche
- llcraft.net
-DTSTAMP:20261123T111037Z
-DTSTART;TZID=America/New_York:20261125T120000
-DTEND;TZID=America/New_York:20261125T180000
-SUMMARY:[CLOSING] Al Freeman: From Behind (Closing) — 56 Henry (46 Wal
- ker St)
-LOCATION:56 Henry (46 Walker St)\, 46 Walker St\, New York\, NY 10013
-DESCRIPTION:Final day to view ten stuffed vinyl soft sculptures by Al Fr
- eeman rendering the backsides of paintings—stretchers\, barcodes\, an
- d provenance tags—at oversized scale.\n\nhttps://56henry.nyc/exhibiti
- ons/from-behind/
-URL:https://56henry.nyc/exhibitions/from-behind/
+UID:index-greenpoint-the-infinite-wager-risk-uncertainty-and-the-phil-21
+ 7048b1@mitchellcraft.net
+DTSTAMP:20261126T112813Z
+DTSTART;TZID=America/New_York:20261210T183000
+DTEND;TZID=America/New_York:20261210T203000
+SUMMARY:The Infinite Wager: Risk\, Uncertainty\, and the Philosophy of P
+ redictive Tech — Index Greenpoint
+LOCATION:Index Greenpoint\, 698 Manhattan Ave\, Floors 2 & 3\, Brooklyn\
+ , NY 11222
+DESCRIPTION:Interactive seminar led by Emma Stamm examining the philosop
+ hical assumptions\, financial incentives\, and epistemology behind pred
+ ictive algorithms and forecasting tools.\n\nhttps://luma.com/8m0v9g0c
+URL:https://luma.com/8m0v9g0c
+END:VEVENT
+BEGIN:VEVENT
+UID:the-drawing-center-with-swiss-institute-book-launch-nolan-oswald-den
+ nis-ecliptics-9c329990@mitchellcraft.net
+DTSTAMP:20261126T112813Z
+DTSTART;TZID=America/New_York:20261212T120000
+DTEND;TZID=America/New_York:20261212T140000
+SUMMARY:Book Launch | Nolan Oswald Dennis: Ecliptics — The Drawing Cen
+ ter (with Swiss Institute)
+LOCATION:The Drawing Center (with Swiss Institute)\, 35 Wooster St\, New
+  York\, NY 10013
+DESCRIPTION:Swiss Institute and The Drawing Center launch Nolan Oswald D
+ ennis's monograph Ecliptics\, surveying the artist's architectural diag
+ rams\, planetary systems drawings\, and computation research.\n\nhttps:
+ //swissinstitute.net/programs/book-launch-nolan-oswald-dennis-ecliptics
+URL:https://swissinstitute.net/programs/book-launch-nolan-oswald-dennis-
+ ecliptics
+END:VEVENT
+BEGIN:VEVENT
+UID:pioneer-works-press-play-2026-bfec8618@mitchellcraft.net
+DTSTAMP:20261126T112813Z
+DTSTART;TZID=America/New_York:20261212T120000
+DTEND;TZID=America/New_York:20261212T190000
+SUMMARY:Press Play 2026 — Pioneer Works
+LOCATION:Pioneer Works\, 159 Pioneer St\, Brooklyn\, NY 11231
+DESCRIPTION:Pioneer Works' seventh annual fair brings over 130 independe
+ nt publishers\, artist bookmakers\, record labels\, zines\, and live ra
+ dio broadcasts to Red Hook.\n\nhttps://pioneerworks.org/programs/press-
+ play-2026
+URL:https://pioneerworks.org/programs/press-play-2026
 END:VEVENT
 BEGIN:VEVENT
 UID:56-henry-46-walker-st-wretched-mirror-exhibition-opening-e0a0765c@mi
  tchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261204
 SUMMARY:[OPENING] Wretched Mirror (Exhibition Opening) — 56 Henry (46 
@@ -232,57 +252,40 @@ END:VEVENT
 BEGIN:VEVENT
 UID:amos-eno-gallery-material-immaterial-artists-of-amos-eno-gallery--69
  e76aea@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261204T180000
 DTEND;TZID=America/New_York:20261204T200000
 SUMMARY:[OPENING] Material / Immaterial: Artists of Amos Eno Gallery (Op
  ening Reception) — Amos Eno Gallery
 LOCATION:Amos Eno Gallery\, 191 Henry St\, New York\, NY 10002
-DESCRIPTION:Opening reception for ten artists working with mineral pigme
- nts\, rust\, textiles\, and salvaged construction debris to examine how
-  raw matter holds memory.\n\nhttps://www.eventbrite.com/e/opening-recep
- tion-for-material-immaterial-artists-of-amos-eno-volume-i-tickets-20044
- 92070743
+DESCRIPTION:Opening reception at 191 Henry St for ten artists working wi
+ th mineral pigments\, rust\, textiles\, and salvaged construction debri
+ s to examine how raw matter holds memory.\n\nhttps://www.eventbrite.com
+ /e/opening-reception-for-material-immaterial-artists-of-amos-eno-volume
+ -i-tickets-2004492070743
 URL:https://www.eventbrite.com/e/opening-reception-for-material-immateri
  al-artists-of-amos-eno-volume-i-tickets-2004492070743
 END:VEVENT
 BEGIN:VEVENT
-UID:cooper-hewitt-smithsonian-design-museum-at-the-hearth-meet-carlos-m-
- nguez-carrasco-arkde-8f0138fb@mitchellcraft.net
-DTSTAMP:20261123T111037Z
-DTSTART;TZID=America/New_York:20261202T170000
-DTEND;TZID=America/New_York:20261202T180000
-SUMMARY:At the Hearth: Meet Carlos Mínguez Carrasco (ArkDes) — Cooper
-  Hewitt\, Smithsonian Design Museum
-LOCATION:Cooper Hewitt\, Smithsonian Design Museum\, 2 East 91st St\, Ne
- w York\, NY 10128
-DESCRIPTION:Drop-in fireside conversation in the historic Carnegie Libra
- ry with Carlos Mínguez Carrasco\, Chief Curator at Sweden's national c
- enter for architecture and design\, ArkDes.\n\nhttps://www.cooperhewitt
- .org/event/at-the-hearth-meet-carlos-minguez-carrasco-chief-curator-of-
- arkdes-swedens-national-center-for-architecture-and-design-12-02-2026/
-URL:https://www.cooperhewitt.org/event/at-the-hearth-meet-carlos-minguez
- -carrasco-chief-curator-of-arkdes-swedens-national-center-for-architect
- ure-and-design-12-02-2026/
-END:VEVENT
-BEGIN:VEVENT
-UID:welcome-to-chinatown-2026-holiday-market-at-the-hub-thanksgiving-wee
- k-f708b75c@mitchellcraft.net
-DTSTAMP:20261123T111037Z
-DTSTART;TZID=America/New_York:20261127T120000
-DTEND;TZID=America/New_York:20261127T180000
-SUMMARY:2026 Holiday Market at The Hub: Thanksgiving Weekend — Welcome
-  to Chinatown
-LOCATION:Welcome to Chinatown\, 115 Bowery\, New York\, NY 10002
-DESCRIPTION:Three-day Chinatown makers pop-up at The Hub on Bowery featu
- ring local AAPI jewelry designers\, ceramicists\, and independent studi
- os.\n\nhttps://luma.com/cm164w8p
-URL:https://luma.com/cm164w8p
+UID:demisch-danant-jos-devriendt-terra-sigillata-exhibition-opening-2fe3
+ 8d7b@mitchellcraft.net
+DTSTAMP:20261126T112813Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261203
+SUMMARY:[OPENING] Jos Devriendt: Terra Sigillata (Exhibition Opening) 
+ — Demisch Danant
+LOCATION:Demisch Danant\, 30 West 12th St\, New York\, NY 10011
+DESCRIPTION:Opening day of Belgian ceramicist Jos Devriendt's exhibition
+  featuring more than twenty sculptural ceramic lamps from his Night & D
+ ay series alongside earlier vessels.\n\nhttps://www.demischdanant.com/e
+ xhibitions/jos-devriendt-terra-sigillata
+URL:https://www.demischdanant.com/exhibitions/jos-devriendt-terra-sigill
+ ata
 END:VEVENT
 BEGIN:VEVENT
 UID:empire-stores-fad-market-holiday-pop-up-dumbo-e2628eb7@mitchellcraft
  .net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261130T110000
 DTEND;TZID=America/New_York:20261130T180000
 SUMMARY:FAD Market Holiday Pop-Up | Dumbo — Empire Stores
@@ -295,7 +298,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:urbanglass-hot-glass-hangout-studio-sale-with-shuhei-fujii-20cb001e@
  mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261204T180000
 DTEND;TZID=America/New_York:20261204T200000
 SUMMARY:Hot Glass Hangout & Studio Sale with Shuhei Fujii — UrbanGlass
@@ -310,7 +313,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:metropolitan-pavilion-renegade-craft-fair-new-york-winter-aba24162@m
  itchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261205T110000
 DTEND;TZID=America/New_York:20261205T170000
 SUMMARY:Renegade Craft Fair — New York Winter — Metropolitan Pavilion
@@ -323,7 +326,7 @@ URL:https://www.renegadecraft.com/event/new-york-winter/
 END:VEVENT
 BEGIN:VEVENT
 UID:urbanglass-open-studios-winter-in-the-city-31404260@mitchellcraft.net
-DTSTAMP:20261123T111037Z
+DTSTAMP:20261126T112813Z
 DTSTART;TZID=America/New_York:20261206T110000
 DTEND;TZID=America/New_York:20261206T150000
 SUMMARY:Open Studios: Winter in the City — UrbanGlass
@@ -333,5 +336,20 @@ DESCRIPTION:Open-house access across UrbanGlass's 17\,000-square-foot st
  ands-on beadmaking and fusing sessions.\n\nhttps://urbanglass.org/event
  s/detail/open-studios-winter-in-the-city
 URL:https://urbanglass.org/events/detail/open-studios-winter-in-the-city
+END:VEVENT
+BEGIN:VEVENT
+UID:grand-bazaar-nyc-grand-bazaar-nyc-saturday-holiday-market-jewelry-c0
+ cd1f6f@mitchellcraft.net
+DTSTAMP:20261126T112813Z
+DTSTART;TZID=America/New_York:20261212T100000
+DTEND;TZID=America/New_York:20261212T170000
+SUMMARY:Grand Bazaar NYC: Saturday Holiday Market & Jewelry Showcase —
+  Grand Bazaar NYC
+LOCATION:Grand Bazaar NYC\, 100 West 77th St\, New York\, NY 10024
+DESCRIPTION:Special Saturday holiday market featuring an independent jew
+ elry designer showcase alongside local makers and craft studios indoors
+  and outdoors on West 77th Street.\n\nhttps://grandbazaarnyc.org/events
+ /special-holiday-market/
+URL:https://grandbazaarnyc.org/events/special-holiday-market/
 END:VEVENT
 END:VCALENDAR
